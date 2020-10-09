@@ -106,3 +106,8 @@
   'CONF:VOLT:DC 100' 경우는 write 만 명령한 거임. 'READ?' 해야한 현재 가지고 있는 값을 보내 준다.
 * 왜냐하면 장비 자체 측정이 Delay가 생겨서 위와 같은 'MEAS:VOLT:DC?'가 하다보면 NULL 값이 인식 되는 경우가 있어서임.
 * 허나 자체 장비 측정 시간에 대한 Delay 값을 준다면 문제 없음
+
+# 팀 정보(Team Information)
+ * 이재용(ljy13579@naver.com) ,Github_ID : NevErdiEkilLeR
+ * 김영주(fjvbn2003@gmail.com) , Github_ID : fjvbn2003
+ * 권기남(ginami0129n@naver.com) , Github_ID : ginami0129g
