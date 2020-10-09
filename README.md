@@ -30,26 +30,27 @@
 
 6.  서버 실행
 
-   ``` node ./app.js ```
+   ``` node server/server.js ```
 
 7.  실행 확인 
 
    아래 URL에 접속하여 테스트 
 
    ```
-   http://localhost:2020
-   http://localhost:2020/meas/volt/AC
-   http://localhost:2020/meas/curr/AC
+   http://localhost:2020/api
    ```
 
 ## Linux GPIB
-1. VSCP(Visual Studio Codespace) 환경 : LINUX 환경
-2. 구형장비(34401A) 경우 GPIB 컨트롤러를 통해 장비 제어하며, 아래와 같은 킷헙의 자료를 참고 가능함.
-   참조 https://github.com/jue89/node-linux-gpib.git (김영주님 검색결과)
-3. 아래 코드는 구형장비를 측정하는 코드이며, 실제로 측정하기 위해 제공해야할 기준장비 코드는 제외됨.
+
+  1. VSCP(Visual Studio Codespace) 환경 : LINUX 환경
+
+  2. 구형장비(34401A) 경우 GPIB 컨트롤러를 통해 장비 제어하며, 아래와 같은 킷헙의 자료를 참고 가능함.
+     참조 https://github.com/jue89/node-linux-gpib.git (김영주님 검색결과)
+
+
+## GET
 
   * Voltage DC (AC 경우 'MESA:VOLT:AC' 만 변경해주면 됨.)
-
   
   * Current DC (AC 경우 'MESA:CURR:AC' 만 변경해주면 됨.)
   
@@ -59,53 +60,14 @@
   
   * Period 주파수 측정
 
-
-## GET
-* voltage
-
-  전압 값을 가져오기
-
-  ``` 
-  GET /meas/volt/AC
-  GET /meas/volt/DC
-  ```
-
-  return 예시
-  ```
-  {"volt":300}
-  ```
-
-  
-
-* current
-
-  전류값을 가져오기
-
-  ``` 
-  GET /meas/curr/AC
-  GET /meas/curr/DC
-  ```
-
-   return 예시 
-  ```
-   {"curr":20}
-  ```
-
-* frequency
-
-*  period 
-
-## POST
-
-* configuration
-    설정값 지정하기
+## NOTE
     
-* 설정값을 설정하는 부분은 세부 설명이 필요하나, 요약컨대 장비가 정확한 측정을 위해선 장비 측정범위를 설정해줘야함.
-  e.g. DC 100 V 전압을 측정하려면 100V 범위에서 측정해야함으로 보통 'CONF:VOLT:DC 100' 이런식으로
-* 장단점으로는 위에 명시한 'MEAS:VOLT:DC?' 는 현재 장비에서 가지고 있는 값을 바로 보내주는 경우이고 
-  'CONF:VOLT:DC 100' 경우는 write 만 명령한 거임. 'READ?' 해야한 현재 가지고 있는 값을 보내 준다.
-* 왜냐하면 장비 자체 측정이 Delay가 생겨서 위와 같은 'MEAS:VOLT:DC?'가 하다보면 NULL 값이 인식 되는 경우가 있어서임.
-* 허나 자체 장비 측정 시간에 대한 Delay 값을 준다면 문제 없음
+  * 설정값을 설정하는 부분은 세부 설명이 필요하나, 요약컨대 장비가 정확한 측정을 위해선 장비 측정범위를 설정해줘야함.
+     e.g. DC 100 V 전압을 측정하려면 100V 범위에서 측정해야함으로 보통 'CONF:VOLT:DC 100' 이런식으로
+  * 장단점으로는 위에 명시한 'MEAS:VOLT:DC?' 는 현재 장비에서 가지고 있는 값을 바로 보내주는 경우이고 
+    'CONF:VOLT:DC 100' 경우는 write 만 명령한 거임. 'READ?' 해야한 현재 가지고 있는 값을 보내 준다.
+  * 왜냐하면 장비 자체 측정이 Delay가 생겨서 위와 같은 'MEAS:VOLT:DC?'가 하다보면 NULL 값이 인식 되는 경우가 있어서임.
+  * 허나 자체 장비 측정 시간에 대한 Delay 값을 준다면 문제 없음
 
 # 팀 정보(Team Information)
  * 이재용(ljy13579@naver.com) ,Github_ID : NevErdiEkilLeR
