@@ -2,43 +2,58 @@
  : 산업용 계측장비 제어 및 측정값 분석 등 기능을 웹 서비스로 제공
 
 # 개발 상세 설명
-  1. 정밀측정장비를 원격으로 다루기 위한 node.js express 기반 REST API 서버입니다.
+  * 정밀측정장비를 원격으로 다루기 위한 node.js express 기반 REST API 서버입니다.
      GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
 
 # 개발 BlockDiagram
-<img src="https://user-images.githubusercontent.com/5003195/94947247-4a5e9a80-0518-11eb-8193-8b552c5c7a68.jpg" width = "85%" class = "center"></img>
+   <img src="https://user-images.githubusercontent.com/5003195/94947247-4a5e9a80-0518-11eb-8193-8b552c5c7a68.jpg" width = "85%" class = "center"></img>
 
 
-## 시작하기  (windows 환경)
+# 컴퓨터 구성 / 필수 조건 
+  
+  * 운영제체 : linux only
+  * 필수 부수보기 : GPIB-USB-B Adapter
+  
+# 기술 스택(Technique Used)
+  ## Back-end
+  
+    * node.js 서버 언어 버전
+    * express, Rest.api 등 프레임워크
+  
+  ## Front-end
+  
+    * React.js 등 프레임워크
+    
 
-1. node.js LTS 버전 설치하기. https://nodejs.org/ko/
+# 설치 안내(Installation Process) / 구성(Structure)
 
-2. git 설치하기. https://git-scm.com/
+  1. node.js LTS 버전 설치하기. https://nodejs.org/ko/
+  
+  2. git 설치하기. https://git-scm.com/
 
-3. git 환경변수 등록하기. (https://cofs.tistory.com/421 참고 사이트)
+  3. git 환경변수 등록하기. (https://cofs.tistory.com/421 참고 사이트)
 
-4. 본 프로젝트 로컬 PC에 클론하기.
+  4. 본 프로젝트 로컬 PC에 클론하기.
 
-   터미널을 열고 (git 설치할 때 같이 딸려온 git bash 추천) 
-   ``` git clone https://github.com/fjvbn2003/express_rest_api_server_test```
+     터미널을 열고 (git 설치할 때 같이 딸려온 git bash 추천) 
+      ``` git clone https://github.com/fjvbn2003/express_rest_api_server_test```
 
-5. 해당 폴더에서 종속 라이브러리 설치
+  5. 해당 폴더에서 종속 라이브러리 설치
 
-   ``` cd express_rest_api_server_test```
+      ``` cd express_rest_api_server_test```
 
-   ```npm install```
+      ```npm install```
 
-6.  서버 실행
+  6. 서버 실행
 
-   ``` node server/server.js ```
+      ``` node server/server.js ```
 
-7.  실행 확인 
-
-   아래 URL에 접속하여 테스트 
-
-   ```
-   http://localhost:2020/api
-   ```
+  7. 실행 확인 
+ 
+     아래 URL에 접속하여 테스트 
+     
+     ``` http://localhost:2020/api  ```
+     
 
 ## Linux GPIB
 
