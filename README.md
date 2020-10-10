@@ -23,36 +23,102 @@
 
 ## Back-end
 
-- node.js
-- express.js
+- Node.js
+- [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
+- Express.js
 - REST API
 
 ## Front-end
 
 - React.js
+- Bootstarp
 
-# 설치 안내(Installation Process) / 구성(Structure)
+# 설치 안내(Installation Process in Ubuntu 20.04 LTS) / 구성(Structure)
 
-1. [node.js LTS 버전 설치하기.](https://nodejs.org/ko/)
+- ## 실제 측정장비와 통신
 
-2. [git 설치하기](https://git-scm.com/)
+  1. Git, Node.js, Yarn 설치
+     ```
+     $ sudo apt-get install git
+     $ sudo apt-get install node.js
+     $ npm -g install yarn
+     ```
+  2. Linux GPIB Package 빌드
+     ```
+     $ sudo apt-install wget
+     $ wget -O linux-gpib-4.3.3.tar.gz https://sourceforge.net/projects/linux-gpib/files/latest/download
+     $ tar xfz linux-gpib-4.3.3.tar.gz && cd linux-gpib-4.3.3.tar.gz
+     $ tar xfz linux-gpib-user-4.3.3.tar.gz && cd linux-gpib-user-4.3.3.tar.gz
+     $ sudo ./configure
+     $ sudo make && sudo make install
+     ```
+  3. GPIB 인터페이스(GPIB-USB-B) 구성
+     - gpib.conf를 환경에 맞게 수정한다.
+       ```
+       $ cd /user/local/etc && vi gpib.conf
+       ```
+     - GPIB-USB-B 펌웨어를 다운받고 로드한다.
+       ```
+       $ apt-get install fxload
+       $ git clone https://github.com/fmhess/linux_gpib_firmware.git
+       $ cd linux_gpib_firmware/ni_gpib_usb_b/
+       $ fxload -D /dev/bus/usb/BUS/DEVICE -I niusbb_firmware.hex -s niusbb_loader.hex
+       $ modprobe ni_usb_gpib
+       ```
+     - 정상적으로 연결되었는지 확인한다.
+       ```
+       $ gpib_config
+       ```
+  4. 프로젝트 로컬 PC에 저장하기.
 
-3. git 환경변수 등록하기. [참고](https://cofs.tistory.com/421)
+     ```
+     $ git clone https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem.git
+     ```
 
-4. 본 프로젝트 로컬 PC에 클론하기.  
-   `$ git clone https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem.git`
+  5. 해당 폴더에서 종속 라이브러리 설치
+     ```
+     $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
+     $ yarn install
+     $ yarn install linux-gpib
+     ```
+  6. 서버 실행
 
-5. 해당 폴더에서 종속 라이브러리 설치  
-   `$ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem`  
-   `$ npm install or yarn install`
+     ```
+     $ yarn start             # front-end 서버 실행
+     $ node server/server.js  # back-end 서버 실행
+     ```
 
-6. 서버 실행  
-   ` $ npm run start or yarn start # front-end 서버 실행`
-   ` $ node server/server.js # back-end 서버 실행`
+  7. 실행 확인
+     - http://localhost:3000
 
-7. 실행 확인
-  - http://localhost:3000 # front-end
-  - http://localhost:2020/api # back-end
+- ## 가상 측정장비와 통신 (개발용)
+
+  1. Git, Node.js, Yarn 설치
+     ```
+     $ sudo apt-get install git
+     $ sudo apt-get install node.js
+     $ npm -g install yarn
+     ```
+  2. 프로젝트 로컬 PC에 저장하기.
+
+     ```
+     $ git clone https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem.git
+     ```
+
+  3. 해당 폴더에서 종속 라이브러리 설치
+     ```
+     $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
+     $ yarn install
+     ```
+  4. 서버 실행
+
+     ```
+     $ yarn start             # front-end 서버 실행
+     $ node server/server.js  # back-end 서버 실행
+     ```
+
+  5. 실행 확인
+     - http://localhost:3000
 
 ## Linux GPIB
 
@@ -76,11 +142,11 @@
 
 - 설정값을 설정하는 부분은 세부 설명이 필요하나, 요약컨대 장비가 정확한 측정을 위해선 장비 측정범위를 설정해줘야함.
 
-e.g. DC 100 V 전압을 측정하려면 100V 범위에서 측정해야함으로 보통 'CONF:VOLT:DC 100' 이런식으로
+  e.g. DC 100 V 전압을 측정하려면 100V 범위에서 측정해야함으로 보통 'CONF:VOLT:DC 100' 이런식으로
 
 - 장단점으로는 위에 명시한 'MEAS:VOLT:DC?' 는 현재 장비에서 가지고 있는 값을 바로 보내주는 경우이고
 
-'CONF:VOLT:DC 100' 경우는 write 만 명령한 거임. 'READ?' 해야한 현재 가지고 있는 값을 보내 준다.
+  'CONF:VOLT:DC 100' 경우는 write 만 명령한 거임. 'READ?' 해야한 현재 가지고 있는 값을 보내 준다.
 
 - 왜냐하면 장비 자체 측정이 Delay가 생겨서 위와 같은 'MEAS:VOLT:DC?'가 하다보면 NULL 값이 인식 되는 경우가 있어서임.
 
