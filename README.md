@@ -152,6 +152,10 @@
 
 - 허나 자체 장비 측정 시간에 대한 Delay 값을 준다면 문제 없음
 
+# 팀 로고(Team Logo)
+![로고_DyhaMP](https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg)
+
+
 # 팀 정보(Team Information)
 
 - 이재용(ljy13579@naver.com) ,Github_ID : NevErdiEkilLeR
