@@ -79,7 +79,6 @@
      ```
      $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
      $ yarn install
-     $ yarn install linux-gpib
      ```
   6. 서버 실행
 
@@ -108,13 +107,14 @@
   3. 해당 폴더에서 종속 라이브러리 설치
      ```
      $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
+     $ yarn remove linux-gpib       # 가상측정장비 통신에서 사용하지 않는다
      $ yarn install
      ```
   4. 서버 실행
 
      ```
-     $ yarn start             # front-end 서버 실행
-     $ node server/server.js  # back-end 서버 실행
+     $ yarn start                  # front-end 서버 실행
+     $ node server_test/server.js  # back-end 서버 실행
      ```
 
   5. 실행 확인
