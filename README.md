@@ -1,16 +1,19 @@
 # WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
 
-: 산업용 계측장비 제어 및 측정값 분석 등 기능을 웹 서비스로 제공
-
-# 개발 상세 설명
-
-- 정밀측정장비를 원격으로 다루기 위한 node.js express 기반 REST API 서버입니다.
-
-- GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
+  : 산업용 계측장비 제어하여 측정값 분석 등 기능 제공하는 웹 서비스
 
 # 개발 BlockDiagram
 
 ![구성도](https://user-images.githubusercontent.com/5003195/95680229-13bd0a00-0c13-11eb-90b2-5bb008c6b3c5.jpg)
+
+  ## 개발스택 요약 설명
+
+    - End user에게 보여질 웹은 React.js Bootstrap 기반 서버입니다.
+
+    - 산업용 계측정장비를 원격으로 다루기 위한 node.js express 기반 REST API 서버입니다.
+
+    - GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
+
 
 # 컴퓨터 구성 / 필수 조건
 
@@ -21,20 +24,21 @@
 
 # 기술 스택(Technique Used)
 
-## Back-end
+  ## Back-end
 
-- Node.js
-- [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
-- Express.js
-- REST API
+    - Node.js
+    - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
+    - Express.js
+    - REST API
 
-## Front-end
+  ## Front-end
 
-- React.js
-- Bootstarp
+    - React.js
+    - Bootstarp
 
-# 설치 안내(Installation Process in Ubuntu 20.04 LTS) / 구성(Structure)
-
+# 설치 안내(Installation Process) / 구성(Structure)
+    :  in Ubuntu 20.04 LTS
+    
 - ## 실제 측정장비와 통신
 
   1. Git, Node.js, Yarn 설치
@@ -57,6 +61,15 @@
        ```
        $ cd /user/local/etc && vi gpib.conf
        ```
+       Interface{} 와 Device{} 모듈 수정해야 한다.
+     
+     - GPIB-USB-B 디바이스 장치 할당 번호 확인 한다.
+       
+       ```
+       $ lsusb
+       ```
+       펌웨어 로드 할 시 GPIB-USB-B의 BUS 
+     
      - GPIB-USB-B 펌웨어를 다운받고 로드한다.
        ```
        $ apt-get install fxload
@@ -90,6 +103,17 @@
   7. 실행 확인
      - http://localhost:3000
 
+    ### 장비에서 실제 측정값 추출 : GET 방식
+
+      - Voltage DC : 'MEAS:VOLT:DC?'
+        (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
+        
+      - Resistance : 'MEAS:RES?'
+
+      - Frequency : 'MEAS:FREQ?'
+
+      - Period : 'MEAS:PER?'
+
 - ## 가상 측정장비와 통신 (개발용)
 
   1. Git, Node.js, Yarn 설치
@@ -120,37 +144,7 @@
   5. 실행 확인
      - http://localhost:3000
 
-## Linux GPIB
 
-1. VSCP(Visual Studio Codespace) 환경 : LINUX 환경
-
-2. 구형장비(34401A) 경우 GPIB 컨트롤러를 통해 장비 제어하며, 아래와 같은 킷헙의 자료를 참고 가능함. [참조(김영주님 검색결과)](https://github.com/jue89/node-linux-gpib.git)
-
-## GET
-
-- Voltage DC (AC 경우 'MESA:VOLT:AC' 만 변경해주면 됨.)
-
-- Current DC (AC 경우 'MESA:CURR:AC' 만 변경해주면 됨.)
-
-- Resistance 저항측정(2Wire 와 4Wire 기능 있으며, 4Wire 경우 'MEAS:FRES? 임)
-
-- Frequency 주파수 측정
-
-- Period 주파수 측정
-
-## NOTE
-
-- 설정값을 설정하는 부분은 세부 설명이 필요하나, 요약컨대 장비가 정확한 측정을 위해선 장비 측정범위를 설정해줘야함.
-
-  e.g. DC 100 V 전압을 측정하려면 100V 범위에서 측정해야함으로 보통 'CONF:VOLT:DC 100' 이런식으로
-
-- 장단점으로는 위에 명시한 'MEAS:VOLT:DC?' 는 현재 장비에서 가지고 있는 값을 바로 보내주는 경우이고
-
-  'CONF:VOLT:DC 100' 경우는 write 만 명령한 거임. 'READ?' 해야한 현재 가지고 있는 값을 보내 준다.
-
-- 왜냐하면 장비 자체 측정이 Delay가 생겨서 위와 같은 'MEAS:VOLT:DC?'가 하다보면 NULL 값이 인식 되는 경우가 있어서임.
-
-- 허나 자체 장비 측정 시간에 대한 Delay 값을 준다면 문제 없음
 
 # 팀 로고(Team Logo)
 ![로고_DyhaMP](https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg)
