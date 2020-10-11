@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// 전압AC,전압DC, 주파수, 주기, 저항 json 포맷이 결정되기 전 까지 사용하는 코드.
 let voltages = [
   { volt: 100 },
   { volt: 200 },

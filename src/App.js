@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "./App.css";
+import React, { Component } from 'react';
+import axios from 'axios';
+import './App.css';
+import Main from './components/Main';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -11,18 +12,16 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/test")
+      .get('https://localhost:2020')
       .then((res) => res.data)
-      .then((data) => this.setState({ username: data.username }));
+      .then((data) => this.setState({ username: data.value }));
   }
 
   render() {
-    const { username } = this.state;
     return (
       <div>
-        <header className="App-header">
-          {username ? `hello ${username}` : "Hello React"}
-        </header>
+        <header className="App-header">{this.state.username}</header>
+        <Main />
       </div>
     );
   }
