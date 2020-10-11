@@ -10,7 +10,7 @@
 
 # 개발 BlockDiagram
 
-<img  src="https://user-images.githubusercontent.com/5003195/94947247-4a5e9a80-0518-11eb-8193-8b552c5c7a68.jpg"  width  =  "85%"  class  =  "center"></img>
+![구성도](https://user-images.githubusercontent.com/5003195/95680229-13bd0a00-0c13-11eb-90b2-5bb008c6b3c5.jpg)
 
 # 컴퓨터 구성 / 필수 조건
 
