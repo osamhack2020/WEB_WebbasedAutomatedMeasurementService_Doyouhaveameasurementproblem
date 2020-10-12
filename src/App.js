@@ -12,7 +12,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://localhost:2020')
+      .get('https://express-server.run.goorm.io/')
       .then((res) => res.data)
       .then((data) => this.setState({ username: data.value }));
   }

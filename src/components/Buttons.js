@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import '../css/Buttons.css';
 class Buttons extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 1.99999,
+    };
+  }
   render() {
     return (
       <div id="Buttons" className="d-flex flex-column">
@@ -39,7 +45,11 @@ class Buttons extends Component {
             </label>
           </div>
 
-          <button type="button" className="d-flex btn btn-light btn-lg m-auto">
+          <button
+            type="button"
+            className="d-flex btn btn-light btn-lg m-auto"
+            onClick={this.props.onClick}
+          >
             ACV
           </button>
           <button type="button" className="d-flex btn btn-light btn-lg m-auto">
