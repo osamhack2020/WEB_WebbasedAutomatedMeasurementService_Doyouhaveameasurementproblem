@@ -3,9 +3,6 @@ import '../css/Buttons.css';
 class Buttons extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 1.99999,
-    };
   }
   render() {
     return (
@@ -29,7 +26,7 @@ class Buttons extends Component {
             Submit
           </button>
         </div>
-        <div className="d-flex flex-row bg-secondary justify-content-center mt-3 pl-5 pr-5">
+        <div className="d-flex flex-row align-items-strech bg-secondary justify-content-center mt-1 pl-5 pr-5">
           <div
             className="d-flex btn-group btn-group-toggle m-auto"
             data-toggle="buttons"
@@ -47,21 +44,37 @@ class Buttons extends Component {
 
           <button
             type="button"
-            className="d-flex btn btn-light btn-lg m-auto"
-            onClick={this.props.onClick}
+            className="d-flex btn btn-light btn-lg ml-5"
+            onClick={this.props.onClick('meas/volt/ac')}
           >
             ACV
           </button>
-          <button type="button" className="d-flex btn btn-light btn-lg m-auto">
+          <button
+            type="button"
+            className="d-flex btn btn-light btn-lg ml-2"
+            onClick={this.props.onClick('meas/curr/ac')}
+          >
             DCV
           </button>
-          <button type="button" className="d-flex btn btn-light btn-lg m-auto">
+          <button
+            type="button"
+            className="d-flex btn btn-light btn-lg ml-2"
+            onClick={this.props.onClick('meas/res')}
+          >
             RES
           </button>
-          <button type="button" className="d-flex btn btn-light btn-lg m-auto">
+          <button
+            type="button"
+            className="d-flex btn btn-light btn-lg ml-2"
+            onClick={this.props.onClick('meas/freq')}
+          >
             FREQ
           </button>
-          <button type="button" className="d-flex btn btn-light btn-lg m-auto">
+          <button
+            type="button"
+            className="d-flex btn btn-light btn-lg ml-2"
+            onClick={this.props.onClick('meas/per')}
+          >
             PER
           </button>
         </div>
