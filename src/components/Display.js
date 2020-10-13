@@ -3,6 +3,12 @@ import Buttons from './Buttons';
 import '../css/Display.css';
 
 class Display extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      unit: this.props.unit,
+    };
+  }
   render() {
     return (
       <div className="d-flex flex-column align-items-stretch">
@@ -21,7 +27,7 @@ class Display extends Component {
             mV
           </em>
           <span className="d-flex display-4 d-inline align-items-end text-info m-2">
-            DC
+            {this.props.unit}
           </span>
         </div>
         <Buttons onClick={this.props.onClick} />

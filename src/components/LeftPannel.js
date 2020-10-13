@@ -9,7 +9,11 @@ class LeftPannel extends Component {
         id="LeftPannel"
         className="d-flex flex-column align-items-stretch border border-light rounded-lg p-5 bg-secondary"
       >
-        <Display value={this.props.value} onClick={this.props.onClick} />
+        <Display
+          unit={this.props.unit}
+          value={this.props.value}
+          onClick={this.props.onClick}
+        />
       </div>
     );
   }

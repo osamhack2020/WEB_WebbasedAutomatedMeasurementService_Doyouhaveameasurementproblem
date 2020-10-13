@@ -9,6 +9,7 @@ class Main extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
+      unit: 'DC',
       value: null,
       timer: false,
       timer_period: 1,
@@ -31,6 +32,13 @@ class Main extends Component {
   }
   handleClick = (path) => () => {
     this.fetchData(path);
+    if (path.match('ac*')) {
+      this.setState({ unit: 'AC' });
+    } else if (path.match('dc*')) {
+      this.setState({ unit: 'DC' });
+    } else {
+      this.setState({ unit: '' });
+    }
     //console.log(this.state.value);
   };
   async fetchData(path) {
@@ -55,7 +63,11 @@ class Main extends Component {
     return (
       <div className="d-flex flex-column justify-content-center">
         <div className="d-flex flex-row justify-content-center">
-          <LeftPannel value={this.state.value} onClick={this.handleClick} />
+          <LeftPannel
+            unit={this.state.unit}
+            value={this.state.value}
+            onClick={this.handleClick}
+          />
           <RightPannel />
         </div>
         <Plot
