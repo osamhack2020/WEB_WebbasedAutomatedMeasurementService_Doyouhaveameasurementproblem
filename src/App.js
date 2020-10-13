@@ -19,10 +19,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="d-flex flex-column justify-content-center">
-        <header className="d-flex App-header">{this.state.username}</header>
+      <div className="d-flex flex-column align-items-center">
+        <header className="d-flex justify-content-center App-header">
+          {this.state.username}
+        </header>
         <img
-          className="d-flex img-fluid h-25 w-25"
+          className="d-flex justify-content-center"
           id="teamLogo"
           src="./teamLogo.jpg"
         />
