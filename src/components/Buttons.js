@@ -3,7 +3,13 @@ import '../css/Buttons.css';
 class Buttons extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      custom_url: '',
+    };
   }
+  handleChange = (e) => {
+    this.setState({ custom_url: e.target.value });
+  };
   render() {
     return (
       <div id="Buttons" className="d-flex flex-column">
@@ -20,13 +26,22 @@ class Buttons extends Component {
             className="d-flex"
             type="text"
             placeholder="meas/volt/dc"
-            id="basic-url"
+            id="custom_url"
+            value={this.state.custom_url}
+            onChange={this.handleChange}
           />
-          <button type="submit" className="d-flex btn btn-light">
+          <button
+            type="submit"
+            className="d-flex btn btn-light"
+            onClick={this.props.onClick(this.state.custom_url)}
+          >
             Submit
           </button>
         </div>
         <div className="d-flex flex-row align-items-strech bg-secondary justify-content-center mt-1 pl-5 pr-5">
+          {/* setInterval(() => {
+            
+          }, interval); */}
           <div
             className="d-flex btn-group btn-group-toggle m-auto"
             data-toggle="buttons"
