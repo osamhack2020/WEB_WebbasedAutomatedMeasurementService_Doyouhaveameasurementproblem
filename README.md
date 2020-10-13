@@ -1,19 +1,22 @@
 # WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
 
-  : 산업용 계측장비 제어하여 측정값 분석 등 기능 제공하는 웹 서비스
+: 산업용 계측장비 제어하여 측정값 분석 등 기능 제공하는 웹 서비스
+
+개발 진행 상황 보기👇
+[리엑트 프론트엔드 서버 ](https://react-front-server.run.goorm.io/)
+[익스프레스 REST API 서버](https://express-server.run.goorm.io/)
 
 # 개발 BlockDiagram
 
 ![구성도](https://user-images.githubusercontent.com/5003195/95680229-13bd0a00-0c13-11eb-90b2-5bb008c6b3c5.jpg)
 
-  ## 개발스택 요약 설명
+## 개발스택 요약 설명
 
     - End user에게 보여질 웹은 React.js Bootstrap 기반 서버입니다.
 
     - 산업용 계측정장비를 원격으로 다루기 위한 node.js express 기반 REST API 서버입니다.
 
     - GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
-
 
 # 컴퓨터 구성 / 필수 조건
 
@@ -24,21 +27,22 @@
 
 # 기술 스택(Technique Used)
 
-  ## Back-end
+## Back-end
 
     - Node.js
     - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
     - Express.js
     - REST API
 
-  ## Front-end
+## Front-end
 
     - React.js
     - Bootstarp
 
 # 설치 안내(Installation Process) / 구성(Structure)
+
     :  in Ubuntu 20.04 LTS
-    
+
 - ## 실제 측정장비와 통신
 
   1. Git, Node.js, Yarn 설치
@@ -57,19 +61,23 @@
      $ sudo make && sudo make install
      ```
   3. GPIB 인터페이스(GPIB-USB-B) 구성
+
      - gpib.conf를 환경에 맞게 수정한다.
+
        ```
        $ cd /user/local/etc && vi gpib.conf
        ```
+
        Interface{} 와 Device{} 모듈 수정해야 한다.
-     
+
      - GPIB-USB-B 디바이스 장치 할당 번호 확인 한다.
-       
+
        ```
        $ lsusb
        ```
-       펌웨어 로드 할 시 GPIB-USB-B의 BUS 
-     
+
+       펌웨어 로드 할 시 GPIB-USB-B의 BUS
+
      - GPIB-USB-B 펌웨어를 다운받고 로드한다.
        ```
        $ apt-get install fxload
@@ -82,6 +90,7 @@
        ```
        $ gpib_config
        ```
+
   4. 프로젝트 로컬 PC에 저장하기.
 
      ```
@@ -103,11 +112,11 @@
   7. 실행 확인
      - http://localhost:3000
 
-    ### 장비에서 실제 측정값 추출 : GET 방식
+  ### 장비에서 실제 측정값 추출 : GET 방식
 
       - Voltage DC : 'MEAS:VOLT:DC?'
         (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
-        
+
       - Resistance : 'MEAS:RES?'
 
       - Frequency : 'MEAS:FREQ?'
@@ -144,11 +153,9 @@
   5. 실행 확인
      - http://localhost:3000
 
-
-
 # 팀 로고(Team Logo)
-![로고_DyhaMP](https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg)
 
+![로고_DyhaMP](https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg)
 
 # 팀 정보(Team Information)
 
