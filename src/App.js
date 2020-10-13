@@ -21,13 +21,13 @@ class App extends Component {
     return (
       <div className="d-flex flex-column align-items-center">
         <header className="d-flex justify-content-center App-header">
-          {this.state.username}
+          {/* {this.state.username} */}
         </header>
-        <img
+        {/* <img
           className="d-flex justify-content-center"
           id="teamLogo"
           src="./teamLogo.jpg"
-        />
+        /> */}
         <Main />
       </div>
     );
