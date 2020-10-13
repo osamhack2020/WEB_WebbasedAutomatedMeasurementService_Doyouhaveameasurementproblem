@@ -2,9 +2,11 @@
 
 : 산업용 계측장비 제어하여 측정값 분석 등 기능 제공하는 웹 서비스
 
-개발 진행 상황 보기👇
-[리엑트 프론트엔드 서버 ](https://react-front-server.run.goorm.io/)
-[익스프레스 REST API 서버](https://express-server.run.goorm.io/)
+## 개발 진행 상황 보기👇
+
+-[리엑트 프론트엔드 서버 ](https://react-front-server.run.goorm.io/)
+
+-[익스프레스 REST API 서버](https://express-server.run.goorm.io/)
 
 # 개발 BlockDiagram
 
