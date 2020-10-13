@@ -1,3 +1,7 @@
 #LeftPannel {
   border-radius: 1em;
 }
+#teamLogo {
+  max-width: auto;
+  height: auto;
+}

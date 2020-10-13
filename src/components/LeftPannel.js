@@ -38,6 +38,7 @@ class LeftPannel extends Component {
         id="LeftPannel"
         className="d-flex flex-column align-items-stretch border border-light rounded-lg p-5 bg-secondary"
       >
+        
         <Display value={this.state.value} onClick={this.handleClick} />
       </div>
     );
