@@ -14,13 +14,17 @@ class Main extends Component {
       timer_period: 1,
       data: [
         {
-          y: [2, 6, 3],
+          y: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           type: 'chart',
           mode: 'lines+markers',
           marker: { color: 'red' },
         },
       ],
-      layout: {},
+      layout: {
+        xaxis: {
+          range: [0, 10],
+        },
+      },
       frames: [],
       config: {},
     };
@@ -30,11 +34,9 @@ class Main extends Component {
     //console.log(this.state.value);
   };
   async fetchData(path) {
-    // var someProperty = { ...this.state.someProperty };
-    // someProperty.flag = true;
-    // this.setState({ someProperty });
     const data_ = this.state.data.slice(undefined);
     const new_array = data_[0].y.slice(undefined);
+    const new_layout = { ...this.state.layout };
     return await axios
       .get('https://express-server.run.goorm.io/' + path)
       .then((res) => res.data)
@@ -44,7 +46,9 @@ class Main extends Component {
         });
         new_array.push(res.value);
         data_[0].y = new_array;
+        new_layout.xaxis.range = [new_array.length - 10, new_array.length];
         this.setState({ data: data_ });
+        this.setState({ layout: new_layout });
       });
   }
   render() {
