@@ -5,9 +5,6 @@ import '../css/Display.css';
 class Display extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      unit: this.props.unit,
-    };
   }
   render() {
     return (
@@ -24,10 +21,11 @@ class Display extends Component {
             {this.props.value}
           </h1>
           <em className="d-flex display-4 d-inline align-items-end text-info m-2">
-            mV
+            {this.props.unit}
+
           </em>
           <span className="d-flex display-4 d-inline align-items-end text-info m-2">
-            {this.props.unit}
+            {this.props.curr}
           </span>
         </div>
         <Buttons onClick={this.props.onClick} />

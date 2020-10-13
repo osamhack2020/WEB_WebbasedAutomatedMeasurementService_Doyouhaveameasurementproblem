@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import '../css/Buttons.css';
 class Buttons extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Buttons extends Component {
       custom_url: '',
     };
   }
+
   handleChange = (e) => {
     this.setState({ custom_url: e.target.value });
   };
@@ -38,56 +40,58 @@ class Buttons extends Component {
             Submit
           </button>
         </div>
-        <div className="d-flex flex-row align-items-strech bg-secondary justify-content-center mt-1 pl-5 pr-5">
+        <div className="d-flex flex-row align-items-strech bg-secondary justify-content-center mt-1 pl-1 pr-1">
           {/* setInterval(() => {
             
           }, interval); */}
+          <div className="d-flex flex-row align-items-strech justify-content-center"></div>
+
           <div
-            className="d-flex btn-group btn-group-toggle m-auto"
+            className="d-flex btn-group btn-group-toggle ml-3"
             data-toggle="buttons"
           >
             <label className="btn btn-light active">
-              <input type="radio" name="options" id="option1" /> 5S
+              <input type="radio" name="options" id="option1" /> 1S
             </label>
             <label className="btn btn-light">
               <input type="radio" name="options" id="option2" /> 3S
             </label>
             <label className="btn btn-light">
-              <input type="radio" name="options" id="option3" /> 1S
+              <input type="radio" name="options" id="option3" /> 5S
             </label>
           </div>
 
           <button
             type="button"
-            className="d-flex btn btn-light btn-lg ml-5"
+            className="d-flex btn btn-light btn-sm ml-5"
             onClick={this.props.onClick('meas/volt/ac')}
           >
             ACV
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-lg ml-2"
-            onClick={this.props.onClick('meas/curr/ac')}
+            className="d-flex btn btn-light btn-sm ml-2"
+            onClick={this.props.onClick('meas/curr/dc')}
           >
             DCV
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-lg ml-2"
+            className="d-flex btn btn-light btn-sm ml-2"
             onClick={this.props.onClick('meas/res')}
           >
             RES
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-lg ml-2"
+            className="d-flex btn btn-light btn-sm ml-2"
             onClick={this.props.onClick('meas/freq')}
           >
             FREQ
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-lg ml-2"
+            className="d-flex btn btn-light btn-sm ml-2"
             onClick={this.props.onClick('meas/per')}
           >
             PER

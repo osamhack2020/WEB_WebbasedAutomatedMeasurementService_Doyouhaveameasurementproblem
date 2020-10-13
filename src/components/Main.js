@@ -9,7 +9,8 @@ class Main extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      unit: 'DC',
+      curr: 'DC',
+      unit: '',
       value: null,
       timer: false,
       timer_period: 1,
@@ -32,14 +33,27 @@ class Main extends Component {
   }
   handleClick = (path) => () => {
     this.fetchData(path);
-    if (path.match('ac*')) {
-      this.setState({ unit: 'AC' });
-    } else if (path.match('dc*')) {
-      this.setState({ unit: 'DC' });
+    if (path.match('volt') !== null) {
+      this.setState({ unit: 'V' });
+    } else if (path.match('curr') !== null) {
+      this.setState({ unit: 'A' });
+    } else if (path.match('res') !== null) {
+      this.setState({ unit: 'Ω' });
+    } else if (path.match('freq') !== null) {
+      this.setState({ unit: 'Hz' });
+    } else if (path.match('per') !== null) {
+      this.setState({ unit: 'sec' });
     } else {
       this.setState({ unit: '' });
     }
-    //console.log(this.state.value);
+
+    if (path.match('ac') !== null) {
+      this.setState({ curr: 'AC' });
+    } else if (path.match('dc') !== null) {
+      this.setState({ curr: 'DC' });
+    } else {
+      this.setState({ curr: '' });
+    }
   };
   async fetchData(path) {
     const data_ = this.state.data.slice(undefined);
