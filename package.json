@@ -12,8 +12,10 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.5",
+    "plotly.js": "^1.56.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-plotly.js": "^2.5.0",
     "react-scripts": "3.4.3",
     "save": "^2.4.0"
   },
