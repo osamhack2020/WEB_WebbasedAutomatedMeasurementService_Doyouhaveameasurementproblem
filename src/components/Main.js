@@ -26,16 +26,24 @@ class Main extends Component {
       ],
       layout: {
         xaxis: {
-          range: [0, 10],
+          range: [0, 30],
+          title: {
+            text: 'time',
+            font: {
+              family: 'Arial',
+              size: 12,
+            },
+          },
         },
         yaxis: {
           autorange: true,
+          text: '',
         },
         plot_bgcolor: 'black',
         title: {
           text: 'history',
           font: {
-            family: 'Courier New, monospace',
+            family: 'Arial',
             size: 24,
           },
         },
@@ -47,9 +55,14 @@ class Main extends Component {
   handleClear = () => {
     const data_ = this.state.data.slice(undefined);
     data_[0].y = [];
-    this.setState({ data: data_ });
+    this.setState({ data: data_, value: 0, unit: '' });
   };
   handleClick = (path) => () => {
+    if (path === '') {
+      alert('쿼리를 형식에 맞게 입력해주세요');
+      return;
+    }
+
     this.fetchData(path);
     if (path.match('volt') !== null) {
       this.setState({ unit: 'V' });
@@ -86,7 +99,7 @@ class Main extends Component {
         });
         new_array.push(res.value);
         data_[0].y = new_array;
-        new_layout.xaxis.range = [new_array.length - 10, new_array.length];
+        new_layout.xaxis.range = [new_array.length - 30, new_array.length];
         this.setState({ data: data_ });
         this.setState({ layout: new_layout });
       });

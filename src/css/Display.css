@@ -2,11 +2,11 @@
   border-radius: 1em;
 }
 #value {
-  font-family: 'DSEG7Classic-Regular';
+  font-family: 'SevenSegment';
 }
 #unit {
-  font-family: 'DSEG7Classic-Italic';
+  font-family: 'SevenSegment';
 }
 #curr {
-  font-family: 'DSEG7Classic-Light';
+  font-family: 'SevenSegment';
 }

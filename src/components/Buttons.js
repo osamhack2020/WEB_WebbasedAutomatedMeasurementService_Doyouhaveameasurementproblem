@@ -83,7 +83,7 @@ class Buttons extends Component {
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-sm ml-2"
+            className="d-flex btn btn-light btn-sm ml-5"
             onClick={this.props.onClear}
           >
             CLEAR

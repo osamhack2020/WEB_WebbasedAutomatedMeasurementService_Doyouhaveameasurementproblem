@@ -17,24 +17,26 @@ class Display extends Component {
           {/* <span className="d-flex align-items-start text-white">
             6 1/2 Digit multimeter
           </span> */}
-          <h1
-            id="value"
-            className="d-flex align-items-center d-inline display-3 text-info inline m-2"
-          >
-            {this.props.value}
-          </h1>
-          <em
-            id="unit"
-            className="d-flex display-4 d-inline align-items-end text-info m-2"
-          >
-            {this.props.unit}
-          </em>
-          <span
-            id="curr"
-            className="d-flex display-4 d-inline align-items-end text-info m-2"
-          >
-            {this.props.curr}
-          </span>
+          <div className="d-flex justify-content-end">
+            <h1
+              id="value"
+              className="d-flex align-items-center d-inline display-3 text-info inline m-2"
+            >
+              {this.props.value}
+            </h1>
+            <em
+              id="unit"
+              className="d-flex display-4 d-inline align-items-end text-info m-2"
+            >
+              {this.props.unit}
+            </em>
+            <span
+              id="curr"
+              className="d-flex display-4 d-inline align-items-end text-info m-2"
+            >
+              {this.props.curr}
+            </span>
+          </div>
         </div>
         <Buttons onClick={this.props.onClick} onClear={this.props.onClear} />
       </div>
