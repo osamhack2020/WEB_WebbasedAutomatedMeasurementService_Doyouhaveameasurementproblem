@@ -21,7 +21,7 @@ class Buttons extends Component {
         <div className="d-flex flex-row align-items-stretch input-group mb-3">
           <div className="d-flex input-group-prepend">
             <span className="d-flex input-group-text" id="basic-addon3">
-              https://express-rest-api-server.com/
+              https://express-server.run.goorm.io/
             </span>
           </div>
           <input
