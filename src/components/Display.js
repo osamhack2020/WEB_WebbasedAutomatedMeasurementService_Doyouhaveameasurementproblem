@@ -36,7 +36,7 @@ class Display extends Component {
             {this.props.curr}
           </span>
         </div>
-        <Buttons onClick={this.props.onClick} />
+        <Buttons onClick={this.props.onClick} onClear={this.props.onClear} />
       </div>
     );
   }

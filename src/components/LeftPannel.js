@@ -13,6 +13,7 @@ class LeftPannel extends Component {
           unit={this.props.unit}
           value={this.props.value}
           onClick={this.props.onClick}
+          onClear={this.props.onClear}
         />
       </div>
     );

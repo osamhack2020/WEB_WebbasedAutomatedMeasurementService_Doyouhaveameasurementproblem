@@ -46,21 +46,6 @@ class Buttons extends Component {
           }, interval); */}
           <div className="d-flex flex-row align-items-strech justify-content-center"></div>
 
-          <div
-            className="d-flex btn-group btn-group-toggle ml-3"
-            data-toggle="buttons"
-          >
-            <label className="btn btn-light active">
-              <input type="radio" name="options" id="option1" /> 1S
-            </label>
-            <label className="btn btn-light">
-              <input type="radio" name="options" id="option2" /> 3S
-            </label>
-            <label className="btn btn-light">
-              <input type="radio" name="options" id="option3" /> 5S
-            </label>
-          </div>
-
           <button
             type="button"
             className="d-flex btn btn-light btn-sm ml-5"
@@ -95,6 +80,13 @@ class Buttons extends Component {
             onClick={this.props.onClick('meas/per')}
           >
             PER
+          </button>
+          <button
+            type="button"
+            className="d-flex btn btn-light btn-sm ml-2"
+            onClick={this.props.onClear}
+          >
+            CLEAR
           </button>
         </div>
       </div>

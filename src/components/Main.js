@@ -8,25 +8,30 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClear = this.handleClear.bind(this);
     this.state = {
       curr: 'DC',
       unit: '',
       value: '0.000',
+      mean: 0,
       timer: false,
       timer_period: 1,
       data: [
         {
-          y: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          y: [],
           type: 'chart',
           mode: 'lines+markers',
-          marker: { color: 'red' },
+          marker: { color: 'green' },
         },
       ],
       layout: {
         xaxis: {
           range: [0, 10],
         },
-        plot_bgcolor: 'rgba(10,10,10,0.2)',
+        yaxis: {
+          autorange: true,
+        },
+        plot_bgcolor: 'black',
         title: {
           text: 'history',
           font: {
@@ -39,6 +44,11 @@ class Main extends Component {
       config: {},
     };
   }
+  handleClear = () => {
+    const data_ = this.state.data.slice(undefined);
+    data_[0].y = [];
+    this.setState({ data: data_ });
+  };
   handleClick = (path) => () => {
     this.fetchData(path);
     if (path.match('volt') !== null) {
@@ -89,11 +99,11 @@ class Main extends Component {
             unit={this.state.unit}
             value={this.state.value}
             onClick={this.handleClick}
+            onClear={this.handleClear}
           />
           <RightPannel />
         </div>
         <Plot
-          className="d-flex bg-light"
           data={this.state.data}
           layout={this.state.layout}
           frames={this.state.frames}
