@@ -1,3 +1,12 @@
 #Display {
   border-radius: 1em;
 }
+#value {
+  font-family: 'DSEG7Classic-Regular';
+}
+#unit {
+  font-family: 'DSEG7Classic-Italic';
+}
+#curr {
+  font-family: 'DSEG7Classic-Light';
+}

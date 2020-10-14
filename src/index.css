@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: 'DSEG7Classic-Bold';
+  src: local('DSEG7Classic-Bold'),
+    url(./fonts/DSEG7Classic-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DSEG7Classic-Light';
+  src: local('DSEG7Classic-Light'),
+    url(./fonts/DSEG7Classic-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DSEG7Classic-Italic';
+  src: local('DSEG7Classic-Italic'),
+    url(./fonts/DSEG7Classic-Italic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DSEG7Classic-Regular';
+  src: local('DSEG7Classic-Regular'),
+    url(./fonts/DSEG7Classic-Regular.ttf) format('truetype');
+}

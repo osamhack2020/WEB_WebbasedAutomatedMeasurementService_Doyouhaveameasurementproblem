@@ -11,7 +11,7 @@ class Main extends Component {
     this.state = {
       curr: 'DC',
       unit: '',
-      value: null,
+      value: '0.000',
       timer: false,
       timer_period: 1,
       data: [
@@ -25,6 +25,14 @@ class Main extends Component {
       layout: {
         xaxis: {
           range: [0, 10],
+        },
+        plot_bgcolor: 'rgba(10,10,10,0.2)',
+        title: {
+          text: 'history',
+          font: {
+            family: 'Courier New, monospace',
+            size: 24,
+          },
         },
       },
       frames: [],
@@ -85,6 +93,7 @@ class Main extends Component {
           <RightPannel />
         </div>
         <Plot
+          className="d-flex bg-light"
           data={this.state.data}
           layout={this.state.layout}
           frames={this.state.frames}
