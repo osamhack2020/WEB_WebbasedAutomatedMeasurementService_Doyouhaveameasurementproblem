@@ -67,7 +67,7 @@ class Main extends Component {
     if (path.match('volt') !== null) {
       this.setState({ unit: 'V' });
     } else if (path.match('curr') !== null) {
-      this.setState({ unit: 'A' });
+      this.setState({ unit: 'V' });
     } else if (path.match('res') !== null) {
       this.setState({ unit: 'Ω' });
     } else if (path.match('freq') !== null) {
