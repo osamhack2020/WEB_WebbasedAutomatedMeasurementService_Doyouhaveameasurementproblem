@@ -95,7 +95,7 @@ class Main extends Component {
       .then((res) => res.data)
       .then((res) => {
         this.setState({
-          value: res.value,
+          value: parseFloat(res.value),
         });
         new_array.push(res.value);
         data_[0].y = new_array;
