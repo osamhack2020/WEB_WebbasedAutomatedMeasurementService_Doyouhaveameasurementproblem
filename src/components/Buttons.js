@@ -56,7 +56,7 @@ class Buttons extends Component {
           <button
             type="button"
             className="d-flex btn btn-light btn-sm ml-2"
-            onClick={this.props.onClick('meas/curr/dc')}
+            onClick={this.props.onClick('meas/volt/dc')}
           >
             DCV
           </button>
