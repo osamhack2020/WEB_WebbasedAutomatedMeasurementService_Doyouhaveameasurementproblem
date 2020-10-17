@@ -6,11 +6,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
 import Login from './components/Login';
+import Register from './components/Register';
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Route exact path="/" component={Login} />
       <Route path="/app" component={App} />
+      <Route path="/register" component={Register} />
     </Router>
   </React.StrictMode>,
   document.getElementById('root'),

@@ -1,3 +1,4 @@
+//mySql connection 가져오는 코드.
 const mysql = require('mysql');
 const connection = mysql.createPool({
   host: '13.124.194.183',
