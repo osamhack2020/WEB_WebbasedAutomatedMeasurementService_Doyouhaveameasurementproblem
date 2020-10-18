@@ -17,7 +17,7 @@ class Login extends Component {
       .get('https://express-server.run.goorm.io/user/getUsers')
       .then((res) => res.data)
       .then((data) => {
-        data.forEach((data) => console.log(data));
+        //data.forEach((data) => console.log(data));
         this.setState({ users: data });
       });
   }
