@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../css/RightPannel.css';
 
-const db = require('../dbconnection');
-
 class RightPannel extends Component {
   render() {
     return (
