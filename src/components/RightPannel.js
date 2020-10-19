@@ -94,13 +94,27 @@ class RightPannel extends Component {
                   {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
                   <td>100.002</td>
-                  <td>$result</td>
+                  <td>pass</td>
                 </tr>
                 </table>
                 </li>
-              <li className="list-group-item">3. Morbi leo risus</li>
-              <li className="list-group-item">4. Porta ac consectetur ac</li>
-              <li className="list-group-item">5. Vestibulum at eros</li>
+              <li className="list-group-item">
+              <table>
+                <tr>
+                  <td>2</td>
+                  <td>AC</td>
+                  <td>AC 10 V 교정</td>
+                  <td>9.998</td>
+                  <td>측정된값</td>
+                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
+                       PASS / FAIL 표시 */}
+                  <td>10.002</td>
+                  <td>pass</td>
+                </tr>
+                </table>
+              </li>
+              <li className="list-group-item">4. -</li>
+              <li className="list-group-item">5. -</li>
             </ul>
           </div>
           <div
