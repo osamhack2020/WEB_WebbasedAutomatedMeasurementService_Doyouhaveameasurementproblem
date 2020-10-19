@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import '../css/RightPannel.css';
+
+const db = require('../dbconnection');
+
 class RightPannel extends Component {
   render() {
     return (
@@ -65,8 +68,19 @@ class RightPannel extends Component {
             role="tabpanel"
             aria-labelledby="home-tab"
           >
+            {/* 여기서 사용한 변수명은 구굴시트에 procedure에 명시 전체 DB에서 가져오게끔 템플릿 필요 */}
             <ul className="list-group">
-              <li className="list-group-item">1. Cras justo odio</li>
+              <li className="list-group-item">
+                <tr>
+                  <td>"${num}"</td>
+                  <td>"${title}"</td>
+                  <td>"${contents}"</td>
+                  <td>"${lowValue}"</td>
+                  <td>"${measurementValue}</td>
+                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 표시 */}
+                  <td>"${highValue}"</td>
+                  <td>"${result}</td>
+                </tr></li>
               <li className="list-group-item">2. Dapibus ac facilisis in</li>
               <li className="list-group-item">3. Morbi leo risus</li>
               <li className="list-group-item">4. Porta ac consectetur ac</li>
