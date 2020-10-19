@@ -29,7 +29,19 @@ router.post('/login', (req, res) => {
         console.log('db query login in user.js');
         //console.log(rows);
         if (rows.length > 0) {
-          res.json({ loginsuccess: true });
+          const idusers = rows[0].idusers;
+          const name = rows[0].name;
+          const region = rows[0].region;
+          const isAdmin = rows[0].isAdmin;
+          const rank = rows[0].rank;
+          res.json({
+            idusers: idusers,
+            loginsuccess: true,
+            name: name,
+            region: region,
+            isAdmin: isAdmin,
+            rank: rank,
+          });
         } else {
           res.json({ loginsuccess: false });
         }

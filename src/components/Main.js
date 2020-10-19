@@ -10,7 +10,6 @@ class Main extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.state = {
-      idusers: this.props.idusers,
       curr: 'DC',
       unit: '',
       value: '0.000',
@@ -108,9 +107,12 @@ class Main extends Component {
   render() {
     return (
       <div className="d-flex flex-column justify-content-center">
-        <h1 className="d-flex display-3 justify-content-center">
-          {this.props.idusers}
-        </h1>
+        <div className="d-flex">
+          <div className="">{'아이디 :' + this.props.idusers}</div>
+          <div className="">{'이름 :' + this.props.name}</div>
+          <div className="">{'소속부대 :' + this.props.region}</div>
+          <div className="">{'계급 :' + this.props.rank}</div>
+        </div>
         <div className="d-flex flex-row justify-content-center">
           <LeftPannel
             unit={this.state.unit}

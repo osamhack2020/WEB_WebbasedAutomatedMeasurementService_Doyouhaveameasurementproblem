@@ -39,11 +39,20 @@ class Login extends Component {
       .then((response) => {
         if (response.data.loginsuccess) {
           console.log('로그인 성공 in login.js');
-          this.props.onLogin(this.state.id);
+          console.log(response.data);
+          const tmp = response.data;
+          this.props.onLogin(
+            tmp.idusers,
+            tmp.name,
+            tmp.region,
+            tmp.isAdmin,
+            tmp.rank,
+          );
           alert('로그인 성공');
         } else {
           console.log('로그인 실패 in login.js');
           alert('Id와 Password를 확인해주세요');
+          this.props.onLogin(null, null, null, null, null);
         }
       })
       .catch((error) => {
