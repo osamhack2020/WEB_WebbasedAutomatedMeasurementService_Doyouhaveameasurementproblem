@@ -43,10 +43,7 @@ class Login extends Component {
           const tmp = response.data;
           this.props.onLogin(
             tmp.idusers,
-            tmp.name,
-            tmp.region,
             tmp.isAdmin,
-            tmp.rank,
           );
           alert('로그인 성공');
         } else {
