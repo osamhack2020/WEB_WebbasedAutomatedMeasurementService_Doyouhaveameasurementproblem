@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/RightPannel.css';
+
 class RightPannel extends Component {
   render() {
     return (
@@ -65,12 +66,55 @@ class RightPannel extends Component {
             role="tabpanel"
             aria-labelledby="home-tab"
           >
+            {/* 여기서 사용한 변수명은 구굴시트에 procedure에 명시 전체 DB에서 가져오게끔 템플릿 필요 */}
             <ul className="list-group">
-              <li className="list-group-item">1. Cras justo odio</li>
-              <li className="list-group-item">2. Dapibus ac facilisis in</li>
-              <li className="list-group-item">3. Morbi leo risus</li>
-              <li className="list-group-item">4. Porta ac consectetur ac</li>
-              <li className="list-group-item">5. Vestibulum at eros</li>
+              <li className="list-group-item">
+                <table>
+                <tr>
+                  <td>$num</td>
+                  <td>$title</td>
+                  <td>$contents</td>
+                  <td>$lowValue</td>
+                  <td>$measurementValue</td>
+                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
+                       PASS / FAIL 표시 */}
+                  <td>$highValue</td>
+                  <td>$result</td>
+                </tr>
+                </table>
+                </li>
+              <li className="list-group-item">
+              <table>
+                <tr>
+                  <td>1</td>
+                  <td>DC</td>
+                  <td>DC 100 V 교정</td>
+                  <td>99.998</td>
+                  <td>측정된값</td>
+                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
+                       PASS / FAIL 표시 */}
+                  <td>100.002</td>
+                  <td>pass</td>
+                </tr>
+                </table>
+                </li>
+              <li className="list-group-item">
+              <table>
+                <tr>
+                  <td>2</td>
+                  <td>AC</td>
+                  <td>AC 10 V 교정</td>
+                  <td>9.998</td>
+                  <td>측정된값</td>
+                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
+                       PASS / FAIL 표시 */}
+                  <td>10.002</td>
+                  <td>pass</td>
+                </tr>
+                </table>
+              </li>
+              <li className="list-group-item">4. -</li>
+              <li className="list-group-item">5. -</li>
             </ul>
           </div>
           <div

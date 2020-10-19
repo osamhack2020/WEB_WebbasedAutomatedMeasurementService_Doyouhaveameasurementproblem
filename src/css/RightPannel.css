@@ -1,3 +1,12 @@
 #RightPannel{
     border-radius: 1em
 }
+table {
+    width: 100%;
+    border : 1px solid black;
+}
+td {
+    padding : 10px;
+    border : 1px solid black;
+    border-spacing : 1px;
+}
