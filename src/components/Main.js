@@ -81,7 +81,7 @@ class Main extends Component {
     } else if (path.match('res') !== null) {
       this.setState({ unit: 'Ω' });
     } else if (path.match('freq') !== null) {
-      this.setState({ unit: 'Hz' });
+      this.setState({ unit: 'KHz' });
     } else if (path.match('per') !== null) {
       this.setState({ unit: 'sec' });
     } else {
