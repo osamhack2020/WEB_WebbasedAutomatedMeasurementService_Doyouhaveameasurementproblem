@@ -14,7 +14,29 @@ router.get('/getUsers', (req, res) => {
     }
   });
 });
-
+router.post('/login', (req, res) => {
+  const idusers = req.body.idusers;
+  const password = req.body.password;
+  db.query(
+    'SELECT * from users WHERE idusers = ? AND password = ?',
+    [idusers, password],
+    (err, rows) => {
+      if (err) {
+        console.log('db query err in user.js');
+        console.log(err);
+        res.json({ loginsuccess: false });
+      } else {
+        console.log('db query login in user.js');
+        //console.log(rows);
+        if (rows.length > 0) {
+          res.json({ loginsuccess: true });
+        } else {
+          res.json({ loginsuccess: false });
+        }
+      }
+    },
+  );
+});
 //회원가입 (post 방식)
 router.post('/register', (req, res) => {
   const idusers = req.body.idusers;
@@ -29,10 +51,11 @@ router.post('/register', (req, res) => {
     [idusers, password, name, region, isAdmin, rank],
     (err, rows) => {
       if (err) {
-        //console.log(rows);
-        res.json(rows);
+        console.log(err);
+        res.json({ registersuccess: false });
       } else {
-        res.send(rows);
+        console.log(rows);
+        res.send({ registersuccess: true });
       }
     },
   );

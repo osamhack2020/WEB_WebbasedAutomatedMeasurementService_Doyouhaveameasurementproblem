@@ -10,6 +10,7 @@ class Main extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.state = {
+      idusers: this.props.idusers,
       curr: 'DC',
       unit: '',
       value: '0.000',
@@ -107,6 +108,9 @@ class Main extends Component {
   render() {
     return (
       <div className="d-flex flex-column justify-content-center">
+        <h1 className="d-flex display-3 justify-content-center">
+          {this.props.idusers}
+        </h1>
         <div className="d-flex flex-row justify-content-center">
           <LeftPannel
             unit={this.state.unit}

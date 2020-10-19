@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
 class Register extends Component {
   constructor(props) {
@@ -30,90 +28,137 @@ class Register extends Component {
         password: this.state.password,
         name: this.state.name,
         region: this.state.region,
+        isAdmin: 0,
         rank: this.state.rank,
       },
     })
       .then(function (response) {
-        console.log('회원가입 성공');
-        return <Link to="/"></Link>;
+        if (response.data.registersuccess) {
+          console.log('회원가입 성공 in register.js');
+          alert('회원가입 성공');
+        } else {
+          console.log('회원가입 실패 in register.js');
+          alert('회원가입 실패');
+        }
       })
       .catch(function (error) {
         console.log(error);
-        prompt('회원가입 실패');
+        alert('회원가입 실패');
       });
   }
   render() {
     return (
-      <div>
-        <form>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">군번</label>
-            <input
-              type="id"
-              name="id"
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="id"
-              value={this.state.id}
-              onChange={this.handleChange}
-            />
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                회원가입
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="form-group">
+                  <label htmlFor="idusers" className="col-form-label">
+                    군번:
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="idusers"
+                    name="id"
+                    value={this.state.id}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password" className="col-form-label">
+                    비밀번호:
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    id="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="name" className="col-form-label">
+                    이름:
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="region" className="col-form-label">
+                    부대:
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="region"
+                    name="region"
+                    value={this.state.region}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="rank" className="col-form-label">
+                    계급:
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="rank"
+                    id="rank"
+                    value={this.state.rank}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                취소
+              </button>
+              <button
+                type="button"
+                onClick={this.handleClick}
+                className="btn btn-primary"
+                data-dismiss="modal"
+              >
+                회원가입
+              </button>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">패스워드</label>
-            <input
-              type="password"
-              name="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputName1">이름</label>
-            <input
-              type="text"
-              name="name"
-              className="form-control"
-              id="exampleInputName1"
-              placeholder=""
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputRegion1">부대</label>
-            <input
-              type="text"
-              name="region"
-              className="form-control"
-              id="exampleInputRegion1"
-              placeholder=""
-              value={this.state.region}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputRank1">계급</label>
-            <input
-              type="text"
-              name="rank"
-              className="form-control"
-              id="exampleInputRank1"
-              placeholder=""
-              value={this.state.rank}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button
-            type="button"
-            onClick={this.handleClick}
-            className="btn btn-primary"
-          >
-            회원가입
-          </button>
-        </form>
+        </div>
       </div>
     );
   }
