@@ -1,3 +1,7 @@
 #RightPannel{
     border-radius: 1em
 }
+table {
+    border-collapse: collapse
+    border-radius: 1em
+}
