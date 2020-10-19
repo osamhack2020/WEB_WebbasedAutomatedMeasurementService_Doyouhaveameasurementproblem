@@ -63,7 +63,7 @@ class RightPannel extends Component {
           id="myTabContent"
         >
           <div
-            className="tab-pane fade show active"
+            className="tab-pane fade "
             id="home"
             role="tabpanel"
             aria-labelledby="home-tab"
@@ -88,7 +88,7 @@ class RightPannel extends Component {
             </ul>
           </div>
           <div
-            className="tab-pane fade"
+            className="tab-pane fade show active"
             id="profile"
             role="tabpanel"
             aria-labelledby="profile-tab"

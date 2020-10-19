@@ -107,6 +107,12 @@ class Main extends Component {
   render() {
     return (
       <div className="d-flex flex-column justify-content-center">
+        <div className="d-flex">
+          <div className="">{'아이디 :' + this.props.idusers}</div>
+          <div className="">{'이름 :' + this.props.name}</div>
+          <div className="">{'소속부대 :' + this.props.region}</div>
+          <div className="">{'계급 :' + this.props.rank}</div>
+        </div>
         <div className="d-flex flex-row justify-content-center">
           <LeftPannel
             unit={this.state.unit}
