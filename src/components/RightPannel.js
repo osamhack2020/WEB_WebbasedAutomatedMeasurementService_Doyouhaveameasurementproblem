@@ -132,16 +132,16 @@ class RightPannel extends Component {
               </li>
               <li className="list-group-item">
                 <table>
-                  <tr>
-                    <td>{this.props.num}</td>
-                    <td>{this.props.title}</td>
-                    <td>{this.props.contents}</td>
-                    <td>{this.props.lowValue}</td>
-                    <td>{this.props.measureValue}</td>
+                  <tr className="">
+                    <td className="">{this.state.num}</td>
+                    <td className="">{this.state.title}</td>
+                    <td className="">{this.state.contents}</td>
+                    <td className="">{this.state.lowValue}</td>
+                    <td className="">{this.state.measureValue}</td>
                     {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                    <td>{this.props.highValue}</td>
-                    <td>{this.props.result}</td>
+                    <td className="">{this.state.highValue}</td>
+                    <td className="">{this.state.result}</td>
                   </tr>
                 </table>
               </li>
