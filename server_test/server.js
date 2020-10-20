@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const measure_router = require('./routers/measure.js');
 const user_router = require('./routers/user.js');
-
+const procedure_router = require('./routers/procedure');
 const port = process.env.PORT || 2020;
 
 app.use(cors());
@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 });
 app.use('/meas', measure_router);
 app.use('/user', user_router);
+app.use('/procedure', procedure_router);
 app.listen(port, () => {
   console.log(`express is running on ${port}`);
 });
