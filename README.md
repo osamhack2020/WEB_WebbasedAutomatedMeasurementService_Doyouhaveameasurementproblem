@@ -10,7 +10,7 @@
 
 # 개발 BlockDiagram
 
-![구성도](https://user-images.githubusercontent.com/5003195/95680229-13bd0a00-0c13-11eb-90b2-5bb008c6b3c5.jpg)
+![구성도_mysql추가jpg](https://user-images.githubusercontent.com/5003195/96605615-609a9200-1331-11eb-9fec-13f98c099167.jpg)
 
 ## 개발스택 요약 설명
 
