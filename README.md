@@ -35,6 +35,7 @@
     - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
     - Express.js
     - REST API
+    - MySQL
 
 ## Front-end
 
@@ -99,10 +100,11 @@
      $ git clone https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem.git
      ```
 
-  5. 해당 폴더에서 종속 라이브러리 설치
+  5. 해당 폴더에서 종속 라이브러리 설치 및 DB 연결
      ```
      $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
      $ yarn install
+     $ yarn add mysql
      ```
   6. 서버 실행
 
@@ -139,11 +141,12 @@
      $ git clone https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem.git
      ```
 
-  3. 해당 폴더에서 종속 라이브러리 설치
+  3. 해당 폴더에서 종속 라이브러리 설치 및 DB 연동
      ```
      $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
      $ yarn remove linux-gpib       # 가상측정장비 통신에서 사용하지 않는다
      $ yarn install
+     $ yarn add mysql
      ```
   4. 서버 실행
 
