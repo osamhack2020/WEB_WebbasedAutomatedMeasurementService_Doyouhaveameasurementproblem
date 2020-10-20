@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import '../css/RightPannel.css';
 
 class RightPannel extends Component {
-    let res = await axios.get('./meas/volt/dc');
-    console.log(res.data);
-    // test1 
   render() {
     return (
       <div
@@ -74,47 +70,47 @@ class RightPannel extends Component {
             <ul className="list-group">
               <li className="list-group-item">
                 <table>
-                <tr>
-                  <td>$num</td>
-                  <td>$title</td>
-                  <td>$contents</td>
-                  <td>$lowValue</td>
-                  <td>$measurementValue</td>
-                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
+                  <tr>
+                    <td>$num</td>
+                    <td>$title</td>
+                    <td>$contents</td>
+                    <td>$lowValue</td>
+                    <td>$measurementValue</td>
+                    {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                  <td>$highValue</td>
-                  <td>$result</td>
-                </tr>
+                    <td>$highValue</td>
+                    <td>$result</td>
+                  </tr>
                 </table>
-                </li>
+              </li>
               <li className="list-group-item">
-              <table>
-                <tr>
-                  <td>1</td>
-                  <td>DC</td>
-                  <td>DC 100 V 교정</td>
-                  <td>99.998</td>
-                  <td>측정된값</td>
-                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
+                <table>
+                  <tr>
+                    <td>1</td>
+                    <td>DC</td>
+                    <td>DC 100 V 교정</td>
+                    <td>99.998</td>
+                    <td>측정된값</td>
+                    {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                  <td>100.002</td>
-                  <td>pass</td>
-                </tr>
+                    <td>100.002</td>
+                    <td>pass</td>
+                  </tr>
                 </table>
-                </li>
+              </li>
               <li className="list-group-item">
-              <table>
-                <tr>
-                  <td>2</td>
-                  <td>AC</td>
-                  <td>AC 10 V 교정</td>
-                  <td>9.998</td>
-                  <td>측정된값</td>
-                  {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
+                <table>
+                  <tr>
+                    <td>2</td>
+                    <td>AC</td>
+                    <td>AC 10 V 교정</td>
+                    <td>9.998</td>
+                    <td>측정된값</td>
+                    {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                  <td>10.002</td>
-                  <td>pass</td>
-                </tr>
+                    <td>10.002</td>
+                    <td>pass</td>
+                  </tr>
                 </table>
               </li>
               <li className="list-group-item">4. -</li>

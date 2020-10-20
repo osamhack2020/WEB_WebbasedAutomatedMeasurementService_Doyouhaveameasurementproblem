@@ -3,9 +3,6 @@ import Buttons from './Buttons';
 import '../css/Display.css';
 
 class Display extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="d-flex flex-column align-items-stretch">

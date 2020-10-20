@@ -107,7 +107,7 @@ class Login extends Component {
           >
             회원가입
           </button>
-          <p className="d-flextext-muted">&copy; 2020 OSAM 너 측정 문제있어?</p>
+          <p className="d-flextext-muted">&copy; 2020 OSAM 너 측정 문제 있어?</p>
         </form>
 
         <Register onLogin={this.props.onLogin} id="exampleModal" className="" />
