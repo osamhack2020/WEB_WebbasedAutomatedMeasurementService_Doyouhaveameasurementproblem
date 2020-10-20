@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const measure_router = require('./routers/measure.js');
 const user_router = require('./routers/user.js');
-
+const procedure_router = require('./routers/procedure');
 const port = process.env.PORT || 2020;
 
 app.use(cors());
