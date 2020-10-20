@@ -3,8 +3,8 @@ import axios from 'axios';
 import '../css/RightPannel.css';
 
 class RightPannel extends Component {
-    let res = await axios.get('./meas/volt/dc');
-    console.log(res.data);
+    let test = await axios.get('./meas/volt/dc');
+    console.log(test.data);
     // test1 
   render() {
     return (
