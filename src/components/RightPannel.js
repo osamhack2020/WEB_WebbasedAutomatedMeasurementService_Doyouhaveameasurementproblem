@@ -1,7 +1,38 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import '../css/RightPannel.css';
 
 class RightPannel extends Component {
+
+  async fetchUserInfo() {
+    return await axios({
+      method: 'post',
+      url: 'https://express-server.run.goorm.io/procedure/getProcedures',
+      data: {
+        num: this.state.num,
+      },
+    })
+      .then((response) => {
+        if (response.data.success) {
+          console.log(response.data);
+          const tmp = response.data;
+          this.setState({
+            num: tmp.num,
+            title: tmp.title,
+            contents: tmp.contents,
+            lowValue: tmp.lowValue,
+            measureValue: tmp.measureValue,
+            highValue: tmp.highValue,
+            result: tmp.result          
+          });
+        } else {
+          console.log('측정절차 연동 실패 in Main.js');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   render() {
     return (
@@ -102,15 +133,15 @@ class RightPannel extends Component {
               <li className="list-group-item">
                 <table>
                   <tr>
-                    <td>2</td>
-                    <td>AC</td>
-                    <td>AC 10 V 교정</td>
-                    <td>9.998</td>
-                    <td>측정된값</td>
+                    <td>{this.props.num}</td>
+                    <td>{this.props.title}</td>
+                    <td>{this.props.contents}</td>
+                    <td>{this.props.lowValue}</td>
+                    <td>{this.props.measureValue}</td>
                     {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                    <td>10.002</td>
-                    <td>pass</td>
+                    <td>{this.props.highValue}</td>
+                    <td>{this.props.result}</td>
                   </tr>
                 </table>
               </li>
