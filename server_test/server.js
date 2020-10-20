@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 });
 app.use('/meas', measure_router);
 app.use('/user', user_router);
+app.use('/procedure', procedure_router);
 app.listen(port, () => {
   console.log(`express is running on ${port}`);
 });

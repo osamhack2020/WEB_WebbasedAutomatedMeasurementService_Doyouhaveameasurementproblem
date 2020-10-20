@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/RightPannel.css';
 
 class RightPannel extends Component {
-
   render() {
     return (
       <div
