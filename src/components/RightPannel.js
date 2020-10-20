@@ -9,7 +9,7 @@ class RightPannel extends Component {
       method: 'post',
       url: 'https://express-server.run.goorm.io/procedure/getProcedures',
       data: {
-        num: "1"
+        num: this.props.num
       },
     })
       .then((response) => {
