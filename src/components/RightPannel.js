@@ -3,17 +3,6 @@ import axios from 'axios';
 import '../css/RightPannel.css';
 
 class RightPannel extends Component {
-  /* 
-  componentDidMount(){
-    this.dbTest();
-  }
-
-  _dbTest = async () => {
-    const res = await axios.get('/api/test');
-    console.log(res.data);
-  }
-  */
-
   render() {
     return (
       <div
