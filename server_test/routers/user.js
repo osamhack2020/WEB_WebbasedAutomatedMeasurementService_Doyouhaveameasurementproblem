@@ -14,6 +14,36 @@ router.get('/getUsers', (req, res) => {
     }
   });
 });
+router.post('/userinfo', (req, res) => {
+  const idusers = req.body.idusers;
+  console.log('in userinfor router');
+  db.query('SELECT * from users WHERE idusers = ? ', [idusers], (err, rows) => {
+    if (err) {
+      //console.log('db query err in user.js');
+      console.log(err);
+      res.json({ loginsuccess: false });
+    } else {
+      //console.log(rows);
+      if (rows.length > 0) {
+        const idusers = rows[0].idusers;
+        const name = rows[0].name;
+        const region = rows[0].region;
+        const isAdmin = rows[0].isAdmin;
+        const rank = rows[0].rank;
+        res.json({
+          idusers: idusers,
+          success: true,
+          name: name,
+          region: region,
+          isAdmin: isAdmin,
+          rank: rank,
+        });
+      } else {
+        res.json({ success: false });
+      }
+    }
+  });
+});
 router.post('/login', (req, res) => {
   const idusers = req.body.idusers;
   const password = req.body.password;
@@ -22,11 +52,11 @@ router.post('/login', (req, res) => {
     [idusers, password],
     (err, rows) => {
       if (err) {
-        console.log('db query err in user.js');
+        //console.log('db query err in user.js');
         console.log(err);
         res.json({ loginsuccess: false });
       } else {
-        console.log('db query login in user.js');
+        //console.log('db query login in user.js');
         //console.log(rows);
         if (rows.length > 0) {
           const idusers = rows[0].idusers;

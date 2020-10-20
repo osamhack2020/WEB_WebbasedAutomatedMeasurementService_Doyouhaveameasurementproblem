@@ -10,6 +10,11 @@ class Main extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.state = {
+      idusers: this.props.idusers,
+      isAdmin: this.props.isAdmin,
+      name: '',
+      rank: '',
+      region: '',
       curr: 'DC',
       unit: '',
       value: '0.000',
@@ -51,11 +56,16 @@ class Main extends Component {
       frames: [],
       config: {},
     };
+    this.fetchUserInfo();
   }
+
   handleClear = () => {
     const data_ = this.state.data.slice(undefined);
     data_[0].y = [];
     this.setState({ data: data_, value: 0, unit: '' });
+  };
+  handleGetUserInfo = () => {
+    this.fetchUserInfo();
   };
   handleClick = (path) => () => {
     if (path === '') {
@@ -71,7 +81,7 @@ class Main extends Component {
     } else if (path.match('res') !== null) {
       this.setState({ unit: 'Ω' });
     } else if (path.match('freq') !== null) {
-      this.setState({ unit: 'Hz' });
+      this.setState({ unit: 'KHz' });
     } else if (path.match('per') !== null) {
       this.setState({ unit: 'sec' });
     } else {
@@ -86,6 +96,32 @@ class Main extends Component {
       this.setState({ curr: '' });
     }
   };
+
+  async fetchUserInfo() {
+    return await axios({
+      method: 'post',
+      url: 'https://express-server.run.goorm.io/user/userinfo',
+      data: {
+        idusers: this.state.idusers,
+      },
+    })
+      .then((response) => {
+        if (response.data.success) {
+          console.log(response.data);
+          const tmp = response.data;
+          this.setState({
+            name: tmp.name,
+            region: tmp.region,
+            rank: tmp.rank,
+          });
+        } else {
+          console.log('사용자 정보 가져오기 실패 in Main.js');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   async fetchData(path) {
     const data_ = this.state.data.slice(undefined);
     const new_array = data_[0].y.slice(undefined);
@@ -106,12 +142,14 @@ class Main extends Component {
   }
   render() {
     return (
-      <div className="d-flex flex-column justify-content-center">
+      <div className="d-flex flex-column justify-content-center align-items-center">
+        <button onClick={this.handleGetUserInfo}>정보 가져오기</button>
+        <button onClick={this.props.onLogout}>로그아웃</button>
         <div className="d-flex">
-          <div className="">{'아이디 :' + this.props.idusers}</div>
-          <div className="">{'이름 :' + this.props.name}</div>
-          <div className="">{'소속부대 :' + this.props.region}</div>
-          <div className="">{'계급 :' + this.props.rank}</div>
+          <div className="">{'아이디 :' + this.state.idusers}</div>
+          <div className="">{'  이름:' + this.state.name}</div>
+          <div className="">{'  소속부대:' + this.state.region}</div>
+          <div className="">{'  계급:' + this.state.rank}</div>
         </div>
         <div className="d-flex flex-row justify-content-center">
           <LeftPannel

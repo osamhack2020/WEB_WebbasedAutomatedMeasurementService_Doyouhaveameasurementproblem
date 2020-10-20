@@ -10,14 +10,35 @@ class Register extends Component {
       name: '',
       region: '',
       rank: '',
+      idIsvalid: false,
+      passwordIsvalid: false,
+      nameIsvalid: false,
+      regionIsvalid: false,
+      rankIsvalid: false,
     };
   }
   handleChange = (e) => {
     console.log(e.target.name);
+    if (e.target.value.length > 1) {
+      this.setState({ [e.target.name + 'Isvalid']: true });
+    } else {
+      this.setState({ [e.target.name + 'Isvalid']: false });
+    }
     this.setState({ [e.target.name]: e.target.value });
   };
   handleClick = () => {
     this.register();
+  };
+
+  inputClassNameHelper = (boolean) => {
+    switch (boolean) {
+      case true:
+        return 'is-valid';
+      case false:
+        return 'is-invalid';
+      default:
+        return '';
+    }
   };
   async register() {
     return await axios({
@@ -46,6 +67,7 @@ class Register extends Component {
         alert('회원가입 실패');
       });
   }
+
   render() {
     return (
       <div
@@ -79,7 +101,9 @@ class Register extends Component {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control  ${this.inputClassNameHelper(
+                      this.state.idIsvalid,
+                    )}`}
                     id="idusers"
                     name="id"
                     value={this.state.id}
@@ -92,7 +116,9 @@ class Register extends Component {
                   </label>
                   <input
                     type="password"
-                    className="form-control"
+                    className={`form-control  ${this.inputClassNameHelper(
+                      this.state.passwordIsvalid,
+                    )}`}
                     name="password"
                     id="password"
                     value={this.state.password}
@@ -105,7 +131,9 @@ class Register extends Component {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control  ${this.inputClassNameHelper(
+                      this.state.nameIsvalid,
+                    )}`}
                     id="name"
                     name="name"
                     value={this.state.name}
@@ -118,7 +146,9 @@ class Register extends Component {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control  ${this.inputClassNameHelper(
+                      this.state.regionIsvalid,
+                    )}`}
                     id="region"
                     name="region"
                     value={this.state.region}
@@ -131,7 +161,9 @@ class Register extends Component {
                   </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control  ${this.inputClassNameHelper(
+                      this.state.rankIsvalid,
+                    )}`}
                     name="rank"
                     id="rank"
                     value={this.state.rank}
