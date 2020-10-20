@@ -31,10 +31,10 @@ class App extends Component {
       isAdmin: isAdmin,
     });
     cookie.save('idusers', idusers, {
-      maxAge: 240,
+      maxAge: 1000,
     });
     cookie.save('isAdmin', isAdmin, {
-      maxAge: 240,
+      maxAge: 1000,
     });
   }
 
