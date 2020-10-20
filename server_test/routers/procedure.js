@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = requireA('../dbconnection');
+const db = require('../dbconnection');
 
 //전체 측정절차 출력
 router.get('/getProcedures', (req,res) => {
@@ -13,3 +13,4 @@ router.get('/getProcedures', (req,res) => {
         }
     });
 });
+
