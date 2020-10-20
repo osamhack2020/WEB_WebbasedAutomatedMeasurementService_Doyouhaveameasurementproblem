@@ -9,7 +9,7 @@ class RightPannel extends Component {
       method: 'post',
       url: 'https://express-server.run.goorm.io/procedure/getProcedures',
       data: {
-        num: this.state.num,
+        num: "1"
       },
     })
       .then((response) => {
@@ -132,16 +132,16 @@ class RightPannel extends Component {
               </li>
               <li className="list-group-item">
                 <table>
-                  <tr className="">
-                    <td className="">{this.state.num}</td>
-                    <td className="">{this.state.title}</td>
-                    <td className="">{this.state.contents}</td>
-                    <td className="">{this.state.lowValue}</td>
-                    <td className="">{this.state.measureValue}</td>
+                  <tr >
+                    <td >{this.state.num}</td>
+                    <td >{this.state.title}</td>
+                    <td >{this.state.contents}</td>
+                    <td >{this.state.lowValue}</td>
+                    <td >{this.state.measureValue}</td>
                     {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                    <td className="">{this.state.highValue}</td>
-                    <td className="">{this.state.result}</td>
+                    <td >{this.state.highValue}</td>
+                    <td >{this.state.result}</td>
                   </tr>
                 </table>
               </li>
