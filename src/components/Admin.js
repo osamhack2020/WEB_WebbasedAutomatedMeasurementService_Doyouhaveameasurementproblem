@@ -30,6 +30,7 @@ class Admin extends Component {
     return (
       <div className="d-flex flex-column align-items-center">
         Admin.js
+        <button onClick={this.props.onLogout}>로그아웃</button>
         <div>
           현재 유져 정보:
           <ul>{list_items}</ul>

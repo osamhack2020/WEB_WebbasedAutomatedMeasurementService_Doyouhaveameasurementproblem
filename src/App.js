@@ -41,7 +41,6 @@ class App extends Component {
   onLogout() {
     this.setState({
       idusers: '',
-      isAdmin: 0,
     });
     cookie.remove('idusers');
     cookie.remove('isAdmin');
