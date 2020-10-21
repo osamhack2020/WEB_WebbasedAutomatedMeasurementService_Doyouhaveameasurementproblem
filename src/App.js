@@ -31,10 +31,10 @@ class App extends Component {
       isAdmin: isAdmin,
     });
     cookie.save('idusers', idusers, {
-      maxAge: 1000,
+      maxAge: 300,
     });
     cookie.save('isAdmin', isAdmin, {
-      maxAge: 1000,
+      maxAge: 300,
     });
   }
 
@@ -49,7 +49,7 @@ class App extends Component {
     if (!this.state.idusers) {
       return <Login onLogin={this.onLogin.bind(this)} />;
     } else {
-      if (this.state.isAdmin) {
+      if (this.state.isAdmin === 0) {
         return (
           <Admin
             idusers={this.state.idusers}

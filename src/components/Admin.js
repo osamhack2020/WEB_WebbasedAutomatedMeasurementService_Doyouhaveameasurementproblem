@@ -18,6 +18,7 @@ class Admin extends Component {
         this.setState({ users: data });
       });
   }
+
   render() {
     var list_items;
     if (this.state.users !== null) {
@@ -37,18 +38,18 @@ class Admin extends Component {
           </label>
           <select
             id="orederProcedure"
-            class="col-sm-3 form-control form-control-sm"
+            className="col-sm-3 form-control form-control-sm"
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               작업자 선택하기
             </option>
             {list_items}
           </select>
           <select
             id="orederProcedure"
-            class="col-sm-3 form-control form-control-sm"
+            className="col-sm-3 form-control form-control-sm"
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               작업목록
             </option>
             <option>방공포</option>
@@ -56,19 +57,19 @@ class Admin extends Component {
           </select>
           <select
             id="orederProcedure"
-            class="col-sm-3 form-control form-control-sm"
+            className="col-sm-3 form-control form-control-sm"
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               기한지정(yyyy/mm/dd)
             </option>
             <option>2020년 11월 1일</option>
-            <option v>2020년 11월 10일</option>
+            <option>2020년 11월 10일</option>
           </select>
           <button className="col-sm-2">확인</button>
         </div>
         작업 만들기
         <div className="d-flex  align-items-center">
-          <form>
+          {/* <form>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label htmlFor="inputEmail4">Email</label>
@@ -139,7 +140,7 @@ class Admin extends Component {
             <button type="button" class="btn btn-primary">
               Sign in
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     );

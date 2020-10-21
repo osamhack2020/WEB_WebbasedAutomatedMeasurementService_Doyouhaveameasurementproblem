@@ -3,6 +3,7 @@ import axios from 'axios';
 import LeftPannel from './LeftPannel';
 import RightPannel from './RightPannel';
 import Plot from 'react-plotly.js';
+import cookie from 'react-cookies';
 
 class Main extends Component {
   constructor(props) {
@@ -10,8 +11,8 @@ class Main extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.state = {
-      idusers: this.props.idusers,
-      isAdmin: this.props.isAdmin,
+      idusers: cookie.load('idusers'),
+      isAdmin: cookie.load('isAdmin'),
       name: '',
       rank: '',
       region: '',
