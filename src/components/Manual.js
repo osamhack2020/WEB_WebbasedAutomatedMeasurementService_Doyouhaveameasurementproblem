@@ -26,7 +26,23 @@ class Manual extends Component {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body"></div>
+            <div className="modal-body">
+              <img
+                src={process.env.PUBLIC_URL + '/current.png'}
+                class="img-fluid"
+                alt="image1"
+              />
+              <img
+                src={process.env.PUBLIC_URL + '/volt.png'}
+                class="img-fluid"
+                alt="image2"
+              />
+              <img
+                src={process.env.PUBLIC_URL + '/frequency.png'}
+                class="img-fluid"
+                alt="image3"
+              />
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
