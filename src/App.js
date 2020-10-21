@@ -49,7 +49,7 @@ class App extends Component {
     if (!this.state.idusers) {
       return <Login onLogin={this.onLogin.bind(this)} />;
     } else {
-      if (this.state.isAdmin === 1) {
+      if (this.state.isAdmin === 1 || this.state.isAdmin === '1') {
         return (
           <Admin
             idusers={this.state.idusers}

@@ -11,7 +11,7 @@ class Main extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.state = {
-      idusers: cookie.load('idusers'),
+      idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
       name: '',
       rank: '',

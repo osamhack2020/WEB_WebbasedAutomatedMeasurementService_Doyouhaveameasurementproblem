@@ -39,6 +39,7 @@ router.post('/userinfo', (req, res) => {
           rank: rank,
         });
       } else {
+        console.log("userinfo failed")
         res.json({ success: false });
       }
     }

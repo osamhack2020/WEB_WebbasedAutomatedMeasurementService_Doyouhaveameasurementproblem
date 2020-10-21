@@ -8,7 +8,6 @@ class Login extends Component {
     this.state = {
       id: '',
       password: '',
-
     };
     this.onClickHandler = this.onClickHandler.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -32,15 +31,12 @@ class Login extends Component {
           console.log('로그인 성공 in login.js');
           console.log(response.data);
           const tmp = response.data;
-          this.props.onLogin(
-            tmp.idusers,
-            tmp.isAdmin,
-          );
+          this.props.onLogin(tmp.idusers, tmp.isAdmin);
           alert('로그인 성공');
         } else {
           console.log('로그인 실패 in login.js');
           alert('Id와 Password를 확인해주세요');
-          this.props.onLogin(null, null, null, null, null);
+          this.props.onLogin('', 0);
         }
       })
       .catch((error) => {
@@ -55,7 +51,6 @@ class Login extends Component {
   };
 
   render() {
-
     return (
       <div className=" d-flex flex-column align-items-center">
         <form className="d-flex flex-column form-signin">
@@ -107,12 +102,12 @@ class Login extends Component {
           >
             회원가입
           </button>
-          <p className="d-flextext-muted">&copy; 2020 OSAM 너 측정 문제 있어?</p>
+          <p className="d-flextext-muted">
+            &copy; 2020 OSAM 너 측정 문제 있어?
+          </p>
         </form>
 
         <Register onLogin={this.props.onLogin} id="exampleModal" className="" />
-
- 
       </div>
     );
   }

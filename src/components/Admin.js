@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../css/Admin.css';
+import cookie from 'react-cookies';
+
 class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: null,
       user_list: [],
+      idusers: this.props.idusers,
+      isAdmin: cookie.load('isAdmin'),
     };
   }
   componentDidMount() {
