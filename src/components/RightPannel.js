@@ -8,7 +8,7 @@ class RightPannel extends Component {
     this.state = {
       users: null,
       user_list: [],
-      num: this.state.num,
+      num: '',
       title: [],
       contents: [],
       lowValue: [],
