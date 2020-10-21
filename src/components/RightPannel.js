@@ -3,13 +3,28 @@ import axios from 'axios';
 import '../css/RightPannel.css';
 
 class RightPannel extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: null,
+      user_list: [],
+    };
+  }
+  componentDidMount() {
+    axios
+      .get('https://express-server.run.goorm.io/user/getUsers')
+      .then((res) => res.data)
+      .then((data) => {
+        //data.forEach((data) => console.log(data));
+        this.setState({ users: data });
+      });
+  }
   async fetchUserInfo() {
     return await axios({
       method: 'post',
       url: 'https://express-server.run.goorm.io/procedure/getProcedures',
       data: {
-        num: this.props.num
+        num: this.props.num,
       },
     })
       .then((response) => {
@@ -23,7 +38,7 @@ class RightPannel extends Component {
             lowValue: tmp.lowValue,
             measureValue: tmp.measureValue,
             highValue: tmp.highValue,
-            result: tmp.result          
+            result: tmp.result,
           });
         } else {
           console.log('측정절차 연동 실패 in Main.js');
@@ -35,6 +50,14 @@ class RightPannel extends Component {
   }
 
   render() {
+    var list_items;
+    if (this.state.users !== null) {
+      list_items = this.state.users.map((data) => (
+        <option key={data.idusers}>
+          {'ID:' + data.idusers + '  이름:' + data.name}
+        </option>
+      ));
+    }
     return (
       <div
         id="RightPannel"
@@ -132,16 +155,16 @@ class RightPannel extends Component {
               </li>
               <li className="list-group-item">
                 <table>
-                  <tr >
-                    <td >{this.props.num}</td>
-                    <td >{this.props.title}</td>
-                    <td >{this.props.contents}</td>
-                    <td >{this.props.lowValue}</td>
-                    <td >{this.props.measureValue}</td>
+                  <tr>
+                    <td>{this.props.num}</td>
+                    <td>{this.props.title}</td>
+                    <td>{this.props.contents}</td>
+                    <td>{this.props.lowValue}</td>
+                    <td>{this.props.measureValue}</td>
                     {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                    <td >{this.props.highValue}</td>
-                    <td >{this.props.result}</td>
+                    <td>{this.props.highValue}</td>
+                    <td>{this.props.result}</td>
                   </tr>
                 </table>
               </li>
@@ -155,20 +178,7 @@ class RightPannel extends Component {
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <ul className="unstyled-list p1">
-              <li className="">작업자: OOO</li>
-              <li className="">소속 부대: OOO</li>
-              <li className="">
-                작업내용:
-                <ul className="">
-                  <li className="">1. Cras justo odio</li>
-                  <li className="">2. Dapibus ac facilisis in</li>
-                  <li className="">3. Morbi leo risus</li>
-                  <li className="">4. Porta ac consectetur ac</li>
-                  <li className="">5. Vestibulum at eros</li>
-                </ul>
-              </li>
-            </ul>
+            <ul className="unstyled-list p1">{list_items}</ul>
           </div>
           <div
             className="tab-pane fade"

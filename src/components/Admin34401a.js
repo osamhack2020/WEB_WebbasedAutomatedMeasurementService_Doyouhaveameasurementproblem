@@ -13,6 +13,7 @@ class Admin34401a extends Component {
     this.state = {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
+
       name: '',
       rank: '',
       region: '',
