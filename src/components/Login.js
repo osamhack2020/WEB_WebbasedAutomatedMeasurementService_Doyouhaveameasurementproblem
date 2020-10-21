@@ -82,11 +82,12 @@ class Login extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <div className="d-flex checkbox ">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
-            </label>
-          </div>{' '}
+          <select id="orederProcedure" className="d-flex form-control">
+            <option value="" disabled>
+              장비 선택
+            </option>
+            <option>34401a</option>
+          </select>
           <button
             className="d-flex btn btn-lg btn-primary btn-block"
             type="button"

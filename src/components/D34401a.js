@@ -5,7 +5,7 @@ import RightPannel from './RightPannel';
 import Plot from 'react-plotly.js';
 import cookie from 'react-cookies';
 
-class Main extends Component {
+class D34401a extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -174,4 +174,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default D34401a;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 
 import './App.css';
-import Main from './components/Main';
+import D34401a from './components/D34401a';
 import Login from './components/Login';
 import Admin from './components/Admin';
 class App extends Component {
@@ -59,7 +59,7 @@ class App extends Component {
         );
       } else {
         return (
-          <Main
+          <D34401a
             idusers={this.state.idusers}
             isAdmin={this.state.isAdmin}
             onLogout={this.onLogout.bind(this)}
