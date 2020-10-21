@@ -124,35 +124,6 @@ class Admin34401a extends Component {
         console.log(error);
       });
   }
-  async fetchProcedure() {
-    return await axios({
-      method: 'post',
-      url: 'https://express-server.run.goorm.io/procedure/procedures',
-      data: {
-        num: this.state.num,
-      },
-    })
-      .then((response) => {
-        if (response.data.success) {
-          console.log(response.data);
-          const tmp = response.data;
-          this.setState({
-            num: tmp.num,
-            title: tmp.title,
-            contents: tmp.contents,
-            lowValue: tmp.lowValue,
-            measureValue: tmp.measureValue,
-            highValue: tmp.highValue,
-            result: tmp.result,
-          });
-        } else {
-          console.log('사용자 정보 가져오기 실패 in Main.js');
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
   async fetchData(path) {
     const data_ = this.state.data.slice(undefined);
     const new_array = data_[0].y.slice(undefined);
