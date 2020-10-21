@@ -157,8 +157,8 @@ class RightPannel extends Component {
               <li className="list-group-item">
                 <table>
                   <tr>
-                    <td>{this.props.num}</td>
-                    <td>{this.props.title}</td>
+                    <td>{this.state.num}</td>
+                    <td>{this.state.title}</td>
                     <td>{this.props.contents}</td>
                     <td>{this.props.lowValue}</td>
                     <td>{this.props.measureValue}</td>
