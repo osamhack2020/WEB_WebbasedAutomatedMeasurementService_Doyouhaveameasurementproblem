@@ -30,7 +30,7 @@ class RightPannel extends Component {
   async fetchProcedure() {
     return await axios({
       method: 'post',
-      url: 'https://express-server.run.goorm.io/procedure/getProcedures',
+      url: 'https://express-server.run.goorm.io/procedure/',
       data: {
         num: this.state.num,
       },
