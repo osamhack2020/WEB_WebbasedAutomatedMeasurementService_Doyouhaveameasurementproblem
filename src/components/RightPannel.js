@@ -27,7 +27,7 @@ class RightPannel extends Component {
         this.setState({ users: data });
       });
   }
-  async fetchUserInfo() {
+  async fetchProcedure() {
     return await axios({
       method: 'post',
       url: 'https://express-server.run.goorm.io/procedure/getProcedures',
@@ -166,13 +166,13 @@ class RightPannel extends Component {
                   <tr>
                     <td>{this.state.num}</td>
                     <td>{this.state.title}</td>
-                    <td>{this.props.contents}</td>
-                    <td>{this.props.lowValue}</td>
-                    <td>{this.props.measureValue}</td>
+                    <td>{this.state.contents}</td>
+                    <td>{this.state.lowValue}</td>
+                    <td>{this.state.measureValue}</td>
                     {/* 여기서 measurementValue은 low 와 high와 비교되어야 하며 비교된 값이 result에 
                        PASS / FAIL 표시 */}
-                    <td>{this.props.highValue}</td>
-                    <td>{this.props.result}</td>
+                    <td>{this.state.highValue}</td>
+                    <td>{this.state.result}</td>
                   </tr>
                 </table>
               </li>
