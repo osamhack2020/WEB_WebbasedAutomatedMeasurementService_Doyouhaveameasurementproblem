@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { BsCircleFill } from 'react-icons/bs';
+
 import '../css/User.css';
 import cookie from 'react-cookies';
 import Manual from '../components/Manual';
 import Chatting from '../components/Chatting';
+
 class User extends Component {
   constructor(props) {
     super(props);
@@ -16,20 +19,27 @@ class User extends Component {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center">
         User.js 장비를 직접 측정하는 사용자의 화면입니다.
-        <button className="d-flex" onClick={this.props.onLogout}>
-          로그아웃
-        </button>
-        <div className="d-flex flex-row  m-2"></div>
-        <button
-          className="d-flex"
-          type="button"
-          data-toggle="modal"
-          data-target="#manual"
-        >
-          연결 방법 자세히 보기
-        </button>
-        <Manual id="manual" />
-        <div class="d-block w-50">
+        <div className="topPannel flex-row  mt-4">
+          <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
+            로그아웃
+          </button>
+          <button
+            className="btn-sm p-2"
+            type="button"
+            data-toggle="modal"
+            data-target="#manual"
+          >
+            연결 방법 자세히 보기
+          </button>
+          <div className="d-sm-inline-flex ml-4">관리자 접속여부: admin</div>
+          <BsCircleFill
+            className="d-sm-inline-flex ml-1"
+            style={{ color: 'green' }}
+          />
+        </div>
+        <Manual className="m-4" id="manual" />
+        <div className="mt-4">진행률</div>
+        <div className="d-block w-50">
           <div className="progress">
             <div
               className="progress-bar"
@@ -43,7 +53,7 @@ class User extends Component {
             </div>
           </div>
         </div>
-        <div className="d-flex flex-row align-items-stretch ">
+        <div className="d-flex flex-row align-items-stretch mt-4">
           <Chatting />
           <ul class="list-group">
             <li class="list-group-item list-group-item-success">
