@@ -161,6 +161,7 @@ class Admin34401a extends Component {
             onClear={this.handleClear}
           />
           <RightPannel />
+            num={this.state.num}
         </div>
         <Plot
           data={this.state.data}
