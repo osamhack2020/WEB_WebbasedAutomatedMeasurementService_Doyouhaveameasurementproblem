@@ -72,7 +72,7 @@ class Register extends Component {
     return (
       <div
         className="modal fade"
-        id="exampleModal"
+        id="registerModal"
         tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"

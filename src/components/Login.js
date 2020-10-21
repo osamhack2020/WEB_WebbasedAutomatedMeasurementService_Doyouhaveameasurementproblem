@@ -99,7 +99,7 @@ class Login extends Component {
             className="d-flex btn btn-lg btn-primary btn-block"
             type="button"
             data-toggle="modal"
-            data-target="#exampleModal"
+            data-target="#registerModal"
           >
             회원가입
           </button>
@@ -114,7 +114,11 @@ class Login extends Component {
           </div>
         </form>
 
-        <Register onLogin={this.props.onLogin} id="exampleModal" className="" />
+        <Register
+          onLogin={this.props.onLogin}
+          id="registerModal"
+          className=""
+        />
       </div>
     );
   }
