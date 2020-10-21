@@ -3,9 +3,9 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 
 import './App.css';
-import D34401a from './components/D34401a';
+import Admin34401a from './components/Admin34401a';
 import Login from './components/Login';
-import Admin from './components/Admin';
+import Admin from './components/User';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -51,15 +51,16 @@ class App extends Component {
     } else {
       if (this.state.isAdmin === 1 || this.state.isAdmin === '1') {
         return (
-          <Admin
-            idusers={this.state.idusers}
-            isAdmin={this.state.isAdmin}
-            onLogout={this.onLogout.bind(this)}
-          />
+          <Admin34401a
+          idusers={this.state.idusers}
+          isAdmin={this.state.isAdmin}
+          onLogout={this.onLogout.bind(this)}
+        />
+
         );
       } else {
         return (
-          <D34401a
+          <Admin
             idusers={this.state.idusers}
             isAdmin={this.state.isAdmin}
             onLogout={this.onLogout.bind(this)}

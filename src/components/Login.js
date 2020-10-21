@@ -106,6 +106,12 @@ class Login extends Component {
           <p className="d-flextext-muted">
             &copy; 2020 OSAM 너 측정 문제 있어?
           </p>
+          <div>
+            측정자: ID:<b>test</b> PW: <b>1234</b>
+          </div>
+          <div>
+            관리자: ID:<b>admin</b> PW: <b>1234</b>
+          </div>
         </form>
 
         <Register onLogin={this.props.onLogin} id="exampleModal" className="" />
