@@ -112,7 +112,7 @@ class RightPannel extends Component {
           </ul>
         </div>
         <div
-          className="d-flex align-items-stretch tab-content m-3"
+          className="d-flex align-items-stretch tab-content m-3 overflow-auto"
           id="myTabContent"
         >
           <div
@@ -173,7 +173,7 @@ class RightPannel extends Component {
             </ul>
           </div>
           <div
-            className="tab-pane fade show active"
+            className="tab-pane fade show active "
             id="profile"
             role="tabpanel"
             aria-labelledby="profile-tab"
