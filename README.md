@@ -6,7 +6,7 @@
 
 # 팀 소개(Team Information)
 
-   ## 팀원(나이순)
+   >## 팀원(나이순)
 
 No|Team|Name|E-mail|Github_ID
 ---|---|---|---|---
@@ -14,7 +14,7 @@ No|Team|Name|E-mail|Github_ID
 2|팀원|김영주|fjvbn2003@gmail.com|fjvbn2003
 3|팀원|권기남|ginamai0129g@gmail.com|ginami0129g
 
-   ## 소개
+   >## 소개
 
    * 너측정문제있어? -> Do you have a measurement problem? -> DyhaMP
    * 팀원들과 잦은 회의를 통해 재미와 감동을 찾아가는 감성적인 팀이며,
@@ -24,7 +24,7 @@ No|Team|Name|E-mail|Github_ID
 
 # 프로젝트 소개(Project Information)
 
-   ## 추진배경
+   >## 추진배경
 
    * 코로나-19에 따른 <span style="color:blue">**비대면 서비스 강조 및 요구사항**</span>이 높아지며,
    * 3군(육, 해, 공군) <span style="color:blue">**무기체계 성능 유지**</span>를 위해 부서별 보유한 산업 계측기를 활용하여 측정해야함.
@@ -35,7 +35,7 @@ No|Team|Name|E-mail|Github_ID
    * 측정을 받아야하며, 안받을 경우 보유 무기체계 정확/정밀 소급 및 성능 유지에 <span style="color:blue">**상당한 영향 초래**</span>함.
    * 또한, 산업계측기를 85창에 방문하여 **<span style="color:blue">입/출고에 따른 인원, 시간, 비용 과다**</span> 발생.
 
-   ## 기대효과
+   >## 기대효과
 
    * 산업계측기(약 1X,XXX종 10X,XXX점) 입/출고를 위한 인원, 이동시간/비용 등 상당한 절감
       계측기 보유 부서: 전 지역에 산발적으로 산재(대외비)
@@ -47,7 +47,7 @@ No|Team|Name|E-mail|Github_ID
 ---
 # 개발 진행 현황
 
-   ## 개발현황(OSAM 양식)
+   >## 개발현황(OSAM 양식)
 
    No|개발현황|진행률|비고
    ---|---|---|---
@@ -57,7 +57,7 @@ No|Team|Name|E-mail|Github_ID
    4|시연영상| 0 / 100 % |10월 4주차(마지막 주) 작성 예정
    5|라이선스| 0 / 100 % |멘토링을 통한 문의 후 작성 예정
 
-   ## 개발 진행 상황 👇
+   >## 개발 진행 상황 👇
 ---
    - [개발 프로젝트 인스톨(install) 안내](INSTALL.md)
 
