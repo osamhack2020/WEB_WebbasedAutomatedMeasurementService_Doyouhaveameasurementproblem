@@ -24,7 +24,7 @@ No|Team|Name|E-mail|Github_ID
 
 # 프로젝트 소개(Project Information)
 
-   >## 추진배경
+   >## <span style="color:blue"> 추진배경 </span>
 
    * 코로나-19에 따른 <span style="color:blue">**비대면 서비스 강조 및 요구사항**</span>이 높아지며,
    * 3군(육, 해, 공군) <span style="color:blue">**무기체계 성능 유지**</span>를 위해 부서별 보유한 산업 계측기를 활용하여 측정해야함.
