@@ -1,18 +1,18 @@
 # 팀 로고(Team Logo)
-
-![로고_DyhaMP](https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg){:width="300" height="300"(: .center)}
-
+<p align = "center">
+<img src="https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg" width="300px" height="300px "></img>
+</p>
 개발 프로젝트의 성격과 별개로 가장높은 공군의 힘 얘기하다가 최근에 화두되었던 너인성문제있어?의 응용하여 너측정문제있어?라고 결정되어 제작함.
 
 # 팀 소개(Team Information)
 
    ## 팀원(나이순)
    ---
-      No|Team|Name|E-mail|Github_ID
-      ---|---|---|---|---
-      1|팀장|이재용|ljygenius@gmail.com|Neverdiekiller
-      2|팀원|김영주|fjvbn2003@gmail.com|fjvbn2003
-      3|팀원|권기남|ginamai0129g@gmail.com|ginami0129g
+No|Team|Name|E-mail|Github_ID
+---|---|---|---|---
+1|팀장|이재용|ljygenius@gmail.com|Neverdiekiller
+2|팀원|김영주|fjvbn2003@gmail.com|fjvbn2003
+3|팀원|권기남|ginamai0129g@gmail.com|ginami0129g
    ---
    ## 소개
    ---
