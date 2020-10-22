@@ -21,7 +21,7 @@
   - GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
 
 ---
-<br></br><
+<br></br>
 
 # 컴퓨터 구성 / 필수 조건
 
@@ -58,7 +58,7 @@
  </tbody></table>
 
 * In Addtion to GPIB Drivers  
- - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
+      - : [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
 
 >## Front-end
 
@@ -92,9 +92,11 @@
   </td>
  </tr>
  </tbody></table>
+
 ---
 
 <br></br>
+
 ---
 
 # 설치 안내(Installation Process) / 구성(Structure)
@@ -176,18 +178,19 @@
 
 >- ## 장비에서 실제 측정값 추출 : GET 방식
 
-      - Voltage DC : 'MEAS:VOLT:DC?'
-        (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
+  - Voltage DC : 'MEAS:VOLT:DC?'
+    (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
 
-      - Resistance : 'MEAS:RES?'
+  - Resistance : 'MEAS:RES?'
 
-      - Frequency : 'MEAS:FREQ?'
+  - Frequency : 'MEAS:FREQ?'
 
-      - Period : 'MEAS:PER?'
+  - Period : 'MEAS:PER?'
 
----
+
 <br></br>
 ---
+
 >- ## 가상 측정장비와 통신 (개발용)
 
   1. Git, Node.js, Yarn 설치
