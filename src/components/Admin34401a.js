@@ -13,6 +13,8 @@ class Admin34401a extends Component {
     this.state = {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
+      users: null,
+      user_list: [],
       num: '',
       name: '',
       rank: '',
@@ -23,6 +25,9 @@ class Admin34401a extends Component {
       mean: 0,
       timer: false,
       timer_period: 1,
+      connected: '',
+      selectedId: '',
+      selectedProcedure: '',
       data: [
         {
           y: [],
@@ -32,9 +37,9 @@ class Admin34401a extends Component {
         },
       ],
       layout: {
-        autosize:false,
-        width : 1240,
-        height : 450,
+        autosize: false,
+        width: 1240,
+        height: 450,
         xaxis: {
           range: [0, 30],
           title: {
@@ -63,6 +68,15 @@ class Admin34401a extends Component {
     };
     this.fetchUserInfo();
   }
+  componentDidMount() {
+    axios
+      .get('https://express-server.run.goorm.io/user/getUsers')
+      .then((res) => res.data)
+      .then((data) => {
+        //data.forEach((data) => console.log(data));
+        this.setState({ users: data });
+      });
+  }
 
   handleClear = () => {
     const data_ = this.state.data.slice(undefined);
@@ -71,6 +85,17 @@ class Admin34401a extends Component {
   };
   handleGetUserInfo = () => {
     this.fetchUserInfo();
+  };
+  handleStartMeasuring = () => {
+    this.setState({
+      connected: this.state.selectedId,
+    });
+  };
+  onSelectBoxChanged1 = (event) => {
+    this.setState({ selectedId: event.target.value });
+  };
+  onSelectBoxChanged2 = (event) => {
+    this.setState({ selectedProcedure: event.target.value });
   };
   handleClick = (path) => () => {
     if (path === '') {
@@ -146,16 +171,79 @@ class Admin34401a extends Component {
       });
   }
   render() {
+    var list_items;
+    if (this.state.users !== null) {
+      list_items = this.state.users.map((data) => (
+        <option key={data.idusers}>
+          {'ID:' + data.idusers + '  이름:' + data.name}
+        </option>
+      ));
+    }
     return (
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <button onClick={this.handleGetUserInfo}>정보 가져오기</button>
-        <button onClick={this.props.onLogout}>로그아웃</button>
-        <div className="d-flex">
-          <div className="">{'아이디 :' + this.state.idusers}</div>
-          <div className="">{'  이름:' + this.state.name}</div>
-          <div className="">{'  소속부대:' + this.state.region}</div>
-          <div className="">{'  계급:' + this.state.rank}</div>
+        <div className="flex-row m-2">
+          <div className="d-flex-inline">
+            {'아이디 :' +
+              this.state.idusers +
+              '이름:' +
+              this.state.name +
+              '소속부대:' +
+              this.state.region +
+              '계급:' +
+              this.state.rank}
+            <button
+              className="d-flex-inline ml-2"
+              onClick={this.props.onLogout}
+            >
+              로그아웃
+            </button>
+          </div>
         </div>
+        <div className="flex-row">
+          <label className="d-flex-inline" htmlFor="exampleFormControlSelect1">
+            사용자 선택
+          </label>
+          <select
+            onChange={this.onSelectBoxChanged1}
+            value={this.state.selectedId}
+            className="d-flex-inline "
+            id="exampleFormControlSelect1"
+          >
+            <option value="" defaultValue disabled hidden>
+              아이디
+            </option>
+
+            {list_items}
+          </select>
+          <label
+            className="d-flex-inline ml-2 "
+            htmlFor="exampleFormControlSelect1"
+          >
+            작업 선택
+          </label>
+          <select
+            onChange={this.onSelectBoxChanged2}
+            value={this.state.selectedProcedure}
+            className="d-flex-inline"
+            id="exampleFormControlSelect1"
+          >
+            <option value="" defaultValue disabled hidden>
+              작업
+            </option>
+            <option>test1</option>
+            <option>test2</option>
+            <option>test3</option>
+            <option>test4</option>
+            <option>test5</option>
+          </select>
+          <button
+            className="d-flex-inline ml-2"
+            onClick={this.handleStartMeasuring}
+          >
+            측정 시작
+          </button>
+        </div>
+
         <div className="d-flex flex-row justify-content-center">
           <LeftPannel
             unit={this.state.unit}
@@ -163,8 +251,11 @@ class Admin34401a extends Component {
             onClick={this.handleClick}
             onClear={this.handleClear}
           />
-          <RightPannel />
-            num={this.state.num}
+          <RightPannel
+            connected={this.state.connected}
+            id={this.state.selectedId}
+            procedure={this.state.selectedProcedure}
+          />
         </div>
         <Plot
           data={this.state.data}

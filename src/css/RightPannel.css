@@ -1,6 +1,6 @@
-#RightPannel #myTabContent {
+#RightPannel {
   border-radius: 1em;
-  height: 300px;
+  height: 400px;
   overflow: scroll;
 }
 table {
