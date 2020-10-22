@@ -28,19 +28,29 @@ class Manual extends Component {
             </div>
             <div className="modal-body">
               <img
-                src={process.env.PUBLIC_URL + '/current.png'}
+                src={process.env.PUBLIC_URL + '/ACV_measure_.jpg'}
                 class="img-fluid"
                 alt="image1"
               />
               <img
-                src={process.env.PUBLIC_URL + '/volt.png'}
+                src={process.env.PUBLIC_URL + '/DCV_measure_.jpg'}
                 class="img-fluid"
                 alt="image2"
               />
               <img
-                src={process.env.PUBLIC_URL + '/frequency.png'}
+                src={process.env.PUBLIC_URL + '/RES_measure_.jpg'}
                 class="img-fluid"
                 alt="image3"
+              />
+              <img
+                src={process.env.PUBLIC_URL + '/FREQ_measure_.jpg'}
+                class="img-fluid"
+                alt="image4"
+              />
+              <img
+                src={process.env.PUBLIC_URL + '/PER_measure_.jpg'}
+                class="img-fluid"
+                alt="image5"
               />
             </div>
             <div className="modal-footer">
