@@ -1,9 +1,12 @@
-#RightPannel {
-  border-radius: 1em;
+#ProceduresPannel {
+  border-radius: 0.5em;
   height: 400px;
-  overflow: scroll;
 }
-table {
+#ChattingPannel {
+  border-radius: 0.5em;
+  height: 400px;
+}
+/* table {
   width: 100%;
   border: 1px solid black;
 }
@@ -11,4 +14,4 @@ td {
   padding: 10px;
   border: 1px solid black;
   border-spacing: 1px;
-}
+} */

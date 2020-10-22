@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
-
+import { Spinner } from 'react-bootstrap';
 import '../css/User.css';
 import cookie from 'react-cookies';
 import Manual from '../components/Manual';
@@ -54,7 +54,6 @@ class User extends Component {
           </div>
         </div>
         <div className="d-flex flex-row align-items-stretch mt-4">
-          <Chatting />
           <ul class="list-group">
             <li class="list-group-item list-group-item-success">
               0. 장비 연결 테스트
@@ -63,6 +62,7 @@ class User extends Component {
               1. 전압 DC 5V 테스트
             </li>
             <li class="list-group-item list-group-item-secondary">
+              <Spinner className="" animation="grow" size="sm" />
               2. 전류 20A 테스트
             </li>
             <li class="list-group-item ">3. 주파수 10KHz 테스트</li>
