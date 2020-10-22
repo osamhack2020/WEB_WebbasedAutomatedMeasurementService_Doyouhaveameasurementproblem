@@ -1,171 +1,68 @@
-# WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
-
-: 산업용 계측장비 제어하여 측정값 분석 등 기능 제공하는 웹 서비스
-
-## 개발 진행 상황 보기👇
-
--[리엑트 프론트엔드 서버 ](https://react-front-server.run.goorm.io/)
-
--[익스프레스 REST API 서버](https://express-server.run.goorm.io/)
-
-# 개발 BlockDiagram
-
-![구성도_mysql추가jpg](https://user-images.githubusercontent.com/5003195/96605615-609a9200-1331-11eb-9fec-13f98c099167.jpg)
-
-## 개발스택 요약 설명
-
-    - End user에게 보여질 웹은 React.js Bootstrap 기반 서버입니다.
-
-    - 산업용 계측정장비를 원격으로 다루기 위한 node.js express 기반 REST API 서버입니다.
-
-    - GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
-
-# 컴퓨터 구성 / 필수 조건
-
-- 운영제체 : Linux Only
-- [Linux GPIB Package](https://sourceforge.net/projects/linux-gpib/files/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.3/)를 설치하고 GPIB장치를 완전히 구성
-- [Linux GPIB Package와 호환되는 GPIB 인터페이스](https://linux-gpib.sourceforge.io/doc_html/supported-hardware.html). (ex GPIB-USB-B Adapter).
-- GPIB 규격의 측정 장비 (ex [34401A](https://kr.element14.com/productimages/standard/en_GB/1335866-40.jpg))
-
-# 기술 스택(Technique Used)
-
-## Back-end
-
-    - Node.js
-    - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
-    - Express.js
-    - REST API
-    - MySQL
-
-## Front-end
-
-    - React.js
-    - Bootstarp
-
-# 설치 안내(Installation Process) / 구성(Structure)
-
-    :  in Ubuntu 20.04 LTS
-
-- ## 실제 측정장비와 통신
-
-  1. Git, Node.js, Yarn 설치
-     ```
-     $ sudo apt-get install git
-     $ sudo apt-get install node.js
-     $ npm -g install yarn
-     ```
-  2. Linux GPIB Package 빌드
-     ```
-     $ sudo apt-install wget
-     $ wget -O linux-gpib-4.3.3.tar.gz https://sourceforge.net/projects/linux-gpib/files/latest/download
-     $ tar xfz linux-gpib-4.3.3.tar.gz && cd linux-gpib-4.3.3.tar.gz
-     $ tar xfz linux-gpib-user-4.3.3.tar.gz && cd linux-gpib-user-4.3.3.tar.gz
-     $ sudo ./configure
-     $ sudo make && sudo make install
-     ```
-  3. GPIB 인터페이스(GPIB-USB-B) 구성
-
-     - gpib.conf를 환경에 맞게 수정한다.
-
-       ```
-       $ cd /user/local/etc && vi gpib.conf
-       ```
-
-       Interface{} 와 Device{} 모듈 수정해야 한다.
-
-     - GPIB-USB-B 디바이스 장치 할당 번호 확인 한다.
-
-       ```
-       $ lsusb
-       ```
-
-       펌웨어 로드 할 시 GPIB-USB-B의 BUS
-
-     - GPIB-USB-B 펌웨어를 다운받고 로드한다.
-       ```
-       $ apt-get install fxload
-       $ git clone https://github.com/fmhess/linux_gpib_firmware.git
-       $ cd linux_gpib_firmware/ni_gpib_usb_b/
-       $ fxload -D /dev/bus/usb/BUS/DEVICE -I niusbb_firmware.hex -s niusbb_loader.hex
-       $ modprobe ni_usb_gpib
-       ```
-     - 정상적으로 연결되었는지 확인한다.
-       ```
-       $ gpib_config
-       ```
-
-  4. 프로젝트 로컬 PC에 저장하기.
-
-     ```
-     $ git clone https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem.git
-     ```
-
-  5. 해당 폴더에서 종속 라이브러리 설치 및 DB 연결
-     ```
-     $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
-     $ yarn install
-     $ yarn add mysql
-     ```
-  6. 서버 실행
-
-     ```
-     $ yarn start             # front-end 서버 실행
-     $ node server/server.js  # back-end 서버 실행
-     ```
-
-  7. 실행 확인
-     - http://localhost:3000
-
-  ### 장비에서 실제 측정값 추출 : GET 방식
-
-      - Voltage DC : 'MEAS:VOLT:DC?'
-        (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
-
-      - Resistance : 'MEAS:RES?'
-
-      - Frequency : 'MEAS:FREQ?'
-
-      - Period : 'MEAS:PER?'
-
-- ## 가상 측정장비와 통신 (개발용)
-
-  1. Git, Node.js, Yarn 설치
-     ```
-     $ sudo apt-get install git
-     $ sudo apt-get install node.js
-     $ npm -g install yarn
-     ```
-  2. 프로젝트 로컬 PC에 저장하기.
-
-     ```
-     $ git clone https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem.git
-     ```
-
-  3. 해당 폴더에서 종속 라이브러리 설치 및 DB 연동
-     ```
-     $ cd WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem
-     $ yarn remove linux-gpib       # 가상측정장비 통신에서 사용하지 않는다
-     $ yarn install
-     $ yarn add mysql
-     ```
-  4. 서버 실행
-
-     ```
-     $ yarn start                  # front-end 서버 실행
-     $ node server_test/server.js  # back-end 서버 실행
-     ```
-
-  5. 실행 확인
-     - http://localhost:3000
-
 # 팀 로고(Team Logo)
 
-![로고_DyhaMP](https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg)
+![로고_DyhaMP](https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg){:width="300" height="300"(: .center)}
 
-# 팀 정보(Team Information)
+개발 프로젝트의 성격과 별개로 가장높은 공군의 힘 얘기하다가 최근에 화두되었던 너인성문제있어?의 응용하여 너측정문제있어?라고 결정되어 제작함.
 
-- 이재용(ljy13579@naver.com) ,Github_ID : NevErdiEkilLeR
+# 팀 소개(Team Information)
 
-- 김영주(fjvbn2003@gmail.com) , Github_ID : fjvbn2003
+   ## 팀원(나이순)
+   ---
+      No|Team|Name|E-mail|Github_ID
+      ---|---|---|---|---
+      1|팀장|이재용|ljygenius@gmail.com|Neverdiekiller
+      2|팀원|김영주|fjvbn2003@gmail.com|fjvbn2003
+      3|팀원|권기남|ginamai0129g@gmail.com|ginami0129g
+   ---
+   ## 소개
+   ---
+      * 너측정문제있어? -> Do you have a measurement problem? -> DyhaMP
+      * 팀원들과 잦은 회의를 통해 재미와 감동을 찾아가는 감성적인 팀이며,
+      * 목표는 ***1등***이며, 수상식에서 만나 즐겁게 회포를 풀 예정임.
+      * 시상식 사진을 최종 Readme.md 업로드로 마무리 할 예정임.
+   ---
 
-- 권기남(ginami0129g@gmail.com) , Github_ID : ginami0129g
+# 프로젝트 소개(Project Information)
+
+   ## 추진배경
+
+      * 코로나-19에 따른 비대면 서비스 강조 및 요구사항이 높아지며,
+      * 3군(육, 해, 공군) 무기체계 성능 유지를 위해 부서별 보유한 산업 계측기를 활용하여
+         산업계측기 : 군 내부에서 사용하는 용어는 **정밀측정장비**임. 
+      * 주기적으로 측정함.(군 보유 계측기 수 : 약 1X,XXX 종 10X,XXX 점 // 대외비)
+      * 정확/정밀한 측정을 위해 산업계측기 성능을 주기적으로 정비 수행해야함.
+      * 정비수행 부서인 공군 군수사 제 85정밀표준정비창(약칙 85창)에 입고에서 출고까지의 공정을 통해
+      * 측정을 받아야하며, 안받을 경우 보유 무기체계 정확/정밀 소급 및 성능 유지에 상당한 영향 초래함.
+      * 또한, 산업계측기를 85창에 방문하여 입/출고에 따른 인원, 시간, 비용 과다 발생.
+      
+   ## 기대효과
+
+      * 산업계측기(약 1X,XXX종 10X,XXX점) 입/출고를 위한 인원, 이동시간/비용 등 상당한 절감
+         계측기 보유 부서: 전 지역에 산발적으로 산재(대외비)
+      * 입/출고를 위한 포장/이동 중 손망실 방지 및 원격제어를 통한 측정 자동화로 품질신뢰도 향상
+         입/출고 평균 기간 : 약 2X일(3군 평균값 // 대외비)
+      * 각 군의 무기쳬계 운용 가동률 효율 증대 및 계측기 보유 부서 편의 효과 극대
+
+---
+
+# 개발 진행 현황
+
+   ## 개발현황(OSAM 양식)
+   ---
+      No|개발현황|진행률|비고
+      ---|---|---|---
+      1|개발소스| 50 / 100 % |DB 구축 진행 및 추가 기능 개발 中
+      2|개발문서| 50 / 100 % |소스코드 주석 처리 中
+      3|발표자료| 0 / 100 % |10월 4주차(마지막 주) 작성 예정
+      4|시연영상| 0 / 100 % |10월 4주차(마지막 주) 작성 예정
+      5|라이선스| 0 / 100 % |멘토링을 통한 문의 후 작성 예정
+   ---
+
+   ## 개발 진행 상황 👇
+---
+   - [개발 프로젝트 인스톨(install) 안내](INSTALL.md)
+
+   - [리엑트 프론트엔드 서버](https://react-front-server.run.goorm.io/)
+
+   - [익스프레스 REST.API 서버](https://express-server.run.goorm.io/)
+---
