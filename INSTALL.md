@@ -30,7 +30,7 @@
 
 # 기술 스택(Technique Used)
 
-## Back-end
+>>## Back-end
 ---
  - Node.js
  - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
@@ -38,7 +38,7 @@
  - REST API
  - MySQL
 ---
-## Front-end
+>>## Front-end
 ---
  - React.js
  - Bootstarp
