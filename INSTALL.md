@@ -12,14 +12,16 @@
 <img src="https://user-images.githubusercontent.com/5003195/96605615-609a9200-1331-11eb-9fec-13f98c099167.jpg")
 </p>
 
-
+--
+<br></br>
 >## 개발스택 요약 설명
 
   - End user에게 보여질 웹은 React.js Bootstrap 기반 서버입니다.
   - 산업용 계측정장비를 원격으로 다루기 위한 node.js express 기반 REST API 서버입니다.
   - GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
 
-># 컴퓨터 구성 / 필수 조건
+---
+# 컴퓨터 구성 / 필수 조건
 
 - 운영제체 : Linux Only
 - [Linux GPIB Package](https://sourceforge.net/projects/linux-gpib/files/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.3/)를 설치하고 GPIB장치를 완전히 구성
@@ -30,7 +32,7 @@
 
 # 기술 스택(Technique Used)
 
->>## Back-end
+>## Back-end
 ---
  - Node.js
  - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
@@ -38,7 +40,7 @@
  - REST API
  - MySQL
 ---
->>## Front-end
+>## Front-end
 ---
  - React.js
  - Bootstarp
@@ -46,11 +48,11 @@
 
 ---
 
-># 설치 안내(Installation Process) / 구성(Structure)
+# 설치 안내(Installation Process) / 구성(Structure)
 
   :  in Ubuntu 20.04 LTS
 
-- ## 실제 측정장비와 통신
+>- ## 실제 측정장비와 통신
 
   1. Git, Node.js, Yarn 설치
      ```
@@ -122,7 +124,7 @@
 
 
 ---
-  ### 장비에서 실제 측정값 추출 : GET 방식
+>- ## 장비에서 실제 측정값 추출 : GET 방식
 
       - Voltage DC : 'MEAS:VOLT:DC?'
         (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
@@ -136,7 +138,7 @@
 ---
 
 ---
-- ## 가상 측정장비와 통신 (개발용)
+>- ## 가상 측정장비와 통신 (개발용)
 
   1. Git, Node.js, Yarn 설치
      ```
