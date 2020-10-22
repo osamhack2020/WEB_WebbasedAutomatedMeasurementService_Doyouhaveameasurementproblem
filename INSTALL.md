@@ -31,7 +31,7 @@
 - GPIB 규격의 측정 장비 (ex [34401A](https://kr.element14.com/productimages/standard/en_GB/1335866-40.jpg))
 
 
-<br></br><br></br>
+<br></br>
 
 # 기술 스택(Technique Used)
 
@@ -48,7 +48,7 @@
  - React.js
  - Bootstarp
 ---
-<br></br><br></br>
+<br></br>
 ---
 # 설치 안내(Installation Process) / 구성(Structure)
 
@@ -125,7 +125,8 @@
      - http://localhost:3000
 
 
----
+<br></br>
+
 >- ## 장비에서 실제 측정값 추출 : GET 방식
 
       - Voltage DC : 'MEAS:VOLT:DC?'
@@ -138,7 +139,7 @@
       - Period : 'MEAS:PER?'
 
 ---
-<br></br><br></br>
+<br></br>
 ---
 >- ## 가상 측정장비와 통신 (개발용)
 
