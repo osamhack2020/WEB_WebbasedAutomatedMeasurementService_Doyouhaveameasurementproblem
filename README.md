@@ -8,6 +8,7 @@
 # 팀 소개(Team Information)
 
    >## 팀원(나이순)
+<p align = "center">
 
 No|Team|Name|E-mail|Github_ID
 ---|---|---|---|---
@@ -15,7 +16,7 @@ No|Team|Name|E-mail|Github_ID
 2|팀원|김영주|fjvbn2003@gmail.com|fjvbn2003
 3|팀원|권기남|ginamai0129g@gmail.com|ginami0129g
 
-
+</p>
 
    >## 소개
 
