@@ -17,7 +17,7 @@ class User extends Component {
 
   render() {
     return (
-      <div className="d-flex flex-column align-items-center justify-content-center">
+      <div className="d-flex flex-column align-items-center justify-content-center bg-light">
         User.js 장비를 직접 측정하는 사용자의 화면입니다.
         <div className="topPannel flex-row  mt-4">
           <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
