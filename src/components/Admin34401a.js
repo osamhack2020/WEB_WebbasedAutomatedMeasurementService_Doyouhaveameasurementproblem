@@ -32,6 +32,9 @@ class Admin34401a extends Component {
         },
       ],
       layout: {
+        autosize:false,
+        width : 1240,
+        height : 450,
         xaxis: {
           range: [0, 30],
           title: {
