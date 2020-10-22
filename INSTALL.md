@@ -21,7 +21,7 @@
   - GET, POST 명령어를 서버로 보내면, 서버에서 측정장비로 부터 측정된 데이터를 가져와 json 형식의 파일로 클라이언트에게 보내줍니다.
 
 ---
-<br></br><br></br>
+<br></br><
 
 # 컴퓨터 구성 / 필수 조건
 
@@ -57,10 +57,13 @@
  </tr>
  </tbody></table>
 
+* In Addtion to GPIB Drivers  
  - [Node-Linux-Gpib](https://github.com/jue89/node-linux-gpib.git)
----
+
 >## Front-end
+
 ---
+
 <table><tbody>
  <tr>
   <td>
@@ -80,7 +83,6 @@
   </td>
  </tr>
  </tbody></table>
----
 
  >## DB
 <table><tbody>
@@ -91,11 +93,13 @@
  </tr>
  </tbody></table>
 ---
+
 <br></br>
 ---
+
 # 설치 안내(Installation Process) / 구성(Structure)
 
-  :  in Ubuntu 20.04 LTS
+* in Ubuntu 20.04 LTS
 
 >- ## 실제 측정장비와 통신
 
