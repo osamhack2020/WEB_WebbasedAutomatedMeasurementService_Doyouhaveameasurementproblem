@@ -180,14 +180,14 @@
 
 >- ## 장비에서 실제 측정값 추출 : GET 방식
     ```
-  - Voltage DC : 'MEAS:VOLT:DC?'
-    (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
+     - Voltage DC : 'MEAS:VOLT:DC?'
+        (AC 경우 'MESA:VOLT:AC?' 만 변경해주면 됨.)
 
-  - Resistance : 'MEAS:RES?'
+     - Resistance : 'MEAS:RES?'
 
-  - Frequency : 'MEAS:FREQ?'
+     - Frequency : 'MEAS:FREQ?'
 
-  - Period : 'MEAS:PER?'
+     - Period : 'MEAS:PER?'
     ```
 
 <br></br>
