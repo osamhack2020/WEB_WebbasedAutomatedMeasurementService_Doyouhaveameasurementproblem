@@ -34,38 +34,49 @@ class Admin34401a extends Component {
           y: [],
           type: 'chart',
           mode: 'lines+markers',
-          marker: { color: 'green' },
+          marker: { color: '#17A2B8' },
         },
       ],
       layout: {
-        autosize: false,
-        width: 1240,
+        autosize: true,
+        width: 1190,
         height: 450,
+        margin:{
+          l:25,
+          r:25,
+          b:22,
+          t:40,
+        },
         xaxis: {
           range: [0, 30],
-          title: {
-            text: 'time',
-            font: {
-              family: 'Arial',
-              size: 12,
-            },
+          tickfont:{
+            color: '#FFFFFF',
+            size: 15
           },
         },
         yaxis: {
           autorange: true,
+          tickfont : {
+            color: '#FFFFFF',
+            size:15
+          },
           text: '',
         },
-        plot_bgcolor: 'black',
+        plot_bgcolor: '#343A40',
+        paper_bgcolor:'#6C757D',
         title: {
           text: 'history',
           font: {
             family: 'Arial',
-            size: 24,
+            size: 20,
+            color: "#ffffff"
           },
         },
       },
       frames: [],
-      config: {},
+      config: {
+        displayModeBar: true,
+      },
     };
     this.fetchUserInfo();
   }
@@ -281,14 +292,18 @@ class Admin34401a extends Component {
             procedureContent={this.state.selectedProcedureContent}
           />
         </div>
-        <Plot
-          data={this.state.data}
-          layout={this.state.layout}
-          frames={this.state.frames}
-          config={this.state.config}
-          onInitialized={(figure) => this.setState(figure)}
-          onUpdate={(figure) => this.setState(figure)}
-        />
+        <div
+          className="d-flex flex-column align-items-stretch border border-light rounded-lg p-1 bg-secondary"
+        >
+          <Plot
+            data={this.state.data}
+            layout={this.state.layout}
+            frames={this.state.frames}
+            config={this.state.config}
+            onInitialized={(figure) => this.setState(figure)}
+            onUpdate={(figure) => this.setState(figure)}
+          />
+        </div>
       </div>
     );
   }
