@@ -7,7 +7,15 @@ const socket = io.connect('https://express-server.run.goorm.io');
 class RightPannel extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      length: null,
+      procidureContent: null,
+      title: null,
+      vals: null,
+      units: null,
+      procedureStatus: null,
+      editMessage: ' ',
+    };
   }
   sendMessage = () => {
     console.log('sendMessage');
@@ -19,16 +27,30 @@ class RightPannel extends Component {
       this.props.connected === this.props.id &&
       this.props.procedure
     ) {
+      this.state = {
+        length: this.props.procedureContent.length,
+        procidureContent: this.props.procedureContent,
+        title: this.props.procedureContent.title,
+        vals: this.props.procedureContent.test_vals.split(' '),
+        units: this.props.procedureContent.test_units.split(' '),
+        procedureStatus: Array(this.length).fill(null),
+      };
+      var procedurelist_items;
+      if (this.state.procedureContent !== null) {
+        procedurelist_items = this.state.vals.map((data, index) => (
+          <li className="list-group-item list-group-item-success" key={index}>
+            {index + 1 + '.  ' + data + this.state.units[index] + ' 측정하기.'}
+          </li>
+        ));
+      }
       return (
-        <div
-          id="RightPannel"
-          className="d-flex flex-row align-items-center overflow-auto"
-        >
-          <div className="d-flex bg-light">
+        <div id="RightPannel" className="d-flex flex-row align-items-center ">
+          <div className="d-flex bg-light overflow-auto">
             <ul id="ProceduresPannel" className="list-group">
               <li className="list-group-item list-group-item-success">
                 0. 장비 연결 테스트
               </li>
+              {procedurelist_items}
               <li className="list-group-item list-group-item-success">
                 1. 전압 DC 5V 테스트
               </li>

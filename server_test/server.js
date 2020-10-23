@@ -23,8 +23,11 @@ app.use('/procedure', procedure_router);
 io.on('connection', (socket) => {
   const { id } = socket.client;
   console.log(`User connected: ${id}`);
-  socket.on("chat message", msg => {
+  socket.on('chat message', (msg) => {
     console.log(`${id}: ${msg}`);
+  });
+  socket.on('finish', (msg) => {
+    socket.emit('change', msg);
   });
 });
 
