@@ -4,7 +4,7 @@ import { Spinner } from 'react-bootstrap';
 import '../css/User.css';
 import cookie from 'react-cookies';
 import Manual from '../components/Manual';
-import Chatting from '../components/Chatting';
+// import Chatting from '../components/Chatting';
 
 class User extends Component {
   constructor(props) {
