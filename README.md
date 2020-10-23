@@ -32,6 +32,7 @@ No|Team|Name|E-mail|Github_ID
 
    * 코로나-19에 따른 **비대면 서비스 강조 및 요구사항**이 높아지며,
    * 3군(육, 해, 공군) **무기체계 성능 유지**를 위해 부서별 보유한 산업 계측기를 활용하여 측정해야함.
+     - 무기체계 : 참고자료 맨 하단 별첨 자료 첨부 및 확인 가능.
      - 산업계측기 : 군 내부에서 사용하는 용어는 **정밀측정장비**임.
      - 군 보유 계측기 수 : 약 1X,XXX 종 10X,XXX 점 // 대외비)
    * 정확/정밀한 측정을 위해 산업계측기 성능을 **주기적으로 정비 수행해야**함.
@@ -72,4 +73,29 @@ No|개발현황|진행률|비고
    - [리엑트 프론트엔드 서버](https://react-front-server.run.goorm.io/)
 
    - [익스프레스 REST.API 서버](https://express-server.run.goorm.io/)
+---
+
+
+<br></br>
+
+## 별첨 자료
+---
+   - 공군 무기체계 참고자료
+
+<p align = "center">
+<img src="https://user-images.githubusercontent.com/5003195/96949147-2d6b2500-1522-11eb-8d8e-7352bb286923.png"></img>
+</p>
+
+   - 육군 무기체계 참고자료
+
+<p align = "center">
+<img src="https://user-images.githubusercontent.com/5003195/96949293-889d1780-1522-11eb-9f00-c452105b7754.png"></img>
+</p>
+
+   - 해군 무기체계 참고자료
+
+<p align = "center">
+<img src="https://user-images.githubusercontent.com/5003195/96949433-d154d080-1522-11eb-82b2-a169c2c60c9c.png"></img>
+</p>
+
 ---
