@@ -68,11 +68,31 @@ class RightPannel extends Component {
             id="ChattingPannel"
             className="d-flex flex-column bg-light overflow-auto"
           >
-            <ul className="list-group">
-              <li className="list-group-item">안녕ㅎ세요</li>
-              <li className="list-group-item ">안녕ㅎ세요</li>
-              <li className="list-group-item ">안녕ㅎ세요</li>
-            </ul>
+            <div className="msg_history">
+              <div className="incoming_msg">
+                <div className="received_msg">
+                  <div className="received_withd_msg">
+                    <p>Test which is a new approach to have all solutions</p>
+                    <span className="time_date"> 11:01 AM | June 9</span>
+                  </div>
+                </div>
+              </div>
+              <div className="outgoing_msg">
+                <div className="sent_msg">
+                  <p>Test which is a new approach to have all solutions</p>
+                  <span className="time_date"> 11:01 AM | June 9</span>{' '}
+                </div>
+              </div>
+            </div>
+            <div className="type_msg">
+              <div className="input_msg_write">
+                <input
+                  type="text"
+                  className="write_msg"
+                  placeholder="Type a message"
+                />
+              </div>
+            </div>
             <button
               className="d-flex-inline align-items-end"
               type="button"

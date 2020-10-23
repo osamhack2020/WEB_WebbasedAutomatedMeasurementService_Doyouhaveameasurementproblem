@@ -69,6 +69,43 @@ class User extends Component {
             <li class="list-group-item ">4. 주기 0.005 sec 테스트</li>
             <li class="list-group-item ">5. 저항 10Ω 테스트</li>
           </ul>
+          <div
+            id="ChattingPannel"
+            className="d-flex flex-column bg-light overflow-auto"
+          >
+            <div className="msg_history">
+              <div className="incoming_msg">
+                <div className="received_msg">
+                  <div className="received_withd_msg">
+                    <p>Test which is a new approach to have all solutions</p>
+                    <span className="time_date"> 11:01 AM | June 9</span>
+                  </div>
+                </div>
+              </div>
+              <div className="outgoing_msg">
+                <div className="sent_msg">
+                  <p>Test which is a new approach to have all solutions</p>
+                  <span className="time_date"> 11:01 AM | June 9</span>{' '}
+                </div>
+              </div>
+            </div>
+            <div className="type_msg">
+              <div className="input_msg_write">
+                <input
+                  type="text"
+                  className="write_msg"
+                  placeholder="Type a message"
+                />
+              </div>
+            </div>
+            <button
+              className="d-flex-inline align-items-end"
+              type="button"
+              onClick={this.sendMessage}
+            >
+              Send
+            </button>
+          </div>
         </div>
       </div>
     );
