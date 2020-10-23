@@ -27,14 +27,15 @@ class RightPannel extends Component {
       this.props.connected === this.props.id &&
       this.props.procedure
     ) {
-      this.setState({
+      // eslint-disable-next-line
+      this.state = {
         length: this.props.procedureContent.length,
         procidureContent: this.props.procedureContent,
         title: this.props.procedureContent.title,
         vals: this.props.procedureContent.test_vals.split(' '),
         units: this.props.procedureContent.test_units.split(' '),
         procedureStatus: Array(this.length).fill(null),
-      });
+      };
       var procedurelist_items;
       if (this.state.procedureContent !== null) {
         procedurelist_items = this.state.vals.map((data, index) => (
