@@ -27,26 +27,41 @@ class Manual extends Component {
               </button>
             </div>
             <div className="modal-body">
-              <img
-                src={process.env.PUBLIC_URL + '/ACV_measure_.jpg'}
-                class="img-fluid"
-                alt="image1"
-              />
+              <h5 className="modal-title" id="exampleModalLabel">
+                1. 직류전압 측정 연결 단자
+              </h5>
               <img
                 src={process.env.PUBLIC_URL + '/DCV_measure_.jpg'}
                 class="img-fluid"
+                alt="image1"
+              />
+              <h5 className="modal-title" id="exampleModalLabel">
+                2. 교류전압 측정 연결 단자
+              </h5>
+              <img
+                src={process.env.PUBLIC_URL + '/ACV_measure_.jpg'}
+                class="img-fluid"
                 alt="image2"
               />
+              <h5 className="modal-title" id="exampleModalLabel">
+                3. 2W 저항 측정 연결 단자
+              </h5>
               <img
                 src={process.env.PUBLIC_URL + '/RES_measure_.jpg'}
                 class="img-fluid"
                 alt="image3"
               />
+              <h5 className="modal-title" id="exampleModalLabel">
+                4. 주파수 측정 연결 단자
+              </h5>
               <img
                 src={process.env.PUBLIC_URL + '/FREQ_measure_.jpg'}
                 class="img-fluid"
                 alt="image4"
               />
+              <h5 className="modal-title" id="exampleModalLabel">
+                5. 주기 측정 연결 단자
+              </h5>
               <img
                 src={process.env.PUBLIC_URL + '/PER_measure_.jpg'}
                 class="img-fluid"
