@@ -14,7 +14,6 @@ class Admin34401a extends Component {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
       users: null,
-      user_list: [],
       num: '',
       name: '',
       rank: '',
@@ -28,6 +27,8 @@ class Admin34401a extends Component {
       connected: '',
       selectedId: '',
       selectedProcedure: '',
+      selectedProcedureContent: null,
+      procedures: null,
       data: [
         {
           y: [],
@@ -76,6 +77,20 @@ class Admin34401a extends Component {
         //data.forEach((data) => console.log(data));
         this.setState({ users: data });
       });
+    axios({
+      method: 'post',
+      url: 'https://express-server.run.goorm.io/procedure/getProcedures',
+      data: {},
+    })
+      .then((response) => {
+        this.setState({
+          procedures: response.data,
+        });
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   handleClear = () => {
@@ -96,6 +111,11 @@ class Admin34401a extends Component {
   };
   onSelectBoxChanged2 = (event) => {
     this.setState({ selectedProcedure: event.target.value });
+    this.state.procedures.forEach((element) => {
+      if (element.title === event.target.value) {
+        this.setState({ selectedProcedureContent: element });
+      }
+    });
   };
   handleClick = (path) => () => {
     if (path === '') {
@@ -137,7 +157,7 @@ class Admin34401a extends Component {
     })
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data);
+          //console.log(response.data);
           const tmp = response.data;
           this.setState({
             name: tmp.name,
@@ -171,12 +191,18 @@ class Admin34401a extends Component {
       });
   }
   render() {
-    var list_items;
+    var userlist_items;
     if (this.state.users !== null) {
-      list_items = this.state.users.map((data) => (
+      userlist_items = this.state.users.map((data) => (
         <option key={data.idusers}>
           {'ID:' + data.idusers + '  이름:' + data.name}
         </option>
+      ));
+    }
+    var procedurelist_items;
+    if (this.state.procedures !== null) {
+      procedurelist_items = this.state.procedures.map((data) => (
+        <option key={data.pid}>{data.title}</option>
       ));
     }
     return (
@@ -213,7 +239,7 @@ class Admin34401a extends Component {
               아이디
             </option>
 
-            {list_items}
+            {userlist_items}
           </select>
           <label
             className="d-flex-inline ml-2 "
@@ -230,11 +256,7 @@ class Admin34401a extends Component {
             <option value="" defaultValue disabled hidden>
               작업
             </option>
-            <option>test1</option>
-            <option>test2</option>
-            <option>test3</option>
-            <option>test4</option>
-            <option>test5</option>
+            {procedurelist_items}
           </select>
           <button
             className="d-flex-inline ml-2"
@@ -258,6 +280,7 @@ class Admin34401a extends Component {
             connected={this.state.connected}
             id={this.state.selectedId}
             procedure={this.state.selectedProcedure}
+            procedureContent={this.state.selectedProcedureContent}
           />
         </div>
         <Plot

@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
 app.use('/meas', measure_router);
 app.use('/user', user_router);
 app.use('/procedure', procedure_router);
-app.use('/pr', procedure_router);
 io.on('connection', (socket) => {
   const { id } = socket.client;
   console.log(`User connected: ${id}`);
