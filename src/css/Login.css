@@ -6,3 +6,8 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.custom {
+  width: 460px !important;
+  height: 56px !important;
+}

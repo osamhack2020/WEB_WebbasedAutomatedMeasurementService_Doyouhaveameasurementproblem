@@ -52,9 +52,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className=" d-flex flex-column align-items-center">
+      <div className=" d-flex flex-column align-items-center align-content-center">
         <form className="d-flex flex-column form-signin">
-          <h1 className=" d-flex h3 mb-3 font-weight-normal">Please sign in</h1>
+          <h1 className=" d-flex h3 mb-3 mt-5 text-right font-weight-normal">Please sign in</h1>
           <label htmlFor="inputEmail" className="d-flex sr-only">
             아이디
           </label>
@@ -62,7 +62,7 @@ class Login extends Component {
             type="id"
             id="inputEmail"
             name="id"
-            className="d-flex form-control"
+            className="d-flex custom form-control"
             placeholder="id"
             required
             autoFocus
@@ -76,27 +76,27 @@ class Login extends Component {
             type="password"
             id="inputPassword"
             name="password"
-            className="d-flex form-control"
+            className="d-flex custom mb-2 mt-2 form-control"
             placeholder="Password"
             required
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <select id="orederProcedure" className="d-flex form-control">
+          <select id="orederProcedure" className="d-flex custom form-control">
             <option value="" disabled>
               장비 선택
             </option>
             <option>34401a</option>
           </select>
           <button
-            className="d-flex btn btn-lg btn-primary btn-block"
+            className="d-flex btn custom text-center mt-5 btn-primary btn-block"
             type="button"
             onClick={this.onClickHandler}
           >
             로그인
           </button>
           <button
-            className="d-flex btn btn-lg btn-primary btn-block"
+            className="d-flex btn custom btn-primary btn-block"
             type="button"
             data-toggle="modal"
             data-target="#registerModal"
@@ -106,7 +106,7 @@ class Login extends Component {
           {/* <p className="d-flextext-muted">
             &copy; 2020 OSAM 너 측정 문제 있어?
           </p> */}
-          <div>
+          <div className="mt-5">
             측정자: ID:<b>test</b> PW: <b>1234</b>
           </div>
           <div>
