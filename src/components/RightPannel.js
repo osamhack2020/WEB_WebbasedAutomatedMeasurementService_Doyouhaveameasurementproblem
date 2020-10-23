@@ -17,6 +17,21 @@ class RightPannel extends Component {
       messageHistory: [],
       messageInput: '',
     };
+    socket.on('message to admin', (message) => {
+      console.log(message);
+      var tmp = this.state.messageHistory.concat(
+        <div className="incoming_msg">
+          <div className="received_msg">
+            <div className="received_withd_msg">
+              <p>{'ID: '+message.id}</p>
+              <p>{message.message}</p>
+              <span className="time_date"></span>
+            </div>
+          </div>
+        </div>,
+      );
+      this.setState({ messageHistory: tmp });
+    });
   }
   componentDidMount() {
     var tmp = [
@@ -31,9 +46,13 @@ class RightPannel extends Component {
     ];
     this.setState({ messageHistory: tmp });
   }
+
   sendMessage = () => {
     console.log('sendMessage');
-    socket.emit('chat message', 'hi server');
+    socket.emit('send message from admin', {
+      id: this.state.id,
+      message: this.state.messageInput,
+    });
     var tmp = this.state.messageHistory.slice(undefined);
     var d = new Date();
     var nowTime =

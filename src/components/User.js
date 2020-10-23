@@ -18,6 +18,21 @@ class User extends Component {
       messageHistory: [],
       procedures: null,
     };
+    socket.on('message to user', (message) => {
+      console.log(message);
+      var tmp = this.state.messageHistory.concat(
+        <div className="incoming_msg">
+          <div className="received_msg">
+            <div className="received_withd_msg">
+              <p>{message.id}</p>
+              <p>{message.message}</p>
+              <span className="time_date"></span>
+            </div>
+          </div>
+        </div>,
+      );
+      this.setState({ messageHistory: tmp });
+    });
   }
   componentDidMount() {
     var tmp = [
@@ -34,7 +49,10 @@ class User extends Component {
   }
   sendMessage = () => {
     console.log('sendMessage');
-    socket.emit('chat message', 'hi server');
+    socket.emit('send message from user', {
+      id: this.state.idusers,
+      message: this.state.messageInput,
+    });
     var tmp = this.state.messageHistory.slice(undefined);
     var d = new Date();
     var nowTime =

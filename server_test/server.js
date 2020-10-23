@@ -21,13 +21,18 @@ app.use('/meas', measure_router);
 app.use('/user', user_router);
 app.use('/procedure', procedure_router);
 io.on('connection', (socket) => {
-  const { id } = socket.client;
-  console.log(`User connected: ${id}`);
-  socket.on('chat message', (msg) => {
-    console.log(`${id}: ${msg}`);
+  socket.on('send message from admin', (item) => {
+    const msg = item.id + ' : ' + item.message;
+    console.log(msg);
+    io.emit('message to user', { id: item.id, message: item.message });
   });
-  socket.on('finish', (msg) => {
-    socket.emit('change', msg);
+  socket.on('send message from user', (item) => {
+    const msg = item.id + ' : ' + item.message;
+    console.log(msg);
+    io.emit('message to admin', { id: item.id, message: item.message });
+  });
+  socket.on('disconnect', function () {
+    console.log('user disconnected: ', socket.id);
   });
 });
 
