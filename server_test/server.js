@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const measure_router = require('./routers/measure.js');
@@ -18,6 +20,15 @@ app.get('/', (req, res) => {
 app.use('/meas', measure_router);
 app.use('/user', user_router);
 app.use('/procedure', procedure_router);
-app.listen(port, () => {
-  console.log(`express is running on ${port}`);
+app.use('/pr', procedure_router);
+io.on('connection', (socket) => {
+  const { id } = socket.client;
+  console.log(`User connected: ${id}`);
+  socket.on("chat message", msg => {
+    console.log(`${id}: ${msg}`);
+  });
+});
+
+server.listen(port, () => {
+  console.log(`express server is running on ${port}`);
 });

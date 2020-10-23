@@ -246,6 +246,9 @@ class Admin34401a extends Component {
 
         <div className="d-flex flex-row justify-content-center">
           <LeftPannel
+            connected={this.state.connected}
+            id={this.state.selectedId}
+            procedure={this.state.selectedProcedure}
             unit={this.state.unit}
             value={this.state.value}
             onClick={this.handleClick}

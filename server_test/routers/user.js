@@ -16,11 +16,11 @@ router.get('/getUsers', (req, res) => {
 });
 router.post('/userinfo', (req, res) => {
   const idusers = req.body.idusers;
-  console.log('in userinfor router');
+  //console.log('in userinfor router');
   db.query('SELECT * from users WHERE idusers = ? ', [idusers], (err, rows) => {
     if (err) {
       //console.log('db query err in user.js');
-      console.log(err);
+      //console.log(err);
       res.json({ loginsuccess: false });
     } else {
       //console.log(rows);
@@ -39,7 +39,7 @@ router.post('/userinfo', (req, res) => {
           rank: rank,
         });
       } else {
-        console.log("userinfo failed")
+        console.log('userinfo failed');
         res.json({ success: false });
       }
     }
@@ -54,7 +54,7 @@ router.post('/login', (req, res) => {
     (err, rows) => {
       if (err) {
         //console.log('db query err in user.js');
-        console.log(err);
+        //console.log(err);
         res.json({ loginsuccess: false });
       } else {
         //console.log('db query login in user.js');
@@ -88,16 +88,16 @@ router.post('/register', (req, res) => {
   const region = req.body.region;
   const isAdmin = req.body.isAdmin;
   const rank = req.body.rank;
-  console.log([idusers, password, name, region, isAdmin, rank]);
+  //console.log([idusers, password, name, region, isAdmin, rank]);
   db.query(
     'INSERT INTO users (idusers, password,name,region,isAdmin,rank)VALUES (?,?,?,?,?,?)',
     [idusers, password, name, region, isAdmin, rank],
     (err, rows) => {
       if (err) {
-        console.log(err);
+        //console.log(err);
         res.json({ registersuccess: false });
       } else {
-        console.log(rows);
+        //console.log(rows);
         res.send({ registersuccess: true });
       }
     },

@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../css/RightPannel.css';
 import { Spinner } from 'react-bootstrap';
-
+import io from 'socket.io-client';
+const socket = io.connect('https://express-server.run.goorm.io');
 class RightPannel extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
+  sendMessage = () => {
+    console.log('sendMessage');
+    socket.emit('chat message', 'hi server');
+  };
   render() {
     if (
       this.props.connected &&
@@ -37,18 +41,22 @@ class RightPannel extends Component {
               <li className="list-group-item ">5. 저항 10Ω 테스트</li>
             </ul>
           </div>
-          <div id="ChattingPannel" className="d-flex bg-light overflow-auto">
+          <div
+            id="ChattingPannel"
+            className="d-flex flex-column bg-light overflow-auto"
+          >
             <ul className="list-group">
-              <li className="list-group-item list-group-item-success">
-                안녕ㅎ세요
-              </li>
-              <li className="list-group-item list-group-item-success">
-                안녕ㅎ세요
-              </li>
-              <li className="list-group-item list-group-item-secondary">
-                안녕ㅎ세요
-              </li>
+              <li className="list-group-item">안녕ㅎ세요</li>
+              <li className="list-group-item ">안녕ㅎ세요</li>
+              <li className="list-group-item ">안녕ㅎ세요</li>
             </ul>
+            <button
+              className="d-flex-inline align-items-end"
+              type="button"
+              onClick={this.sendMessage}
+            >
+              Send
+            </button>
           </div>
         </div>
       );
