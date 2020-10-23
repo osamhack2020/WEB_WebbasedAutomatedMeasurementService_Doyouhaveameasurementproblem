@@ -103,9 +103,9 @@ class Login extends Component {
           >
             회원가입
           </button>
-          <p className="d-flextext-muted">
+          {/* <p className="d-flextext-muted">
             &copy; 2020 OSAM 너 측정 문제 있어?
-          </p>
+          </p> */}
           <div>
             측정자: ID:<b>test</b> PW: <b>1234</b>
           </div>

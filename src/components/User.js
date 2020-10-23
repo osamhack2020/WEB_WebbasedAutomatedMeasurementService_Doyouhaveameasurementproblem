@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import { Spinner } from 'react-bootstrap';

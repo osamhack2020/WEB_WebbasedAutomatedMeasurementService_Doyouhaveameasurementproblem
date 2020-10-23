@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+    #header {
+			background: #eeeeee;
+			padding:20px;
+      font-size:30px;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 1px solid #bbbbbb;
+		}
+    #header .logo {
+      display: inline-block;
+    }
+    #header span {
+      line-height: 105px;
+    }
+    #footer  {
+			background: #111111;
+			height: 50px;
+			padding:20px;
+			font-size:14px;
+			font-weight:bold;
+			color:#ffffff;
+			text-align: center;
+		}
+    #content {
+      background: #eeeeee;
+      position: relative;;
+      min-height: 800px;
+    }
+
+  </style>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -39,7 +70,17 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="header">
+      <div class="logo"><img src="logo.png"></div>
+      <span>
+        Automated Measurement Service
+      </span>
+      <div class="clear"></div>
+    </div>
+    <div id="content"></div>
+    <div id="footer">
+      <span>© 2020 OSAM 너 측정 문제 있어? All rights reserved.</span>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
