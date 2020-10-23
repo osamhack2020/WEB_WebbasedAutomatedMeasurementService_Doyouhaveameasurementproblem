@@ -1,10 +1,12 @@
 #ProceduresPannel {
   border-radius: 0.5em;
-  height: 400px;
+  height: 500px;
+  width: 200px;
 }
 #ChattingPannel {
   border-radius: 0.5em;
-  height: 400px;
+  height: 500px;
+  width: 300px;
 }
 /* table {
   width: 100%;
@@ -19,9 +21,7 @@ td {
   max-width: 500px;
   margin: auto;
 }
-img {
-  max-width: 100%;
-}
+
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
   float: left;

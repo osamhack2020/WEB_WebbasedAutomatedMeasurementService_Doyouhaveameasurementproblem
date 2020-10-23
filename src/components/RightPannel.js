@@ -8,18 +8,61 @@ class RightPannel extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: null,
       length: null,
-      procidureContent: null,
       title: null,
       vals: null,
       units: null,
       procedureStatus: null,
-      editMessage: ' ',
+      messageHistory: [],
+      messageInput: '',
     };
+  }
+  componentDidMount() {
+    var tmp = [
+      <div className="incoming_msg">
+        <div className="received_msg">
+          <div className="received_withd_msg">
+            <p>{this.state.id}</p>
+            <span className="time_date"></span>
+          </div>
+        </div>
+      </div>,
+    ];
+    this.setState({ messageHistory: tmp });
   }
   sendMessage = () => {
     console.log('sendMessage');
     socket.emit('chat message', 'hi server');
+    var tmp = this.state.messageHistory.slice(undefined);
+    var d = new Date();
+    var nowTime =
+      d.getFullYear() +
+      '/' +
+      (d.getMonth() + 1) +
+      '/' +
+      d.getDate() +
+      '/' +
+      d.getHours() +
+      '시' +
+      d.getMinutes() +
+      '분' +
+      d.getSeconds() +
+      '초';
+    tmp.push(
+      <div className="outgoing_msg">
+        <div className="sent_msg">
+          <p>{this.state.messageInput}</p>
+          <span className="time_date">{nowTime}</span>
+        </div>
+      </div>,
+    );
+
+    //메시지 비우기, history 업데이트
+    this.setState({ messageInput: '', messageHistory: tmp });
+  };
+  onInputChanged = (event) => {
+    this.setState({ messageInput: event.target.value });
   };
   render() {
     if (
@@ -27,23 +70,22 @@ class RightPannel extends Component {
       this.props.connected === this.props.id &&
       this.props.procedure
     ) {
+      this.state.id = this.props.id;
+      this.state.length = this.props.procedureContent.length;
+      this.state.title = this.props.procedureContent.title;
+      this.state.vals = this.props.procedureContent.test_vals.split(' ');
+      this.state.units = this.props.procedureContent.test_units.split(' ');
+      this.state.procedureStatus = Array(this.length).fill(null);
       // eslint-disable-next-line
-      this.state = {
-        length: this.props.procedureContent.length,
-        procidureContent: this.props.procedureContent,
-        title: this.props.procedureContent.title,
-        vals: this.props.procedureContent.test_vals.split(' '),
-        units: this.props.procedureContent.test_units.split(' '),
-        procedureStatus: Array(this.length).fill(null),
-      };
       var procedurelist_items;
-      if (this.state.procedureContent !== null) {
+      if (this.props.procedureContent && this.state.vals) {
         procedurelist_items = this.state.vals.map((data, index) => (
           <li className="list-group-item list-group-item-success" key={index}>
             {index + 1 + '.  ' + data + this.state.units[index] + ' 측정하기.'}
           </li>
         ));
       }
+
       return (
         <div id="RightPannel" className="d-flex flex-row align-items-center ">
           <div className="d-flex bg-light overflow-auto">
@@ -68,25 +110,12 @@ class RightPannel extends Component {
             id="ChattingPannel"
             className="d-flex flex-column bg-light overflow-auto"
           >
-            <div className="msg_history">
-              <div className="incoming_msg">
-                <div className="received_msg">
-                  <div className="received_withd_msg">
-                    <p>Test which is a new approach to have all solutions</p>
-                    <span className="time_date"> 11:01 AM | June 9</span>
-                  </div>
-                </div>
-              </div>
-              <div className="outgoing_msg">
-                <div className="sent_msg">
-                  <p>Test which is a new approach to have all solutions</p>
-                  <span className="time_date"> 11:01 AM | June 9</span>{' '}
-                </div>
-              </div>
-            </div>
+            <div className="msg_history">{this.state.messageHistory}</div>
             <div className="type_msg">
               <div className="input_msg_write">
                 <input
+                  onChange={this.onInputChanged}
+                  value={this.state.messageInput}
                   type="text"
                   className="write_msg"
                   placeholder="Type a message"

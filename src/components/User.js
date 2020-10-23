@@ -3,8 +3,10 @@ import { BsCircleFill } from 'react-icons/bs';
 import { Spinner } from 'react-bootstrap';
 import '../css/User.css';
 import cookie from 'react-cookies';
+import io from 'socket.io-client';
 import Manual from '../components/Manual';
 // import Chatting from '../components/Chatting';
+const socket = io.connect('https://express-server.run.goorm.io');
 
 class User extends Component {
   constructor(props) {
@@ -12,9 +14,57 @@ class User extends Component {
     this.state = {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
+      messageInput: '',
+      messageHistory: [],
+      procedures: null,
     };
   }
+  componentDidMount() {
+    var tmp = [
+      <div className="incoming_msg">
+        <div className="received_msg">
+          <div className="received_withd_msg">
+            <p>{this.state.id}</p>
+            <span className="time_date"></span>
+          </div>
+        </div>
+      </div>,
+    ];
+    this.setState({ messageHistory: tmp });
+  }
+  sendMessage = () => {
+    console.log('sendMessage');
+    socket.emit('chat message', 'hi server');
+    var tmp = this.state.messageHistory.slice(undefined);
+    var d = new Date();
+    var nowTime =
+      d.getFullYear() +
+      '/' +
+      (d.getMonth() + 1) +
+      '/' +
+      d.getDate() +
+      '/' +
+      d.getHours() +
+      '시' +
+      d.getMinutes() +
+      '분' +
+      d.getSeconds() +
+      '초';
+    tmp.push(
+      <div className="outgoing_msg">
+        <div className="sent_msg">
+          <p>{this.state.messageInput}</p>
+          <span className="time_date">{nowTime}</span>
+        </div>
+      </div>,
+    );
 
+    //메시지 비우기, history 업데이트
+    this.setState({ messageInput: '', messageHistory: tmp });
+  };
+  onInputChanged = (event) => {
+    this.setState({ messageInput: event.target.value });
+  };
   render() {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
@@ -54,44 +104,17 @@ class User extends Component {
           </div>
         </div>
         <div className="d-flex flex-row align-items-stretch mt-4">
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-success">
-              0. 장비 연결 테스트
-            </li>
-            <li class="list-group-item list-group-item-success">
-              1. 전압 DC 5V 테스트
-            </li>
-            <li class="list-group-item list-group-item-secondary">
-              <Spinner className="" animation="grow" size="sm" />
-              2. 전류 20A 테스트
-            </li>
-            <li class="list-group-item ">3. 주파수 10KHz 테스트</li>
-            <li class="list-group-item ">4. 주기 0.005 sec 테스트</li>
-            <li class="list-group-item ">5. 저항 10Ω 테스트</li>
-          </ul>
+          <ul class="list-group"></ul>
           <div
             id="ChattingPannel"
             className="d-flex flex-column bg-light overflow-auto"
           >
-            <div className="msg_history">
-              <div className="incoming_msg">
-                <div className="received_msg">
-                  <div className="received_withd_msg">
-                    <p>Test which is a new approach to have all solutions</p>
-                    <span className="time_date"> 11:01 AM | June 9</span>
-                  </div>
-                </div>
-              </div>
-              <div className="outgoing_msg">
-                <div className="sent_msg">
-                  <p>Test which is a new approach to have all solutions</p>
-                  <span className="time_date"> 11:01 AM | June 9</span>{' '}
-                </div>
-              </div>
-            </div>
+            <div className="msg_history">{this.state.messageHistory}</div>
             <div className="type_msg">
               <div className="input_msg_write">
                 <input
+                  onChange={this.onInputChanged}
+                  value={this.state.messageInput}
                   type="text"
                   className="write_msg"
                   placeholder="Type a message"

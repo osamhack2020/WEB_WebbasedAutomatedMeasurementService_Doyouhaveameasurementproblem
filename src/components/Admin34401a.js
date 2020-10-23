@@ -205,6 +205,7 @@ class Admin34401a extends Component {
         <option key={data.pid}>{data.title}</option>
       ));
     }
+    console.log(procedurelist_items);
     return (
       <div className="d-flex flex-column justify-content-center align-items-center">
         <div className="flex-row m-2">
@@ -253,9 +254,6 @@ class Admin34401a extends Component {
             className="d-flex-inline"
             id="exampleFormControlSelect1"
           >
-            <option value="" defaultValue disabled hidden>
-              작업
-            </option>
             {procedurelist_items}
           </select>
           <button
