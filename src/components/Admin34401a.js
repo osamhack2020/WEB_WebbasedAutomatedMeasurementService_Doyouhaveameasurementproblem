@@ -219,8 +219,8 @@ class Admin34401a extends Component {
     //console.log(procedurelist_items);
     return (
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <div className="flex-row m-2">
-          <div className="d-flex-inline p-1 bg-secondary">
+        <div className="flex-row m-2 align-items-start">
+          <div className="d-flex-inline flex-column float-left p-1 bg-secondary">
             {'아이디 :' +
               this.state.idusers +
               '이름:' +
@@ -237,7 +237,7 @@ class Admin34401a extends Component {
             </button>
           </div>
         </div>
-        <div className="flex-row p-1 bg-secondary">
+        <div className="flex-column float-right p-1 bg-secondary">
           <label className="d-flex-inline btn-group-vertical" htmlFor="exampleFormControlSelect1">
             사용자 선택
           </label>
@@ -279,13 +279,14 @@ class Admin34401a extends Component {
           </button>
           <button
             className="d-flex-inline ml-2"
-            onClick={this.handleStartMeasuring}
+            onClick={this.props.onLogout}
           >
             측정 취소
           </button>
         </div>
 
-        <div className="d-flex flex-row justify-content-center">
+        <div className="d-flex flex-row align-items-center justify-content-center">
+          <div className="d-flex flex-column">
           <LeftPannel
             connected={this.state.connected}
             id={this.state.selectedId}
@@ -295,6 +296,8 @@ class Admin34401a extends Component {
             onClick={this.handleClick}
             onClear={this.handleClear}
           />
+          </div>
+          <div className="d-flex flex-column">
           <RightPannel
             value={this.state.value}
             unit={this.state.unit}
@@ -303,8 +306,9 @@ class Admin34401a extends Component {
             procedure={this.state.selectedProcedure}
             procedureContent={this.state.selectedProcedureContent}
           />
+          </div>
         </div>
-        <div className="d-flex flex-column align-items-stretch border border-light rounded-lg p-1 bg-secondary">
+        <div className="d-flex flex-column align-items-end border border-light rounded-lg p-1 bg-secondary">
           <Plot
             data={this.state.data}
             layout={this.state.layout}

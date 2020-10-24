@@ -21,7 +21,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('https://express-server.run.goorm.io/')
+      .get('http://localhost:2020/')
       .then((res) => res.data)
       .then((data) => this.setState({ api_test: data.value }));
   }
