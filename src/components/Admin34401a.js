@@ -219,8 +219,8 @@ class Admin34401a extends Component {
     //console.log(procedurelist_items);
     return (
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <div id="userInfo" className="flex-row m-2">
-          <div className="d-flex-inline">
+        <div className="flex-row m-2">
+          <div className="d-flex-inline p-1 bg-secondary">
             {'아이디 :' +
               this.state.idusers +
               '이름:' +
