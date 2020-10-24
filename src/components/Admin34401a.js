@@ -265,6 +265,10 @@ class Admin34401a extends Component {
             className="d-flex-inline"
             id="exampleFormControlSelect1"
           >
+            {' '}
+            <option value="" defaultValue disabled hidden>
+              작업
+            </option>
             {procedurelist_items}
           </select>
           <button

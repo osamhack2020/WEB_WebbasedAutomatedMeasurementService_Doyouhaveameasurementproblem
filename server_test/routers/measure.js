@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 // 전압AC,전압DC, 주파수, 주기, 저항 json 포맷이 결정되기 전 까지 사용하는 코드.
 let voltages_ac = [
-  { value: '-9.99222490E+01' },
-  { value: '1.99971690E+00' },
-  { value: '8.12312360E-01' },
-  { value: '7.99221290E+01' },
-  { value: '6.12397190E+00' },
-  { value: '1.99812360E-01' },
+  { value: '1.09222490E+00' },
+  { value: '2.09971690E+00' },
+  { value: '3.12312360E+00' },
+  { value: '4.09221290E+00' },
+  { value: '5.02397190E+00' },
+  { value: '2.99812360E-00' },
+  { value: '5.99812360E-00' },
+  { value: '6.09812360E-00' },
 ];
 let voltages_dc = [
   { value: '-9.99222490E+01' },

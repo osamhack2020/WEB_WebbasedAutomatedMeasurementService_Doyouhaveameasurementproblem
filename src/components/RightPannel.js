@@ -10,14 +10,16 @@ class RightPannel extends Component {
     super(props);
     this.state = {
       id: null,
-      length: null,
+      length: 1000,
       title: null,
       vals: null,
       units: null,
-      procedureStatus: null,
       messageHistory: [],
       messageInput: '',
       procedureList: [],
+      current_index: 0,
+      beforeValue: -10000,
+      procedureStatus: Array(30).fill(null),
     };
     socket.on('message to admin', (message) => {
       //console.log(message);
@@ -86,7 +88,20 @@ class RightPannel extends Component {
     this.setState({ messageInput: event.target.value });
   };
   render() {
-    if (
+    if (this.state.length <= this.state.current_index) {
+      var tmp = this.state.procedureStatus.slice(0, this.state.length);
+
+      var procedureStatusItems = tmp.map((data, index) => {
+        <li key={index}>{index + '. ' + data}</li>;
+      });
+      return (
+        <div className="d-flex align-items-center p-5">
+          측정완료
+          <ul>{tmp.toString()}</ul>
+          <button>측정 정보 저장하기.</button>
+        </div>
+      );
+    } else if (
       this.props.connected &&
       this.props.connected === this.props.id &&
       this.props.procedure
@@ -96,22 +111,77 @@ class RightPannel extends Component {
       this.state.title = this.props.procedureContent.title;
       this.state.vals = this.props.procedureContent.test_vals.split(' ');
       this.state.units = this.props.procedureContent.test_units.split(' ');
-      this.state.procedureStatus = Array(this.length).fill(null);
       // eslint-disable-next-line
       // 성공시 list-group-item-success 실패시 list-group-item-secondary
       if (this.props.procedureContent && this.state.vals) {
-        this.state.procedureList = this.state.vals.map((data, index) => (
-          <li className="list-group-item " key={index}>
-            {index + 1 + '.  ' + data + this.state.units[index] + ' 측정하기.'}
-          </li>
-        ));
+        this.state.procedureList = this.state.vals.map((data, index) => {
+          if (index === this.state.current_index) {
+            return (
+              <li
+                className="list-group-item list-group-item-secondary"
+                key={index}
+              >
+                <Spinner className="" animation="grow" size="sm" />
+                {index +
+                  1 +
+                  '.  ' +
+                  data +
+                  this.state.units[index] +
+                  ' 측정하기.'}
+              </li>
+            );
+          } else if (index < this.state.current_index) {
+            return (
+              <li
+                className="list-group-item list-group-item-success"
+                key={index}
+              >
+                {index +
+                  1 +
+                  '.  ' +
+                  data +
+                  this.state.units[index] +
+                  ' 측정하기.'}
+              </li>
+            );
+          } else {
+            return (
+              <li className="list-group-item " key={index}>
+                {index +
+                  1 +
+                  '.  ' +
+                  data +
+                  this.state.units[index] +
+                  ' 측정하기.'}
+              </li>
+            );
+          }
+        });
       }
+      // 측정된 값과 비교하는 코드.
+      var current_index = this.state.current_index;
+
+      if (this.state.beforeValue !== this.props.value) {
+        if (
+          parseFloat(parseFloat(this.state.vals[current_index])) - 0.1 <
+            parseFloat(this.props.value) &&
+          parseFloat(this.props.value) <
+            parseFloat(this.state.vals[current_index]) + 0.1
+        ) {
+          this.state.procedureStatus[current_index] = parseFloat(
+            this.props.value,
+          );
+          console.log(this.props.value + ' success');
+          this.state.current_index = current_index + 1;
+        }
+        this.state.beforeValue = this.props.value;
+      }
+
       return (
         <div id="RightPannel" className="d-flex flex-row align-items-center ">
           <div className="d-flex bg-light overflow-auto">
             <ul id="ProceduresPannel" className="list-group">
               <li className="list-group-item list-group-item-success">
-                <Spinner className="" animation="grow" size="sm" />
                 0. 장비 연결 테스트
               </li>
               {this.state.procedureList}

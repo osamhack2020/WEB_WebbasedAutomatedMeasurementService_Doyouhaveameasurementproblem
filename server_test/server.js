@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
     io.emit('message to admin', { id: item.id, message: item.message });
   });
   socket.on('disconnect', function () {
-    console.log('user disconnected: ', socket.id);
+    //console.log('user disconnected: ', socket.id);
   });
 });
 

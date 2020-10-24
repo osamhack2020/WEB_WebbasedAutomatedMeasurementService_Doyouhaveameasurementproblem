@@ -46,7 +46,7 @@ class Login extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.name);
+    //console.log(e.target.name);
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -54,7 +54,9 @@ class Login extends Component {
     return (
       <div className=" d-flex flex-column align-items-center align-content-center">
         <form className="d-flex flex-column form-signin">
-          <h1 className=" d-flex h3 mb-3 mt-5 text-right font-weight-normal">Please sign in</h1>
+          <h1 className=" d-flex h3 mb-3 mt-5 text-right font-weight-normal">
+            Please sign in
+          </h1>
           <label htmlFor="inputEmail" className="d-flex sr-only">
             아이디
           </label>
