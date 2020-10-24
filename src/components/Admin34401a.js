@@ -218,7 +218,7 @@ class Admin34401a extends Component {
     }
     //console.log(procedurelist_items);
     return (
-      <div className="d-flex flex float-md-left align-items-center">
+      <div className="d-flex flex-column justify-content-center align-items-center">
         <div className="flex-row m-2">
           <div className="d-flex-inline p-1 bg-secondary">
             {'아이디 :' +
