@@ -219,7 +219,7 @@ class Admin34401a extends Component {
     //console.log(procedurelist_items);
     return (
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <div className="flex-row m-2">
+        <div id="userInfo" className="flex-row m-2">
           <div className="d-flex-inline">
             {'아이디 :' +
               this.state.idusers +
@@ -276,6 +276,12 @@ class Admin34401a extends Component {
             onClick={this.handleStartMeasuring}
           >
             측정 시작
+          </button>
+          <button
+            className="d-flex-inline ml-2"
+            onClick={this.handleStartMeasuring}
+          >
+            측정 취소
           </button>
         </div>
 
