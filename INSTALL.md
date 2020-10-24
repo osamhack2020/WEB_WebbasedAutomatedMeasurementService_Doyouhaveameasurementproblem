@@ -3,6 +3,8 @@
 ># 개발 진행 상황
 
 ---
+- [개발 프로젝트 화면 정의서 안내](/PPT/Automated%20Measurement%20Service_UI_define%20file.pdf)
+
 - [리엑트 프론트엔드 서버](https://react-front-server.run.goorm.io/)
 
 - [익스프레스 REST.API 서버](https://express-server.run.goorm.io/)
