@@ -17,14 +17,15 @@ class RightPannel extends Component {
       procedureStatus: null,
       messageHistory: [],
       messageInput: '',
+      procedureList: [],
     };
     socket.on('message to admin', (message) => {
-      console.log(message);
+      //console.log(message);
       var tmp = this.state.messageHistory.concat(
         <div className="incoming_msg">
           <div className="received_msg">
             <div className="received_withd_msg">
-              <p>{'ID: '+message.id}</p>
+              <p>{'ID: ' + message.id}</p>
               <p>{message.message}</p>
               <span className="time_date"></span>
             </div>
@@ -49,7 +50,7 @@ class RightPannel extends Component {
   }
 
   sendMessage = () => {
-    console.log('sendMessage');
+    //console.log('sendMessage');
     socket.emit('send message from admin', {
       id: this.state.id,
       message: this.state.messageInput,
@@ -97,33 +98,23 @@ class RightPannel extends Component {
       this.state.units = this.props.procedureContent.test_units.split(' ');
       this.state.procedureStatus = Array(this.length).fill(null);
       // eslint-disable-next-line
-      var procedurelist_items;
+      // 성공시 list-group-item-success 실패시 list-group-item-secondary
       if (this.props.procedureContent && this.state.vals) {
-        procedurelist_items = this.state.vals.map((data, index) => (
-          <li className="list-group-item list-group-item-success" key={index}>
+        this.state.procedureList = this.state.vals.map((data, index) => (
+          <li className="list-group-item " key={index}>
             {index + 1 + '.  ' + data + this.state.units[index] + ' 측정하기.'}
           </li>
         ));
       }
-
       return (
         <div id="RightPannel" className="d-flex flex-row align-items-center ">
           <div className="d-flex bg-light overflow-auto">
             <ul id="ProceduresPannel" className="list-group">
               <li className="list-group-item list-group-item-success">
+                <Spinner className="" animation="grow" size="sm" />
                 0. 장비 연결 테스트
               </li>
-              {procedurelist_items}
-              <li className="list-group-item list-group-item-success">
-                1. 전압 DC 5V 테스트
-              </li>
-              <li className="list-group-item list-group-item-secondary">
-                <Spinner className="" animation="grow" size="sm" />
-                2. 전류 20A 테스트
-              </li>
-              <li className="list-group-item ">3. 주파수 10KHz 테스트</li>
-              <li className="list-group-item ">4. 주기 0.005 sec 테스트</li>
-              <li className="list-group-item ">5. 저항 10Ω 테스트</li>
+              {this.state.procedureList}
             </ul>
           </div>
           <div

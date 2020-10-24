@@ -25,7 +25,7 @@ class User extends Component {
         <div className="incoming_msg">
           <div className="received_msg">
             <div className="received_withd_msg">
-              <p>{message.id}</p>
+              <p>ID: amdin</p>
               <p>{message.message}</p>
               <span className="time_date"></span>
             </div>

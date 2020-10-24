@@ -41,35 +41,35 @@ class Admin34401a extends Component {
         autosize: true,
         width: 1190,
         height: 450,
-        margin:{
-          l:25,
-          r:25,
-          b:22,
-          t:40,
+        margin: {
+          l: 25,
+          r: 25,
+          b: 22,
+          t: 40,
         },
         xaxis: {
           range: [0, 30],
-          tickfont:{
+          tickfont: {
             color: '#FFFFFF',
-            size: 15
+            size: 15,
           },
         },
         yaxis: {
           autorange: true,
-          tickfont : {
+          tickfont: {
             color: '#FFFFFF',
-            size:15
+            size: 15,
           },
           text: '',
         },
         plot_bgcolor: '#343A40',
-        paper_bgcolor:'#6C757D',
+        paper_bgcolor: '#6C757D',
         title: {
           text: 'history',
           font: {
             family: 'Arial',
             size: 20,
-            color: "#ffffff"
+            color: '#ffffff',
           },
         },
       },
@@ -216,7 +216,7 @@ class Admin34401a extends Component {
         <option key={data.pid}>{data.title}</option>
       ));
     }
-    console.log(procedurelist_items);
+    //console.log(procedurelist_items);
     return (
       <div className="d-flex flex-column justify-content-center align-items-center">
         <div className="flex-row m-2">
@@ -286,15 +286,15 @@ class Admin34401a extends Component {
             onClear={this.handleClear}
           />
           <RightPannel
+            value={this.state.value}
+            unit={this.state.unit}
             connected={this.state.connected}
             id={this.state.selectedId}
             procedure={this.state.selectedProcedure}
             procedureContent={this.state.selectedProcedureContent}
           />
         </div>
-        <div
-          className="d-flex flex-column align-items-stretch border border-light rounded-lg p-1 bg-secondary"
-        >
+        <div className="d-flex flex-column align-items-stretch border border-light rounded-lg p-1 bg-secondary">
           <Plot
             data={this.state.data}
             layout={this.state.layout}
