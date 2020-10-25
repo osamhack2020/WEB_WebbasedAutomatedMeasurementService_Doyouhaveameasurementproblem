@@ -4,6 +4,7 @@ import LeftPannel from './LeftPannel';
 import RightPannel from './RightPannel';
 import Plot from 'react-plotly.js';
 import cookie from 'react-cookies';
+import '../css/Admin34401a.css';
 
 class Admin34401a extends Component {
   constructor(props) {
@@ -40,8 +41,8 @@ class Admin34401a extends Component {
       ],
       layout: {
         autosize: true,
-        width: 1190,
-        height: 450,
+        width: 1100,
+        // height: 450,
         margin: {
           l: 25,
           r: 25,
@@ -220,26 +221,8 @@ class Admin34401a extends Component {
     }
     //console.log(procedurelist_items);
     return (
-      <div className="d-flex flex-column justify-content-center align-items-center">
-        <div className="flex-row m-2 align-items-start">
-          <div className="d-flex-inline flex-column float-left p-1 bg-secondary">
-            {'아이디 :' +
-              this.state.idusers +
-              '이름:' +
-              this.state.name +
-              '소속부대:' +
-              this.state.region +
-              '계급:' +
-              this.state.rank}
-            <button
-              className="d-flex-inline ml-2"
-              onClick={this.props.onLogout}
-            >
-              로그아웃
-            </button>
-          </div>
-        </div>
-        <div className="flex-column float-right p-1 bg-secondary">
+      <div className="d-flex flex-column align-items-center" id="Admin34401a">
+        <div className="flex-column float-right bg-secondary" id="userChoice">
           <label
             className="d-flex-inline btn-group-vertical"
             htmlFor="exampleFormControlSelect1"
@@ -251,8 +234,7 @@ class Admin34401a extends Component {
             value={this.state.selectedId}
             className="d-flex-inline"
             id="exampleFormControlSelect1"
-            disabled = {this.state.startProcedure}
-
+            disabled={this.state.startProcedure}
           >
             <option value="" defaultValue disabled hidden>
               아이디
@@ -271,7 +253,7 @@ class Admin34401a extends Component {
             value={this.state.selectedProcedure}
             className="d-flex-inline btn-group-vertical bg-light"
             id="exampleFormControlSelect1"
-            disabled = {this.state.startProcedure}
+            disabled={this.state.startProcedure}
           >
             <option value="" defaultValue disabled hidden>
               작업
@@ -289,8 +271,24 @@ class Admin34401a extends Component {
           </button>
         </div>
 
-        <div className="d-flex flex-row align-items-center justify-content-center">
-          <div className="d-flex flex-column">
+        <div className="d-flex flex-row align-items-center justify-content-center" id="pannel">
+          <div className="d-flex flex-column left">
+            <div className="d-flex-inline flex-column float-left p-1 bg-secondary">
+              {'아이디 :' +
+                this.state.idusers +
+                '이름:' +
+                this.state.name +
+                '소속부대:' +
+                this.state.region +
+                '계급:' +
+                this.state.rank}
+              <button
+                className="d-flex-inline ml-2"
+                onClick={this.props.onLogout}
+              >
+                로그아웃
+              </button>
+            </div>
             <LeftPannel
               connected={this.state.connected}
               id={this.state.selectedId}
@@ -301,7 +299,7 @@ class Admin34401a extends Component {
               onClear={this.handleClear}
             />
           </div>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column right">
             <RightPannel
               value={this.state.value}
               unit={this.state.unit}
@@ -315,7 +313,7 @@ class Admin34401a extends Component {
             />
           </div>
         </div>
-        <div className="d-flex flex-column align-items-end border border-light rounded-lg p-1 bg-secondary">
+        <div className="d-flex flex-column align-items-end border border-light rounded-lg bg-secondary">
           <Plot
             data={this.state.data}
             layout={this.state.layout}

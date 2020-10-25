@@ -187,7 +187,7 @@ class RightPannel extends Component {
       }
 
       return (
-        <div id="RightPannel" className="d-flex flex-row align-items-center ">
+        <div id="RightPannel" className="d-flex flex-row align-items-center">
           <div className="d-flex bg-light overflow-auto">
             <ul id="ProceduresPannel" className="list-group">
               <li className="list-group-item list-group-item-success">
@@ -224,7 +224,7 @@ class RightPannel extends Component {
       );
     } else {
       return (
-        <div className="d-flex align-items-center p-5">
+        <div className="d-flex align-items-center p-5" id="RightPannel">
           상단에 있는 사용자와 작업을 선택한 뒤에 측정시작 버튼을 눌러주세요.
         </div>
       );

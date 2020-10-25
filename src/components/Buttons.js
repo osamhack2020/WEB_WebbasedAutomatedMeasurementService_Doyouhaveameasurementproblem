@@ -15,7 +15,7 @@ class Buttons extends Component {
   render() {
     return (
       <div id="Buttons" className="d-flex flex-column">
-        <label className="d-flex text-white m-2" htmlFor="basic-url">
+        {/* <label className="d-flex text-white m-2" htmlFor="basic-url">
           사용자 지정 query
         </label>
         <div className="d-flex flex-row align-items-stretch input-group mb-3">
@@ -39,7 +39,7 @@ class Buttons extends Component {
           >
             Submit
           </button>
-        </div>
+        </div> */}
         <div className="d-flex flex-row align-items-strech bg-secondary justify-content-center mt-1 pl-1 pr-1">
           {/* setInterval(() => {
             
