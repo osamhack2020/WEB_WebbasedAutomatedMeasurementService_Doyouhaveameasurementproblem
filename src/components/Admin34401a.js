@@ -29,6 +29,7 @@ class Admin34401a extends Component {
       selectedProcedure: '',
       selectedProcedureContent: null,
       procedures: null,
+      startProcedure: false,
       data: [
         {
           y: [],
@@ -115,6 +116,7 @@ class Admin34401a extends Component {
   handleStartMeasuring = () => {
     this.setState({
       connected: this.state.selectedId,
+      startProcedure: true,
     });
   };
   onSelectBoxChanged1 = (event) => {
@@ -135,10 +137,10 @@ class Admin34401a extends Component {
     }
 
     this.fetchData(path);
-    if (path.match('volt') !== null) {
-      this.setState({ unit: 'V' });
-    } else if (path.match('curr') !== null) {
-      this.setState({ unit: 'V' });
+    if (path.match('ac') !== null) {
+      this.setState({ unit: 'ACV' });
+    } else if (path.match('dc') !== null) {
+      this.setState({ unit: 'DCV' });
     } else if (path.match('res') !== null) {
       this.setState({ unit: 'Ω' });
     } else if (path.match('freq') !== null) {
@@ -238,14 +240,19 @@ class Admin34401a extends Component {
           </div>
         </div>
         <div className="flex-column float-right p-1 bg-secondary">
-          <label className="d-flex-inline btn-group-vertical" htmlFor="exampleFormControlSelect1">
+          <label
+            className="d-flex-inline btn-group-vertical"
+            htmlFor="exampleFormControlSelect1"
+          >
             사용자 선택
           </label>
           <select
             onChange={this.onSelectBoxChanged1}
             value={this.state.selectedId}
-            className="d-flex-inline "
+            className="d-flex-inline"
             id="exampleFormControlSelect1"
+            disabled = {this.state.startProcedure}
+
           >
             <option value="" defaultValue disabled hidden>
               아이디
@@ -264,8 +271,8 @@ class Admin34401a extends Component {
             value={this.state.selectedProcedure}
             className="d-flex-inline btn-group-vertical bg-light"
             id="exampleFormControlSelect1"
+            disabled = {this.state.startProcedure}
           >
-            {' '}
             <option value="" defaultValue disabled hidden>
               작업
             </option>
@@ -277,35 +284,35 @@ class Admin34401a extends Component {
           >
             측정 시작
           </button>
-          <button
-            className="d-flex-inline ml-2"
-            onClick={this.props.onLogout}
-          >
+          <button className="d-flex-inline ml-2" onClick={this.props.onLogout}>
             측정 취소
           </button>
         </div>
 
         <div className="d-flex flex-row align-items-center justify-content-center">
           <div className="d-flex flex-column">
-          <LeftPannel
-            connected={this.state.connected}
-            id={this.state.selectedId}
-            procedure={this.state.selectedProcedure}
-            unit={this.state.unit}
-            value={this.state.value}
-            onClick={this.handleClick}
-            onClear={this.handleClear}
-          />
+            <LeftPannel
+              connected={this.state.connected}
+              id={this.state.selectedId}
+              procedure={this.state.selectedProcedure}
+              unit={this.state.unit}
+              value={this.state.value}
+              onClick={this.handleClick}
+              onClear={this.handleClear}
+            />
           </div>
           <div className="d-flex flex-column">
-          <RightPannel
-            value={this.state.value}
-            unit={this.state.unit}
-            connected={this.state.connected}
-            id={this.state.selectedId}
-            procedure={this.state.selectedProcedure}
-            procedureContent={this.state.selectedProcedureContent}
-          />
+            <RightPannel
+              value={this.state.value}
+              unit={this.state.unit}
+              connected={this.state.connected}
+              id={this.state.selectedId}
+              procedure={this.state.selectedProcedure}
+              procedureContent={this.state.selectedProcedureContent}
+              adminName={this.state.name}
+              adminRegion={this.state.region}
+              adminRank={this.state.rank}
+            />
           </div>
         </div>
         <div className="d-flex flex-column align-items-end border border-light rounded-lg p-1 bg-secondary">

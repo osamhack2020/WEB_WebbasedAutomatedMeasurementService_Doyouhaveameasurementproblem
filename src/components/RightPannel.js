@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //import axios from 'axios';
 import '../css/RightPannel.css';
 import { Spinner } from 'react-bootstrap';
+import ProcedureFinished from '../components/ProcedureFinished';
 import io from 'socket.io-client';
 const socket = io.connect('https://express-server.run.goorm.io');
 class RightPannel extends Component {
@@ -42,7 +43,6 @@ class RightPannel extends Component {
       <div className="incoming_msg">
         <div className="received_msg">
           <div className="received_withd_msg">
-            <p>{this.state.id}</p>
             <span className="time_date"></span>
           </div>
         </div>
@@ -91,14 +91,22 @@ class RightPannel extends Component {
     if (this.state.length <= this.state.current_index) {
       var tmp = this.state.procedureStatus.slice(0, this.state.length);
 
-      var procedureStatusItems = tmp.map((data, index) => {
-        <li key={index}>{index + '. ' + data}</li>;
-      });
       return (
         <div className="d-flex align-items-center p-5">
           측정완료
           <ul>{tmp.toString()}</ul>
-          <button>측정 정보 저장하기.</button>
+          <ProcedureFinished result={tmp} />
+          <button
+            data-toggle="modal"
+            data-target="#procedureFinished"
+            type="button"
+            userId={this.state.id}
+            adminName={this.props.adminName}
+            adminRegion={this.props.adminRegion}
+            adminRank={this.props.adminRank}
+          >
+            측정 결과 저장.
+          </button>
         </div>
       );
     } else if (
@@ -166,7 +174,8 @@ class RightPannel extends Component {
           parseFloat(parseFloat(this.state.vals[current_index])) - 0.1 <
             parseFloat(this.props.value) &&
           parseFloat(this.props.value) <
-            parseFloat(this.state.vals[current_index]) + 0.1
+            parseFloat(this.state.vals[current_index]) + 0.1 &&
+          this.state.units[current_index] === this.props.unit
         ) {
           this.state.procedureStatus[current_index] = parseFloat(
             this.props.value,
