@@ -11,3 +11,14 @@
   width: 460px !important;
   height: 56px !important;
 }
+
+#loginForm {
+  display: inline-block;
+  margin-top: -8%;
+}
+
+#loginComponent {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}

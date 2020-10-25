@@ -52,53 +52,53 @@ class Login extends Component {
 
   render() {
     return (
-      <div className=" d-flex flex-column align-items-center align-content-center">
-        <form className="d-flex flex-column form-signin">
-          <h1 className=" d-flex h3 mb-3 mt-5 text-right font-weight-normal">
+      <div className="align-items-center align-content-center" id="loginComponent">
+        <form className="form-signin" id="loginForm">
+          <h1 className=" h3 mb-4 text-left font-weight-normal">
             Please sign in
           </h1>
-          <label htmlFor="inputEmail" className="d-flex sr-only">
+          <label htmlFor="inputEmail" className="sr-only">
             아이디
           </label>
           <input
             type="id"
             id="inputEmail"
             name="id"
-            className="d-flex custom form-control"
+            className="custom form-control"
             placeholder="id"
             required
             autoFocus
             value={this.state.id}
             onChange={this.handleChange}
           />
-          <label htmlFor="inputPassword" className=" d-flex sr-only">
+          <label htmlFor="inputPassword" className="sr-only">
             비밀번호
           </label>
           <input
             type="password"
             id="inputPassword"
             name="password"
-            className="d-flex custom mb-2 mt-2 form-control"
+            className="custom mb-2 mt-2 form-control"
             placeholder="Password"
             required
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <select id="orederProcedure" className="d-flex custom form-control">
+          <select id="orederProcedure" className="custom form-control">
             <option value="" disabled>
               장비 선택
             </option>
             <option>34401a</option>
           </select>
           <button
-            className="d-flex btn custom text-center mt-5 btn-primary btn-block"
+            className=" btn custom text-center font-weight-bold mt-5 mb-2 btn-primary btn-block"
             type="button"
             onClick={this.onClickHandler}
           >
             로그인
           </button>
           <button
-            className="d-flex btn custom btn-primary btn-block"
+            className="btn custom btn-primary font-weight-bold btn-block"
             type="button"
             data-toggle="modal"
             data-target="#registerModal"
@@ -108,12 +108,12 @@ class Login extends Component {
           {/* <p className="d-flextext-muted">
             &copy; 2020 OSAM 너 측정 문제 있어?
           </p> */}
-          <div className="mt-5">
+          {/* <div className="mt-5">
             측정자: ID:<b>test</b> PW: <b>1234</b>
           </div>
           <div>
             관리자: ID:<b>admin</b> PW: <b>1234</b>
-          </div>
+          </div> */}
         </form>
 
         <Register
