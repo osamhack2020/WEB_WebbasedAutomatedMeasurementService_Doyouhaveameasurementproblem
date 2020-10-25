@@ -1,0 +1,16 @@
+.img-fluid{
+    width: 1000px;
+    height: 400px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    font-size: 2em;
+
+  }
+  
+.carousel-control-next-icon,  .carousel-control-prev-icon {
+    height: 30px;
+    width: 30px;
+  }
+
+
