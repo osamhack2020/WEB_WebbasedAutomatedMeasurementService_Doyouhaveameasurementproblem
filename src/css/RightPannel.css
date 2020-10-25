@@ -1,12 +1,17 @@
 #ProceduresPannel {
   border-radius: 0.5em;
-  height: 500px;
+  height: 100%;
   width: 200px;
 }
 #ChattingPannel {
   border-radius: 0.5em;
-  height: 500px;
+  height: 100%;
   width: 300px;
+}
+#RightPannel {
+  height: 100%;
+  /* background-color: green; */
+  z-index: 0;
 }
 /* table {
   width: 100%;
