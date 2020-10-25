@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
     #header {
-			background: #eeeeee;
-			padding:20px;
-      font-size:30px;
+      background: #eeeeee;
+      padding: 20px;
+      font-size: 30px;
       font-weight: bold;
       text-align: center;
       border-bottom: 1px solid #bbbbbb;
-		}
+      height: 15%;
+      line-height: 15%;
+    }
     #header .logo {
       display: inline-block;
     }
-    #header span {
-      line-height: 105px;
+    #footer {
+      background: #111111;
+      height: 5%;
+      padding: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff;
+      text-align: center;
     }
-    #footer  {
-			background: #111111;
-			height: 50px;
-			padding:20px;
-			font-size:14px;
-			font-weight:bold;
-			color:#ffffff;
-			text-align: center;
-		}
     #content {
       background: #eeeeee;
-      position: relative;;
-      min-height: 750px;
+      position: relative;
+      height: 80%;
     }
-
   </style>
   <head>
     <meta charset="utf-8" />
@@ -71,10 +74,9 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="header">
-      <div class="logo"><img src="logo.png"></div>
-      <span>
-        Automated Measurement Service
-      </span>
+      <div class="logo"><img src="logo_left.png" /></div>
+      Automated Measurement Service
+      <div class="logo"><img src="logo_right.png" /></div>
       <div class="clear"></div>
     </div>
     <div id="content"></div>
