@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import { Spinner } from 'react-bootstrap';
 import '../css/User.css';
+import UserLeftPannel from './UesrLeftPannel';
 import cookie from 'react-cookies';
 import io from 'socket.io-client';
 import Manual from '../components/Manual';
@@ -88,7 +89,7 @@ class User extends Component {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
         User.js 장비를 직접 측정하는 사용자의 화면입니다.
-        <div className="topPannel flex-row  mt-4">
+        <div className="topPannel flex-row  mt-4 bg-secondary">
           <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
             로그아웃
           </button>
@@ -100,27 +101,29 @@ class User extends Component {
           >
             연결 방법 자세히 보기
           </button>
-          <div className="d-sm-inline-flex ml-4">관리자 접속여부: admin</div>
+          <div className="d-sm-inline-flex ml-4 text-white-50">관리자 접속여부: admin</div>
           <BsCircleFill
             className="d-sm-inline-flex ml-1"
             style={{ color: 'green' }}
           />
         </div>
         <Manual className="m-4" id="manual" />
-        <div className="mt-4">진행률</div>
-        <div className="d-block w-50">
-          <div className="progress">
-            <div
-              className="progress-bar"
-              role="progressbar"
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style={{ width: '25%' }}
-            >
-              25%
+        <div className="mt-4 flex-row">진행률</div>
+          <div className="d-block w-50">
+            <div className="progress">
+              <div
+                className="progress-bar"
+                role="progressbar"
+                aria-valuenow="25"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={{ width: '25%' }}
+              > 25%
+              </div>
             </div>
           </div>
+        <div className="d-flex flex-row">
+          <UserLeftPannel></UserLeftPannel>
         </div>
         <div className="d-flex flex-row align-items-stretch mt-4">
           <ul class="list-group"></ul>

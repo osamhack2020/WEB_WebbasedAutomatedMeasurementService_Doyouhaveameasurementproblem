@@ -8,8 +8,7 @@ class LeftPannel extends Component {
             <div
                 id="LeftPannel"
                 className="d-flex flex-column align-items-stretch border border-light rounded-lg p-5 bg-secondary"
-            >
-                상단에 있는 사용자와 작업을 선택한 뒤에 측정시작 버튼을 눌러주세요.
+            >과거 측정기록 열람 및 확인 가능 테이블 작성 필요                 
             </div>
         )
     }
