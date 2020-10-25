@@ -1,0 +1,34 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+#header {
+  background: #eeeeee;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #bbbbbb;
+  height: 15%;
+  line-height: 15%;
+}
+#header .logo {
+  display: inline-block;
+}
+#footer {
+  background: #111111;
+  height: 5%;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+}
+#content {
+  background: #eeeeee;
+  position: relative;
+  height: 80%;
+  width: 100%;
+  display: table;
+}
