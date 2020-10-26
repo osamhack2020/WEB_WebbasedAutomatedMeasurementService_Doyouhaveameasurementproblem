@@ -7,7 +7,7 @@ class LeftPannel extends Component {
         return(
             <div
                 id="LeftPannel"
-                className="d-flex flex-column align-items-stretch border border-light rounded-lg p-5 bg-secondary"
+                className="d-flex flex-column align-items-stretch border border-dark rounded-lg p-5"
             >과거 측정기록 열람 및 확인 가능 테이블 작성 필요                 
             </div>
         )
