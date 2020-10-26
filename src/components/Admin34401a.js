@@ -11,6 +11,7 @@ class Admin34401a extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handleStopMeasuring = this.handleStopMeasuring.bind(this);
     this.state = {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
@@ -99,7 +100,7 @@ class Admin34401a extends Component {
         this.setState({
           procedures: response.data,
         });
-        console.log(response.data);
+        //console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -125,6 +126,7 @@ class Admin34401a extends Component {
       startProcedure: false,
       selectedProcedure: '',
       selectedProcedureContent: null,
+      connected: '',
     });
   };
   onSelectBoxChanged1 = (event) => {
@@ -330,6 +332,7 @@ class Admin34401a extends Component {
               adminName={this.state.name}
               adminRegion={this.state.region}
               adminRank={this.state.rank}
+              handleStopMeasuring={() => this.handleStopMeasuring()}
             />
           </div>
         </div>
