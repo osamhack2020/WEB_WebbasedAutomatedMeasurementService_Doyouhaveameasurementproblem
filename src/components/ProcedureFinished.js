@@ -21,7 +21,7 @@ class ProcedureFinished extends Component {
           <td>{this.state.vals[index]}</td>
           <td>{data}</td>
           <td>{Math.abs(this.state.vals[index] - data)}</td>
-          <td>success</td>
+          <td>pass</td>
         </tr>
       );
     });

@@ -225,6 +225,19 @@ class RightPannel extends Component {
         </div>
       );
     } else {
+      this.state = {
+        id: null,
+        length: 1000,
+        title: null,
+        vals: null,
+        units: null,
+        messageHistory: [],
+        messageInput: '',
+        procedureList: [],
+        current_index: 0,
+        beforeValue: -10000,
+        procedureStatus: Array(30).fill(null),
+      };
       return (
         <div className="d-flex align-items-center p-5" id="RightPannel">
           상단에 있는 사용자와 작업을 선택한 뒤에 측정시작 버튼을 눌러주세요.

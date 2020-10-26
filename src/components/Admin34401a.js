@@ -120,6 +120,13 @@ class Admin34401a extends Component {
       startProcedure: true,
     });
   };
+  handleStopMeasuring = () => {
+    this.setState({
+      startProcedure: false,
+      selectedProcedure: '',
+      selectedProcedureContent: null,
+    });
+  };
   onSelectBoxChanged1 = (event) => {
     this.setState({ selectedId: event.target.value });
   };
@@ -270,7 +277,10 @@ class Admin34401a extends Component {
           >
             측정 시작
           </button>
-          <button className="d-flex-inline ml-2" onClick={this.props.onLogout}>
+          <button
+            className="d-flex-inline ml-2"
+            onClick={this.handleStopMeasuring}
+          >
             측정 취소
           </button>
         </div>
