@@ -190,8 +190,8 @@ class RightPannel extends Component {
 
       return (
         <div id="RightPannel" className="d-flex flex-row align-items-center">
-          <div className="d-flex bg-light overflow-auto">
-            <ul id="ProceduresPannel" className="list-group">
+          <div className="d-flex bg-light overflow-auto" id="ProceduresPannel">
+            <ul className="list-group">
               <li className="list-group-item list-group-item-success">
                 0. 장비 연결 테스트
               </li>

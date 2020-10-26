@@ -42,7 +42,7 @@ class Admin34401a extends Component {
       layout: {
         autosize: true,
         width: 1100,
-        // height: 450,
+        height: 400,
         margin: {
           l: 25,
           r: 25,
