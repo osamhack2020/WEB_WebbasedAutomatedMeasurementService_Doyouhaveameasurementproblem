@@ -7,20 +7,20 @@
 
 #userChoice {
   width: 100%;
-  display:inline-block;
+  display: inline-block;
   text-align: center;
 }
 
 #pannel {
-  width:100%;
+  width: 100%;
   height: 60%;
 }
 .left {
   height: 100%;
-  width:120%;
+  width: 100%;
 }
 
 .right {
   height: 100%;
-  width:80%;
+  width: 80%;
 }

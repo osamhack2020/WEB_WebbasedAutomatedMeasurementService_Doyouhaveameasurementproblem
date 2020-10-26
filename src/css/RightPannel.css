@@ -3,6 +3,9 @@
   height: 100% !important;
   width: 45%;
 }
+#ProceduresPannel ul {
+  width: 100%;
+}
 #ChattingPannel {
   border-radius: 0.5em;
   height: 100% !important;
