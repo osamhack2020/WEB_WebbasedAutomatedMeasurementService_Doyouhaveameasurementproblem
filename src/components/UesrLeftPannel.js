@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import RawData from '../components/RawData';
 import '../css/LeftPannel.css';
 
 // import Display from './Display';
@@ -29,7 +28,6 @@ class LeftPannel extends Component {
                                         type="button" 
                                         className="btn btn-sm"
                                         data-toggle="modal"
-                                        data-target="#rawdata"
                                     >링크
                                     </button>
                             </th>
