@@ -190,7 +190,10 @@ class RightPannel extends Component {
 
       return (
         <div id="RightPannel" className="d-flex flex-row align-items-center">
-          <div className="d-flex bg-light overflow-auto" id="ProceduresPannel">
+          <div
+            className="d-flex bg-light overflow-auto  border border-dark rounded mb-1 mr-1"
+            id="ProceduresPannel"
+          >
             <ul className="list-group">
               <li className="list-group-item list-group-item-success">
                 0. 장비 연결 테스트
@@ -200,7 +203,7 @@ class RightPannel extends Component {
           </div>
           <div
             id="ChattingPannel"
-            className="d-flex flex-column bg-light overflow-auto"
+            className="d-flex flex-column bg-light overflow-auto border border-dark rounded mb-1"
           >
             <div className="msg_history">{this.state.messageHistory}</div>
             <div className="type_msg">
@@ -239,7 +242,10 @@ class RightPannel extends Component {
         procedureStatus: Array(30).fill(null),
       };
       return (
-        <div className="d-flex align-items-center p-5" id="RightPannel">
+        <div
+          className="d-flex align-items-center p-5 border border-dark rounded mb-1"
+          id="RightPannel"
+        >
           상단에 있는 사용자와 작업을 선택한 뒤에 측정시작 버튼을 눌러주세요.
         </div>
       );

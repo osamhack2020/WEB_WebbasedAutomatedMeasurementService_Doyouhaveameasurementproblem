@@ -42,7 +42,7 @@ class Admin34401a extends Component {
       layout: {
         autosize: true,
         width: 1100,
-        height: 400,
+        height: 350,
         margin: {
           l: 25,
           r: 25,
@@ -233,7 +233,10 @@ class Admin34401a extends Component {
     //console.log(procedurelist_items);
     return (
       <div className="d-flex flex-column align-items-center" id="Admin34401a">
-        <div className="flex-column float-right bg-secondary" id="userChoice">
+        <div
+          className="flex-column float-right bg-secondary border border-dark rounded mb-1 mt-1"
+          id="userChoice"
+        >
           <label
             className="d-flex-inline btn-group-vertical"
             htmlFor="exampleFormControlSelect1"
@@ -290,7 +293,7 @@ class Admin34401a extends Component {
           id="pannel"
         >
           <div className="d-flex flex-column left">
-            <div className="d-flex-inline flex-column float-left p-1 bg-secondary">
+            <div className="d-flex-inline flex-column float-left p-1 bg-secondary border border-dark rounded mb-1">
               {'아이디 :' +
                 this.state.idusers +
                 '이름:' +
@@ -316,7 +319,7 @@ class Admin34401a extends Component {
               onClear={this.handleClear}
             />
           </div>
-          <div className="d-flex flex-column right">
+          <div className="d-flex flex-column right ml-1">
             <RightPannel
               value={this.state.value}
               unit={this.state.unit}
@@ -330,7 +333,7 @@ class Admin34401a extends Component {
             />
           </div>
         </div>
-        <div className="d-flex flex-column align-items-end border border-light rounded-lg bg-secondary">
+        <div className="d-flex flex-column align-items-end border border-dark rounded mb-1 bg-secondary">
           <Plot
             data={this.state.data}
             layout={this.state.layout}
