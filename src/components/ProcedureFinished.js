@@ -4,6 +4,7 @@ class ProcedureFinished extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      vals: this.props.vals,
       result: this.props.result,
       userId: this.props.userId,
       adminName: this.props.adminName,
@@ -13,6 +14,18 @@ class ProcedureFinished extends Component {
   }
 
   render() {
+    var results = this.state.result.map((data, index) => {
+      return (
+        <tr key={index}>
+          <td>{index}</td>
+          <td>{this.state.vals[index]}</td>
+          <td>{data}</td>
+          <td>{Math.abs(this.state.vals[index] - data)}</td>
+          <td>success</td>
+        </tr>
+      );
+    });
+
     return (
       <div
         className="modal fade"
@@ -26,7 +39,14 @@ class ProcedureFinished extends Component {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="procedureFinished">
-                2020-10-09
+                {'측정자: ' +
+                  this.state.userId +
+                  '검수자: ' +
+                  this.state.adminName +
+                  ' ' +
+                  this.state.adminRegion +
+                  ' ' +
+                  this.state.adminRank}
               </h5>
               <button
                 type="button"
@@ -42,34 +62,29 @@ class ProcedureFinished extends Component {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">goal</th>
+                    <th scope="col">real</th>
+                    <th scope="col">diff</th>
+                    <th scope="col">result</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                  </tr>
-                </tbody>
+                <tbody>{results}</tbody>
               </table>
             </div>
             <div className="modal-footer">
               <button
                 type="button"
+                className="btn btn-warning"
+                data-dismiss="modal"
+              >
+                취소
+              </button>
+              <button
+                type="button"
                 className="btn btn-primary"
                 data-dismiss="modal"
               >
-                닫기
+                저장
               </button>
             </div>
           </div>

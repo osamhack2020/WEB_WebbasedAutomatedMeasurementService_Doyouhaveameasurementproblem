@@ -94,16 +94,18 @@ class RightPannel extends Component {
       return (
         <div className="d-flex align-items-center p-5">
           측정완료
-          <ul>{tmp.toString()}</ul>
-          <ProcedureFinished result={tmp} />
-          <button
-            data-toggle="modal"
-            data-target="#procedureFinished"
-            type="button"
+          <ProcedureFinished
+            vals={this.state.vals}
+            result={tmp}
             userId={this.state.id}
             adminName={this.props.adminName}
             adminRegion={this.props.adminRegion}
             adminRank={this.props.adminRank}
+          />
+          <button
+            data-toggle="modal"
+            data-target="#procedureFinished"
+            type="button"
           >
             측정 결과 저장.
           </button>

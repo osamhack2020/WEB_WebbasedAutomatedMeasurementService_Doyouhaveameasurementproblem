@@ -143,11 +143,11 @@ class Admin34401a extends Component {
     } else if (path.match('dc') !== null) {
       this.setState({ unit: 'DCV' });
     } else if (path.match('res') !== null) {
-      this.setState({ unit: 'Ω' });
+      this.setState({ unit: 'OHM' });
     } else if (path.match('freq') !== null) {
-      this.setState({ unit: 'KHz' });
+      this.setState({ unit: 'KHZ' });
     } else if (path.match('per') !== null) {
-      this.setState({ unit: 'sec' });
+      this.setState({ unit: 'SEC' });
     } else {
       this.setState({ unit: '' });
     }
@@ -206,12 +206,16 @@ class Admin34401a extends Component {
   }
   render() {
     var userlist_items;
+
+    //.filter(img => img.src.slice(-4) != 'json').map(img => img.src);
     if (this.state.users !== null) {
-      userlist_items = this.state.users.map((data) => (
-        <option key={data.idusers}>
-          {'ID:' + data.idusers + '  이름:' + data.name}
-        </option>
-      ));
+      userlist_items = this.state.users
+        .filter((data) => data.isAdmin === 0)
+        .map((data) => (
+          <option key={data.idusers}>
+            {'ID:' + data.idusers + '  이름:' + data.name}
+          </option>
+        ));
     }
     var procedurelist_items;
     if (this.state.procedures !== null) {
@@ -271,7 +275,10 @@ class Admin34401a extends Component {
           </button>
         </div>
 
-        <div className="d-flex flex-row align-items-center justify-content-center" id="pannel">
+        <div
+          className="d-flex flex-row align-items-center justify-content-center"
+          id="pannel"
+        >
           <div className="d-flex flex-column left">
             <div className="d-flex-inline flex-column float-left p-1 bg-secondary">
               {'아이디 :' +
