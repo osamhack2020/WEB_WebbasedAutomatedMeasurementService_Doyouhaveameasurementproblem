@@ -87,25 +87,34 @@ class RightPannel extends Component {
   onInputChanged = (event) => {
     this.setState({ messageInput: event.target.value });
   };
+  handleSaveHistory = () => {
+    var tmp = this.state.current_index + 1;
+    this.setState({
+      current_index: tmp,
+    });
+  };
   render() {
-    if (this.state.length <= this.state.current_index) {
+    if (this.state.length === this.state.current_index) {
       var tmp = this.state.procedureStatus.slice(0, this.state.length);
 
       return (
         <div className="d-flex align-items-center p-5">
           측정완료
           <ProcedureFinished
+            selectedProcedure={this.props.procedure}
             vals={this.state.vals}
             result={tmp}
             userId={this.state.id}
             adminName={this.props.adminName}
             adminRegion={this.props.adminRegion}
             adminRank={this.props.adminRank}
+            handleStopMeasuring={this.props.handleStopMeasuring}
           />
           <button
             data-toggle="modal"
             data-target="#procedureFinished"
             type="button"
+            onClick={this.handleSaveHistory}
           >
             측정 결과 저장.
           </button>
@@ -121,6 +130,7 @@ class RightPannel extends Component {
       this.state.title = this.props.procedureContent.title;
       this.state.vals = this.props.procedureContent.test_vals.split(' ');
       this.state.units = this.props.procedureContent.test_units.split(' ');
+
       // eslint-disable-next-line
       // 성공시 list-group-item-success 실패시 list-group-item-secondary
       if (this.props.procedureContent && this.state.vals) {

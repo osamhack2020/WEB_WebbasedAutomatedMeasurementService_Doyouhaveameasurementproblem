@@ -1,18 +1,63 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class ProcedureFinished extends Component {
   constructor(props) {
     super(props);
+    var d = new Date();
+    var nowDate =
+      d.getFullYear() +
+      '/' +
+      (d.getMonth() + 1) +
+      '/' +
+      d.getDate() +
+      '/' +
+      d.getHours() +
+      '시' +
+      d.getMinutes() +
+      '분' +
+      d.getSeconds() +
+      '초';
     this.state = {
+      nowDate: nowDate,
       vals: this.props.vals,
       result: this.props.result,
       userId: this.props.userId,
       adminName: this.props.adminName,
       adminRegion: this.props.adminRegion,
       adminRank: this.props.adminRank,
+      selectedProcedure: this.props.selectedProcedure,
     };
+    this.postHistory = this.postHistory.bind(this);
   }
 
+  async postHistory() {
+    var result = this.state.result.join(' ');
+
+    return await axios({
+      method: 'post',
+      url: 'https://express-server.run.goorm.io/history/postHistory',
+      data: {
+        selectedProcedure: this.state.selectedProcedure,
+        nowDate: this.state.nowDate,
+        result: result,
+        userId: this.state.userId,
+        adminName: this.state.adminName,
+        adminRegion: this.state.adminRegion,
+        adminRank: this.state.adminRank,
+      },
+    })
+      .then(function (response) {
+        //console.log(response);
+        alert('측정 기록이 저장되었습니다');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  handleClick = () => {
+    this.postHistory();
+    this.props.handleStopMeasuring();
+  };
   render() {
     var results = this.state.result.map((data, index) => {
       return (
@@ -58,7 +103,7 @@ class ProcedureFinished extends Component {
               </button>
             </div>
             <div className="modal-body">
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -83,6 +128,7 @@ class ProcedureFinished extends Component {
                 type="button"
                 className="btn btn-primary"
                 data-dismiss="modal"
+                onClick={this.handleClick}
               >
                 저장
               </button>

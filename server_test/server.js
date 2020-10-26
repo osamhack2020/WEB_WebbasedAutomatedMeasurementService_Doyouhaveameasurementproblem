@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const measure_router = require('./routers/measure.js');
 const user_router = require('./routers/user.js');
 const procedure_router = require('./routers/procedure');
+const history_router = require('./routers/history');
 const port = process.env.PORT || 2020;
 
 app.use(cors());
@@ -20,6 +21,8 @@ app.get('/', (req, res) => {
 app.use('/meas', measure_router);
 app.use('/user', user_router);
 app.use('/procedure', procedure_router);
+app.use('/history', history_router);
+
 io.on('connection', (socket) => {
   socket.on('send message from admin', (item) => {
     const msg = item.id + ' : ' + item.message;
