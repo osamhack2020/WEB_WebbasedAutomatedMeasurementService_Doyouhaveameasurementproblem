@@ -110,9 +110,9 @@ class User extends Component {
         
         
         <div className="d-flex flex-row">
-          <div className="d-flex flex-column left ">
+          <div className="d-flex flex-column w-75">
               <Manual className="m-4" id="manual" />
-              <div className="mt-4 flex-column">진행률</div>
+              <div className="mt-4">진행률</div>
                 <div className="d-block">
                   <div className="progress">
                     <div
@@ -126,19 +126,19 @@ class User extends Component {
                     </div>
                   </div>
               </div>
-              <div className="d-flex flex-column">
+              <div className="d-flex flex-column overflow-auto">
                   <UserLeftPannel></UserLeftPannel>
               </div>          
             </div>   
 
 
-          <div className="d-flex flex-column right align-items-stretch mt-4">
+          <div className="d-flex flex-column w-25 p-1" style={{width:30+'em'}, {height:20+'em'}}>
             <ul class="list-group"></ul>
               <div
                   id="ChattingPannel"
                   className="d-flex flex-column bg-light overflow-auto"
               >
-                <div className="msg_history">{this.state.messageHistory}</div>
+                <div className="msg_history rounded-lg p-1" style={{width:30+'em'},{height:40+'em'}} >{this.state.messageHistory}</div>
                   <div className="type_msg">
                     <div className="input_msg_write">
                       <input
