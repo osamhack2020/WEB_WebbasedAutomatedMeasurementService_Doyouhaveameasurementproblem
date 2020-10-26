@@ -28,11 +28,12 @@ class ProcedureFinished extends Component {
       selectedProcedure: this.props.selectedProcedure,
     };
     this.postHistory = this.postHistory.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async postHistory() {
     var result = this.state.result.join(' ');
-
+    //console.log('hi');
     return await axios({
       method: 'post',
       url: 'https://express-server.run.goorm.io/history/postHistory',
@@ -48,16 +49,19 @@ class ProcedureFinished extends Component {
     })
       .then(function (response) {
         //console.log(response);
+        this.props.plusOneCurrentIndex();
         alert('측정 기록이 저장되었습니다');
       })
       .catch(function (error) {
-        console.log(error);
+        //console.log(error);
+        this.props.plusOneCurrentIndex();
       });
   }
-  handleClick = () => {
+  handleClick() {
     this.postHistory();
     this.props.handleStopMeasuring();
-  };
+  }
+
   render() {
     var results = this.state.result.map((data, index) => {
       return (
@@ -84,7 +88,9 @@ class ProcedureFinished extends Component {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="procedureFinished">
-                {'측정자: ' +
+                {'작업' +
+                  this.state.selectedProcedure +
+                  '측정자: ' +
                   this.state.userId +
                   '검수자: ' +
                   this.state.adminName +
@@ -93,24 +99,16 @@ class ProcedureFinished extends Component {
                   ' ' +
                   this.state.adminRank}
               </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
             <div className="modal-body">
               <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">goal</th>
-                    <th scope="col">real</th>
-                    <th scope="col">diff</th>
-                    <th scope="col">result</th>
+                    <th scope="col">목표값</th>
+                    <th scope="col">측정값</th>
+                    <th scope="col">오차</th>
+                    <th scope="col">결과</th>
                   </tr>
                 </thead>
                 <tbody>{results}</tbody>

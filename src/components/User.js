@@ -2,8 +2,10 @@
 import React, { Component } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import { Spinner } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
+import axios from 'axios';
+
 import '../css/User.css';
-import UserLeftPannel from './UesrLeftPannel';
 import cookie from 'react-cookies';
 import io from 'socket.io-client';
 import Manual from '../components/Manual';
@@ -19,36 +21,39 @@ class User extends Component {
       messageInput: '',
       messageHistory: [],
       procedures: null,
+      history: [],
     };
+    this.fetchHistoryHandler = this.fetchHistoryHandler.bind(this);
     socket.on('message to user', (message) => {
       console.log(message);
+      var tmp = this.state.messageHistory.slice(undefined);
+      var d = new Date();
+      var nowTime =
+        d.getFullYear() +
+        '/' +
+        (d.getMonth() + 1) +
+        '/' +
+        d.getDate() +
+        '/' +
+        d.getHours() +
+        '시' +
+        d.getMinutes() +
+        '분' +
+        d.getSeconds() +
+        '초';
       var tmp = this.state.messageHistory.concat(
-        <div className="incoming_msg">
-          <div className="received_msg">
-            <div className="received_withd_msg">
-              <p>ID: amdin</p>
-              <p>{message.message}</p>
-              <span className="time_date"></span>
-            </div>
+        <div class="d-flex justify-content-start mb-4">
+          <div class="msg_cotainer">
+            <p>ID: amdin</p>
+            <p>{message.message}</p>
+            <span class="msg_time">{nowTime}</span>
           </div>
         </div>,
       );
       this.setState({ messageHistory: tmp });
     });
   }
-  componentDidMount() {
-    var tmp = [
-      <div className="incoming_msg">
-        <div className="received_msg">
-          <div className="received_withd_msg">
-            <p>{this.state.id}</p>
-            <span className="time_date"></span>
-          </div>
-        </div>
-      </div>,
-    ];
-    this.setState({ messageHistory: tmp });
-  }
+
   sendMessage = () => {
     console.log('sendMessage');
     socket.emit('send message from user', {
@@ -71,10 +76,10 @@ class User extends Component {
       d.getSeconds() +
       '초';
     tmp.push(
-      <div className="outgoing_msg">
-        <div className="sent_msg">
+      <div class="d-flex justify-content-end mb-4">
+        <div class="msg_cotainer_send">
           <p>{this.state.messageInput}</p>
-          <span className="time_date">{nowTime}</span>
+          <span class="msg_time_send">{nowTime}</span>
         </div>
       </div>,
     );
@@ -85,80 +90,111 @@ class User extends Component {
   onInputChanged = (event) => {
     this.setState({ messageInput: event.target.value });
   };
+  fetchHistoryHandler() {
+    this.fetchHistory();
+  }
+  async fetchHistory() {
+    return await axios({
+      method: 'post',
+      url: 'https://express-server.run.goorm.io/history/getHistory',
+      data: {
+        userId: this.state.idusers,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   render() {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
         User.js 장비를 직접 측정하는 사용자의 화면입니다.
-            <div className="topPannel flex-row  mt-4 bg-secondary">
-              <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
-                로그아웃
-              </button>
-              <button
-                className="btn-sm p-2"
-                type="button"
-                data-toggle="modal"
-                data-target="#manual"
-              >
-                연결 방법 자세히 보기
-              </button>
-              <div className="d-sm-inline-flex ml-4 text-white-50">관리자 접속여부: admin</div>
-              <BsCircleFill
-                className="d-sm-inline-flex ml-1"
-                style={{ color: 'green' }}
-              />
-            </div>
-        
-        
+        <div className="flex-row">
+          <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
+            로그아웃
+          </button>
+          <button
+            className="btn-sm p-2"
+            type="button"
+            data-toggle="modal"
+            data-target="#manual"
+          >
+            연결 방법 자세히 보기
+          </button>
+          <div className="d-sm-inline-flex">관리자 접속여부: admin</div>
+          <BsCircleFill
+            className="d-sm-inline-flex ml-1"
+            style={{ color: 'green' }}
+          />
+        </div>
         <div className="d-flex flex-row">
-          <div className="d-flex flex-column w-75">
-              <Manual className="m-4" id="manual" />
-              <div className="mt-4">진행률</div>
-                <div className="d-block">
-                  <div className="progress">
-                    <div
-                      className="progress-bar"
-                      role="progressbar"
-                      aria-valuenow="25"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style={{ width: '25%' }}
-                    > 25%
-                    </div>
-                  </div>
-              </div>
-              <div className="d-flex flex-column overflow-auto">
-                  <UserLeftPannel></UserLeftPannel>
-              </div>          
-            </div>   
-
-
-          <div className="d-flex flex-column w-25 p-1" style={{width:30+'em'}, {height:20+'em'}}>
-            <ul class="list-group"></ul>
-              <div
-                  id="ChattingPannel"
-                  className="d-flex flex-column bg-light overflow-auto"
-              >
-                <div className="msg_history rounded-lg p-1" style={{width:30+'em'},{height:40+'em'}} >{this.state.messageHistory}</div>
-                  <div className="type_msg">
-                    <div className="input_msg_write">
-                      <input
-                        onChange={this.onInputChanged}
-                        value={this.state.messageInput}
-                        type="text"
-                        className="write_msg"
-                        placeholder="Type a message"
-                      />
-                    </div>
-                  </div>
-                  <button
-                    className="d-flex-inline align-items-end"
-                    type="button"
+          {/* LeftPannel */}
+          <div className="leftPannel d-flex flex-column mr-5 mt-1">
+            <h1 className="display-4">Progress</h1>
+            <button onClick={this.fetchHistoryHandler} type="button">
+              히스토리 가져오기
+            </button>
+            <ProgressBar animated now={45} />
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">작업</th>
+                  <th scope="col">목표값</th>
+                  <th scope="col">측정값</th>
+                  <th scope="col">오차</th>
+                  <th scope="col">결과</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="d-flex flex-column">
+            <div className="card-body msg_card_body bg-secondary mt-1">
+              {this.state.messageHistory}
+            </div>
+            <div className="card-footer">
+              <div className="input-group">
+                <input
+                  className="form-control type_msg"
+                  placeholder="Type your message..."
+                  value={this.state.messageInput}
+                  onChange={this.onInputChanged}
+                />
+                <div className="input-group-append">
+                  <span
+                    className="input-group-text send_btn "
                     onClick={this.sendMessage}
-                  > Send
-                  </button>
+                  >
+                    send
+                  </span>
                 </div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
     );
   }

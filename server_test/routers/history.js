@@ -4,12 +4,13 @@ const db = require('../dbconnection');
 
 //전체 측정절차 출력
 router.post('/getHistory', (req, res) => {
-  db.query('select * from history', (err, rows) => {
+  const userId = req.body.userId;
+  db.query('select * from history where userId = ?', [userId], (err, rows) => {
     if (!err) {
-      //console.log(rows);
+      console.log(rows);
       res.json(rows);
     } else {
-      //console.log(`query error : ${err}`);
+      console.log(`query error : ${err}`);
       res.send(err);
     }
   });
@@ -24,13 +25,21 @@ router.post('/postHistory', (req, res) => {
   const adminRank = req.body.adminRank;
   db.query(
     'INSERT INTO history ( nowDate, selectedProcedure,result ,userId,adminName,adminRegion,adminRank) VALUES (?,?,?,?,?,?,?)',
-    [ nowDate, selectedProcedure,result, userId, adminName, adminRegion, adminRank],
+    [
+      nowDate,
+      selectedProcedure,
+      result,
+      userId,
+      adminName,
+      adminRegion,
+      adminRank,
+    ],
     (err, rows) => {
       if (!err) {
         //console.log(rows);
         res.json(rows);
       } else {
-        console.log(`query error : ${err}`);
+        //console.log(`query error : ${err}`);
         res.send(err);
       }
     },

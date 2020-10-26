@@ -38,18 +38,6 @@ class RightPannel extends Component {
       this.setState({ messageHistory: tmp });
     });
   }
-  componentDidMount() {
-    var tmp = [
-      <div className="incoming_msg">
-        <div className="received_msg">
-          <div className="received_withd_msg">
-            <span className="time_date"></span>
-          </div>
-        </div>
-      </div>,
-    ];
-    this.setState({ messageHistory: tmp });
-  }
 
   sendMessage = () => {
     //console.log('sendMessage');
@@ -87,10 +75,9 @@ class RightPannel extends Component {
   onInputChanged = (event) => {
     this.setState({ messageInput: event.target.value });
   };
-  handleSaveHistory = () => {
-    var tmp = this.state.current_index + 1;
+  plusOneCurrentIndex = () => {
     this.setState({
-      current_index: tmp,
+      current_index: this.state.current_index + 1,
     });
   };
   render() {
@@ -109,12 +96,12 @@ class RightPannel extends Component {
             adminRegion={this.props.adminRegion}
             adminRank={this.props.adminRank}
             handleStopMeasuring={this.props.handleStopMeasuring}
+            plusOneCurrentIndex={this.plusOneCurrentIndex.bind(this)}
           />
           <button
             data-toggle="modal"
             data-target="#procedureFinished"
             type="button"
-            onClick={this.handleSaveHistory}
           >
             측정 결과 저장.
           </button>

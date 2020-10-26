@@ -127,6 +127,7 @@ class Admin34401a extends Component {
       selectedProcedure: '',
       selectedProcedureContent: null,
       connected: '',
+
     });
   };
   onSelectBoxChanged1 = (event) => {
@@ -222,7 +223,7 @@ class Admin34401a extends Component {
         .filter((data) => data.isAdmin === 0)
         .map((data) => (
           <option key={data.idusers}>
-            {'ID:' + data.idusers + '  이름:' + data.name}
+            {data.idusers}
           </option>
         ));
     }
