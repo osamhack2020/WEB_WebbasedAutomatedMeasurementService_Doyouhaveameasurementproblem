@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/LeftPannel.css';
-import Display from './Display';
+// import Display from './Display';
 
 class LeftPannel extends Component {
     render() {
