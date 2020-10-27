@@ -257,7 +257,7 @@ class User extends Component {
               </li>
               {procedureStatusList}
             </ul>
-            <HistoryTable history={this.state.history} />
+            <HistoryTable idusers={this.state.idusers} history={this.state.history} />
             <Manual className="m-4" id="manual" />
           </div>
           <div className="d-flex flex-column">

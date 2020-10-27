@@ -59,6 +59,7 @@ class ProcedureFinished extends Component {
   }
   handleClick() {
     this.postHistory();
+    this.props.plusOneCurrentIndex();
     this.props.handleStopMeasuring();
   }
 

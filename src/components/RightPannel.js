@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 //import axios from 'axios';
-import '../css/RightPannel.css';
 import { Spinner } from 'react-bootstrap';
 import ProcedureFinished from '../components/ProcedureFinished';
 import io from 'socket.io-client';
 const socket = io.connect('https://express-server.run.goorm.io');
+import '../css/RightPannel.css';
 class RightPannel extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +37,7 @@ class RightPannel extends Component {
       );
       this.setState({ messageHistory: tmp });
     });
+    this.plusOneCurrentIndex = this.plusOneCurrentIndex.bind(this);
   }
   sendProcedureStatus = () => {
     socket.emit('send procedureStatus from admin', {
@@ -105,7 +106,7 @@ class RightPannel extends Component {
             adminRegion={this.props.adminRegion}
             adminRank={this.props.adminRank}
             handleStopMeasuring={this.props.handleStopMeasuring}
-            plusOneCurrentIndex={this.plusOneCurrentIndex.bind(this)}
+            plusOneCurrentIndex={this.plusOneCurrentIndex}
           />
           <button
             data-toggle="modal"

@@ -68,7 +68,7 @@ class HistoryTable extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  히스토리입니다.
+                  {this.props.idusers + ': 최근 측정 내역입니다.'}
                 </h5>
                 <button
                   type="button"

@@ -19,7 +19,6 @@
 }
 #ResultPannel {
   height: 100%;
-  
 }
 /* table {
   width: 100%;
@@ -215,5 +214,5 @@ td {
 }
 .msg_history {
   height: 90%;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
