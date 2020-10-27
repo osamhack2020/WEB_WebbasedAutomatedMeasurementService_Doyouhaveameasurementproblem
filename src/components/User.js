@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
-import { ProgressBar } from 'react-bootstrap';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import '../css/User.css';
@@ -25,6 +24,7 @@ class User extends Component {
       current_index: 0,
       current_procedure: '',
       procedure: null,
+      length: 100,
     };
     this.fetchHistoryHandler = this.fetchHistoryHandler.bind(this);
     socket.on('message to user', (message) => {
@@ -56,7 +56,7 @@ class User extends Component {
       this.setState({ messageHistory: tmp });
     });
     socket.on('procedureStatus to user', (message) => {
-      console.log(message);
+      //console.log(message);
 
       if (message.id === this.state.idusers) {
         if (message.current_index !== this.state.current_index) {
@@ -87,6 +87,15 @@ class User extends Component {
       .catch((error) => {
         console.log(error);
       });
+    if (this.state.procedure) {
+      this.setState({
+        portion: parseInt(
+          (parseFloat(this.state.current_index) /
+            parseFloat(this.state.length)) *
+            100,
+        ),
+      });
+    }
   }
 
   sendMessage = () => {
@@ -157,6 +166,7 @@ class User extends Component {
 
   render() {
     var procedureStatusList;
+
     if (this.state.current_procedure && this.state.procedures) {
       for (let i = 0; i < this.state.procedures.length; i++) {
         if (this.state.procedures[i].title === this.state.current_procedure) {
@@ -170,6 +180,7 @@ class User extends Component {
       var tmp = this.state.procedure;
       var vals = tmp.test_vals.split(' ');
       var units = tmp.test_units.split(' ');
+      this.state.length = tmp.length;
       procedureStatusList = vals.map((data, index) => {
         if (index === this.state.current_index) {
           return (
@@ -195,10 +206,12 @@ class User extends Component {
           );
         }
       });
+      if (this.state.current_index === tmp.length) {
+        procedureStatusList = <li>{'측정 종료'}</li>;
+      }
     } else {
       procedureStatusList = (
         <li>
-          {' '}
           <Spinner className="" animation="grow" size="sm" />
           연결중입니다....
         </li>
@@ -206,14 +219,11 @@ class User extends Component {
     }
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
-        User.js 장비를 직접 측정하는 사용자의 화면입니다. Id:
-        {this.state.idusers}
+        User.js 장비를 직접 측정하는 사용자의 화면입니다.
+        {' Id: ' + this.state.idusers}
         <div className="flex-row">
-          <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
-            로그아웃
-          </button>
           <button
-            className="btn-sm p-2"
+            className="btn-sm p-2 mr-2"
             type="button"
             data-toggle="modal"
             data-target="#manual"
@@ -221,12 +231,15 @@ class User extends Component {
             연결 방법 자세히 보기
           </button>
           <button
-            className="btn-sm p-2"
+            className="flex-inline btn-sm p-2 mr-2"
             type="button"
             data-toggle="modal"
             data-target="#history"
           >
-            히스토리 보기
+            히스토리
+          </button>
+          <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
+            로그아웃
           </button>
           <div className="d-sm-inline-flex">관리자 접속여부: admin</div>
           <BsCircleFill
@@ -238,8 +251,7 @@ class User extends Component {
           {/* LeftPannel */}
           <div className="leftPannel d-flex flex-column mr-5 mt-1">
             <h1 className="display-4">Progress</h1>
-            <ProgressBar animated now={45} />
-            <ul className="list-group">
+            <ul className="list-group mt-3">
               <li className="list-group-item list-group-item-success">
                 0. 장비 연결 테스트
               </li>

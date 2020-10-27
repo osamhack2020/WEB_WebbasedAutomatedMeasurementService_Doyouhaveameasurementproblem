@@ -7,8 +7,8 @@ html {
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
 .leftPannel {
-  height: 600px;
-  width: 600px;
+  height: 400px;
+  width: 400px;
 }
 .chat {
   margin-top: auto;
