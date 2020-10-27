@@ -54,7 +54,7 @@ class Login extends Component {
     return (
       <div className="align-items-center align-content-center" id="loginComponent">
         <form className="form-signin" id="loginForm">
-          <h1 className=" h3 mb-4 text-left font-weight-normal">
+          <h1 className=" h3 mb-4 text-center font-weight-bolder">
             Please sign in
           </h1>
           <label htmlFor="inputEmail" className="sr-only">

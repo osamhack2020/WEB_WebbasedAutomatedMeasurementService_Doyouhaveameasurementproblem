@@ -250,7 +250,8 @@ class RightPannel extends Component {
       };
       return (
         <div
-          className="d-flex align-items-center p-5 border border-dark rounded mb-1"
+          className="d-flex align-items-center p-5 border border-dark rounded mb-1 text-muted"
+          style={{ fontSize: '12px' }}
           id="RightPannel"
         >
           상단에 있는 사용자와 작업을 선택한 뒤에 측정시작 버튼을 눌러주세요.
