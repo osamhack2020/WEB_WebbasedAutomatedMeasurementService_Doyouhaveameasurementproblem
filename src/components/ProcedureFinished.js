@@ -90,9 +90,9 @@ class ProcedureFinished extends Component {
               <h5 className="modal-title" id="procedureFinished">
                 {'작업' +
                   this.state.selectedProcedure +
-                  '측정자: ' +
+                  'User: ' +
                   this.state.userId +
-                  '검수자: ' +
+                  'Amdin: ' +
                   this.state.adminName +
                   ' ' +
                   this.state.adminRegion +

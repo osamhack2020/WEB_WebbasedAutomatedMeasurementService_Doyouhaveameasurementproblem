@@ -53,6 +53,9 @@ class User extends Component {
       this.setState({ messageHistory: tmp });
     });
   }
+  componentDidMount() {
+    this.fetchHistoryHandler();
+  }
 
   sendMessage = () => {
     console.log('sendMessage');
@@ -102,13 +105,42 @@ class User extends Component {
       },
     })
       .then((response) => {
-        console.log(response);
+        var tmp = response.data.slice(undefined);
+        if (tmp) {
+          console.log('hi');
+          this.setState({
+            history: tmp,
+          });
+        } else {
+          this.setState({
+            history: null,
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   }
   render() {
+    var historyItems;
+
+    if (this.state.history.length !== 0) {
+      historyItems = this.state.history.map((data, index) => {
+        return (
+          <tr key={index}>
+            <th scope="row">{index}</th>
+            <td>{data.selectedProcedure}</td>
+            <td>{data.adminRegion}</td>
+            <td>{data.adminRank}</td>
+            <td>{data.adminName}</td>
+            <td>{data.nowDate}</td>
+          </tr>
+        );
+      });
+    } else {
+      historyItems = <p>측정 기록이 없습니다.</p>;
+    }
+
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
         User.js 장비를 직접 측정하는 사용자의 화면입니다.
@@ -135,40 +167,22 @@ class User extends Component {
           <div className="leftPannel d-flex flex-column mr-5 mt-1">
             <h1 className="display-4">Progress</h1>
             <button onClick={this.fetchHistoryHandler} type="button">
-              히스토리 가져오기
+              히스토리 업데이트
             </button>
             <ProgressBar animated now={45} />
+
             <table className="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">작업</th>
-                  <th scope="col">목표값</th>
-                  <th scope="col">측정값</th>
-                  <th scope="col">오차</th>
-                  <th scope="col">결과</th>
+                  <th scope="col">승인자 부대</th>
+                  <th scope="col">승인자 계급</th>
+                  <th scope="col">승인자 이름</th>
+                  <th scope="col">시간</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
+              <tbody>{historyItems}</tbody>
             </table>
           </div>
           <div className="d-flex flex-column">
