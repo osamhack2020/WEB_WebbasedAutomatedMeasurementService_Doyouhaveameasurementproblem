@@ -68,7 +68,7 @@ class Admin34401a extends Component {
         plot_bgcolor: '#343A40',
         paper_bgcolor: '#6C757D',
         title: {
-          text: 'history',
+          text: '',
           font: {
             family: 'Arial',
             size: 20,
@@ -127,7 +127,6 @@ class Admin34401a extends Component {
       selectedProcedure: '',
       selectedProcedureContent: null,
       connected: '',
-
     });
   };
   onSelectBoxChanged1 = (event) => {
@@ -221,11 +220,7 @@ class Admin34401a extends Component {
     if (this.state.users !== null) {
       userlist_items = this.state.users
         .filter((data) => data.isAdmin === 0)
-        .map((data) => (
-          <option key={data.idusers}>
-            {data.idusers}
-          </option>
-        ));
+        .map((data) => <option key={data.idusers}>{data.idusers}</option>);
     }
     var procedurelist_items;
     if (this.state.procedures !== null) {
@@ -237,11 +232,11 @@ class Admin34401a extends Component {
     return (
       <div className="d-flex flex-column align-items-center" id="Admin34401a">
         <div
-          className="flex-column float-right bg-secondary border border-dark rounded mb-1 mt-1"
+          className="flex-column float-right bg-light border border-dark rounded mb-1 mt-1 p-1"
           id="userChoice"
         >
           <label
-            className="d-flex-inline btn-group-vertical"
+            className="d-flex-inline btn-group-vertical badge badge-secondary"
             htmlFor="exampleFormControlSelect1"
           >
             사용자 선택
@@ -249,7 +244,7 @@ class Admin34401a extends Component {
           <select
             onChange={this.onSelectBoxChanged1}
             value={this.state.selectedId}
-            className="d-flex-inline"
+            className="d-flex-inline btn-group-vertical form-control"
             id="exampleFormControlSelect1"
             disabled={this.state.startProcedure}
           >
@@ -260,7 +255,7 @@ class Admin34401a extends Component {
             {userlist_items}
           </select>
           <label
-            className="d-flex-inline ml-2 "
+            className="d-flex-inline ml-2 badge badge-secondary"
             htmlFor="exampleFormControlSelect1"
           >
             작업 선택
@@ -268,7 +263,7 @@ class Admin34401a extends Component {
           <select
             onChange={this.onSelectBoxChanged2}
             value={this.state.selectedProcedure}
-            className="d-flex-inline btn-group-vertical bg-light"
+            className="d-flex-inline btn-group-vertical bg-light form-control"
             id="exampleFormControlSelect1"
             disabled={this.state.startProcedure}
           >
@@ -278,17 +273,23 @@ class Admin34401a extends Component {
             {procedurelist_items}
           </select>
           <button
-            className="d-flex-inline ml-2"
+            className="d-flex-inline btn btn-dark ml-5"
             onClick={this.handleStartMeasuring}
           >
             측정 시작
           </button>
           <button
-            className="d-flex-inline ml-2"
+            className="d-flex-inline btn btn-dark ml-2"
             onClick={this.handleStopMeasuring}
           >
             측정 취소
           </button>
+          <button
+                className="d-flex-inline ml-2 btn btn-dark ml-3"
+                onClick={this.props.onLogout}
+              >
+                로그아웃
+              </button>
         </div>
 
         <div
@@ -296,21 +297,25 @@ class Admin34401a extends Component {
           id="pannel"
         >
           <div className="d-flex flex-column left">
-            <div className="d-flex-inline flex-column float-left p-1 bg-secondary border border-dark rounded mb-1">
-              {'아이디 :' +
+            <div className="d-flex-inline flex-column align-items-center float-left p-1 bg-light border border-dark rounded mb-1">
+              {/* {'아이디 :' +
                 this.state.idusers +
                 '이름:' +
                 this.state.name +
                 '소속부대:' +
                 this.state.region +
                 '계급:' +
-                this.state.rank}
-              <button
-                className="d-flex-inline ml-2"
-                onClick={this.props.onLogout}
-              >
-                로그아웃
-              </button>
+                this.state.rank} */}
+              <span className="badge badge-secondary">ID</span>
+              <span className="form-control">{this.state.idusers}</span>
+              <span className="badge badge-secondary">RANK</span>
+              <span className="form-control">{this.state.rank}</span>
+              <span className="badge badge-secondary">NAME</span>
+              <span className="form-control" style={{ width: '20%' }}>
+                {this.state.name}
+              </span>
+              <span className="badge badge-secondary">GROUP</span>
+              <span className="form-control">{this.state.region}</span>
             </div>
             <LeftPannel
               connected={this.state.connected}

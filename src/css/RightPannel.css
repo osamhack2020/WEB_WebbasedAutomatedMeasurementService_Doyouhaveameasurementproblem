@@ -208,6 +208,6 @@ td {
   padding: 0 0 50px 0;
 }
 .msg_history {
-  height: 516px;
+  height: 90%;
   overflow-y: auto;
 }
