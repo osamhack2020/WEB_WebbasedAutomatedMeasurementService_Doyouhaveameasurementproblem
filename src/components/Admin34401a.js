@@ -127,7 +127,6 @@ class Admin34401a extends Component {
       selectedProcedure: '',
       selectedProcedureContent: null,
       connected: '',
-
     });
   };
   onSelectBoxChanged1 = (event) => {
@@ -221,11 +220,7 @@ class Admin34401a extends Component {
     if (this.state.users !== null) {
       userlist_items = this.state.users
         .filter((data) => data.isAdmin === 0)
-        .map((data) => (
-          <option key={data.idusers}>
-            {data.idusers}
-          </option>
-        ));
+        .map((data) => <option key={data.idusers}>{data.idusers}</option>);
     }
     var procedurelist_items;
     if (this.state.procedures !== null) {
@@ -237,7 +232,7 @@ class Admin34401a extends Component {
     return (
       <div className="d-flex flex-column align-items-center" id="Admin34401a">
         <div
-          className="flex-column float-right bg-secondary border border-dark rounded mb-1 mt-1"
+          className="flex-column float-right  border border-dark rounded mb-1 mt-1 p-1"
           id="userChoice"
         >
           <label
@@ -296,7 +291,7 @@ class Admin34401a extends Component {
           id="pannel"
         >
           <div className="d-flex flex-column left">
-            <div className="d-flex-inline flex-column float-left p-1 bg-secondary border border-dark rounded mb-1">
+            <div className="d-flex-inline flex-column float-left p-1  border border-dark rounded mb-1">
               {'아이디 :' +
                 this.state.idusers +
                 '이름:' +

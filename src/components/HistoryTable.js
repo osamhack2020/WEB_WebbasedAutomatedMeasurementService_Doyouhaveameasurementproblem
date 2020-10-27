@@ -28,7 +28,7 @@ class HistoryTable extends Component {
       },
       {
         dataField: 'adminRegion',
-        text: '승인자 부대',
+        text: '부대',
       },
       {
         dataField: 'adminRank',
