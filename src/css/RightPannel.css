@@ -13,9 +13,13 @@
 }
 #RightPannel {
   height: 100%;
-  max-height: 350px;
+  max-height: 360px;
   /* background-color: green; */
   z-index: 0;
+}
+#ResultPannel {
+  height: 100%;
+  
 }
 /* table {
   width: 100%;
@@ -185,6 +189,8 @@ td {
   font-size: 15px;
   min-height: 48px;
   width: 100%;
+  border-top: 1px solid;
+  margin-top: 1px;
 }
 
 .type_msg {

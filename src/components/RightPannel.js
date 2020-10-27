@@ -90,8 +90,11 @@ class RightPannel extends Component {
       var tmp = this.state.procedureStatus.slice(0, this.state.length);
       this.sendProcedureStatus();
       return (
-        <div className="d-flex align-items-center p-5">
-          측정완료
+        <div
+          className="d-flex align-items-center p-5 border border-dark rounded"
+          id="ResultPannel"
+        >
+          <span className="badge badge-secondary">측정완료</span>
           <ProcedureFinished
             selectedProcedure={this.props.procedure}
             vals={this.state.vals}
@@ -107,8 +110,9 @@ class RightPannel extends Component {
             data-toggle="modal"
             data-target="#procedureFinished"
             type="button"
+            className="btn btn-dark button-big"
           >
-            측정 결과 저장.
+            측정 결과 저장
           </button>
         </div>
       );
@@ -220,7 +224,7 @@ class RightPannel extends Component {
               </div>
             </div>
             <button
-              className="d-flex-inline align-items-end"
+              className="d-flex-inline align-items-end btn-dark"
               type="button"
               onClick={this.sendMessage}
             >

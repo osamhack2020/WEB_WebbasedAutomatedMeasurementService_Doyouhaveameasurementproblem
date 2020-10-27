@@ -43,7 +43,7 @@ class Admin34401a extends Component {
       layout: {
         autosize: true,
         width: 1100,
-        height: 350,
+        height: 330,
         margin: {
           l: 25,
           r: 25,
@@ -285,11 +285,11 @@ class Admin34401a extends Component {
             측정 취소
           </button>
           <button
-                className="d-flex-inline ml-2 btn btn-dark ml-3"
-                onClick={this.props.onLogout}
-              >
-                로그아웃
-              </button>
+            className="d-flex-inline ml-2 btn btn-dark ml-3"
+            onClick={this.props.onLogout}
+          >
+            로그아웃
+          </button>
         </div>
 
         <div
@@ -306,12 +306,12 @@ class Admin34401a extends Component {
                 this.state.region +
                 '계급:' +
                 this.state.rank} */}
-              <span className="badge badge-secondary">ID</span>
-              <span className="form-control">{this.state.idusers}</span>
+              <span className="badge badge-secondary ml-1">ID</span>
+              <span className="form-control mr-1">{this.state.idusers}</span>
               <span className="badge badge-secondary">RANK</span>
-              <span className="form-control">{this.state.rank}</span>
+              <span className="form-control mr-1">{this.state.rank}</span>
               <span className="badge badge-secondary">NAME</span>
-              <span className="form-control" style={{ width: '20%' }}>
+              <span className="form-control mr-1" style={{ width: '20%' }}>
                 {this.state.name}
               </span>
               <span className="badge badge-secondary">GROUP</span>

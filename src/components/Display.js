@@ -10,7 +10,9 @@ class Display extends Component {
           id="Display"
           className="d-flex flex-row bg-dark align-items-stretch text-wrap p-1 border border-light rounded-lg"
         >
-          <b className="d-flex align-items-start text-white">34401A</b>
+          <b className="d-flex align-items-start text-white ml-2 mr-4">
+            34401A
+          </b>
           {/* <span className="d-flex align-items-start text-white">
             6 1/2 Digit multimeter
           </span> */}

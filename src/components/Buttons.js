@@ -40,7 +40,7 @@ class Buttons extends Component {
             Submit
           </button>
         </div> */}
-        <div className="d-flex flex-row align-items-strech bg-secondary justify-content-center mt-1 pl-1 pr-1">
+        <div className="d-flex flex-row align-items-strech bg-secondary justify-content-center mt-5 pl-1 pr-1">
           {/* setInterval(() => {
             
           }, interval); */}
@@ -48,42 +48,42 @@ class Buttons extends Component {
 
           <button
             type="button"
-            className="d-flex btn btn-light btn-sm ml-5"
+            className="btn btn-dark"
             onClick={this.props.onClick('meas/volt/ac')}
           >
             ACV
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-sm ml-2"
+            className="btn btn-dark ml-2"
             onClick={this.props.onClick('meas/volt/dc')}
           >
             DCV
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-sm ml-2"
+            className="btn btn-dark ml-2"
             onClick={this.props.onClick('meas/res')}
           >
             RES
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-sm ml-2"
+            className="btn btn-dark ml-2"
             onClick={this.props.onClick('meas/freq')}
           >
             FREQ
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-sm ml-2"
+            className="btn btn-dark ml-2"
             onClick={this.props.onClick('meas/per')}
           >
             PER
           </button>
           <button
             type="button"
-            className="d-flex btn btn-light btn-sm ml-5"
+            className="btn btn-dark ml-5"
             onClick={this.props.onClear}
           >
             CLEAR

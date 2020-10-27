@@ -91,14 +91,14 @@ class Login extends Component {
             <option>34401a</option>
           </select>
           <button
-            className=" btn custom text-center font-weight-bold mt-5 mb-2 btn-primary btn-block"
+            className=" btn custom text-center font-weight-bold mt-5 mb-2 btn-dark btn-block"
             type="button"
             onClick={this.onClickHandler}
           >
             로그인
           </button>
           <button
-            className="btn custom btn-primary font-weight-bold btn-block"
+            className="btn custom btn-dark font-weight-bold btn-block"
             type="button"
             data-toggle="modal"
             data-target="#registerModal"
