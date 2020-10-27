@@ -16,6 +16,7 @@
     "plotly.js": "^1.56.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
+    "react-bootstrap-table-next": "^4.0.3",
     "react-cookies": "^0.1.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",

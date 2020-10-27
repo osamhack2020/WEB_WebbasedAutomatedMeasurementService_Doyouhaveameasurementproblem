@@ -1,13 +1,12 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
-import { Spinner } from 'react-bootstrap';
 import { ProgressBar } from 'react-bootstrap';
 import axios from 'axios';
-
 import '../css/User.css';
 import cookie from 'react-cookies';
 import io from 'socket.io-client';
+import HistoryTable from '../components/HistoryTable';
 import Manual from '../components/Manual';
 // import Chatting from '../components/Chatting';
 const socket = io.connect('https://express-server.run.goorm.io');
@@ -106,8 +105,9 @@ class User extends Component {
     })
       .then((response) => {
         var tmp = response.data.slice(undefined);
+        console.log(tmp);
         if (tmp) {
-          console.log('hi');
+          //console.log('hi');
           this.setState({
             history: tmp,
           });
@@ -121,26 +121,9 @@ class User extends Component {
         console.log(error);
       });
   }
+
+
   render() {
-    var historyItems;
-
-    if (this.state.history.length !== 0) {
-      historyItems = this.state.history.map((data, index) => {
-        return (
-          <tr key={index}>
-            <th scope="row">{index}</th>
-            <td>{data.selectedProcedure}</td>
-            <td>{data.adminRegion}</td>
-            <td>{data.adminRank}</td>
-            <td>{data.adminName}</td>
-            <td>{data.nowDate}</td>
-          </tr>
-        );
-      });
-    } else {
-      historyItems = <p>측정 기록이 없습니다.</p>;
-    }
-
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
         User.js 장비를 직접 측정하는 사용자의 화면입니다.
@@ -166,24 +149,12 @@ class User extends Component {
           {/* LeftPannel */}
           <div className="leftPannel d-flex flex-column mr-5 mt-1">
             <h1 className="display-4">Progress</h1>
+            <ProgressBar animated now={45} />
+
             <button onClick={this.fetchHistoryHandler} type="button">
               히스토리 업데이트
             </button>
-            <ProgressBar animated now={45} />
-
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">작업</th>
-                  <th scope="col">승인자 부대</th>
-                  <th scope="col">승인자 계급</th>
-                  <th scope="col">승인자 이름</th>
-                  <th scope="col">시간</th>
-                </tr>
-              </thead>
-              <tbody>{historyItems}</tbody>
-            </table>
+            <HistoryTable history={this.state.history} />
           </div>
           <div className="d-flex flex-column">
             <div className="card-body msg_card_body bg-secondary mt-1">

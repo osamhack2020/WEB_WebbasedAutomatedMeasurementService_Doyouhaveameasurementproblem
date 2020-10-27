@@ -48,13 +48,13 @@ class ProcedureFinished extends Component {
       },
     })
       .then(function (response) {
-        //console.log(response);
-        this.props.plusOneCurrentIndex();
+        console.log(response);
+        //this.props.plusOneCurrentIndex();
         alert('측정 기록이 저장되었습니다');
       })
       .catch(function (error) {
-        //console.log(error);
-        this.props.plusOneCurrentIndex();
+        console.log(error);
+        //this.props.plusOneCurrentIndex();
       });
   }
   handleClick() {
