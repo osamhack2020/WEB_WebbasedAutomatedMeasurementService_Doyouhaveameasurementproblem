@@ -1,6 +1,7 @@
 import BootstrapTable from 'react-bootstrap-table-next';
 import React, { Component } from 'react';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import '../css/HistoryTable.css';
 class HistoryTable extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ class HistoryTable extends Component {
       },
       {
         dataField: 'adminRegion',
-        text: '승인자 부대',
+        text: '부대',
       },
       {
         dataField: 'adminRank',
@@ -55,7 +56,7 @@ class HistoryTable extends Component {
       });
       //var result = this.props.history.result.split(' ');
       return (
-        <div>
+        <div id="bootstrapTable">
           <BootstrapTable
             hover
             keyField="index"
