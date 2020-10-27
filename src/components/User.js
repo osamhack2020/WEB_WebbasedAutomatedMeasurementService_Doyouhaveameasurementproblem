@@ -122,7 +122,6 @@ class User extends Component {
       });
   }
 
-
   render() {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
@@ -155,6 +154,7 @@ class User extends Component {
               히스토리 업데이트
             </button>
             <HistoryTable history={this.state.history} />
+            <Manual className="m-4" id="manual" />
           </div>
           <div className="d-flex flex-column">
             <div className="card-body msg_card_body bg-secondary mt-1">
