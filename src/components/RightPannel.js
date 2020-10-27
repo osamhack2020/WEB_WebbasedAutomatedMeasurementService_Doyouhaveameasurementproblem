@@ -42,6 +42,7 @@ class RightPannel extends Component {
     socket.emit('send procedureStatus from admin', {
       current_index: this.state.current_index,
       title: this.state.title,
+      id: this.state.id,
     });
   };
   sendMessage = () => {

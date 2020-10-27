@@ -56,16 +56,19 @@ class User extends Component {
       this.setState({ messageHistory: tmp });
     });
     socket.on('procedureStatus to user', (message) => {
-      //console.log(message);
-      if (message.current_index !== this.state.current_index) {
-        this.setState({
-          current_index: message.current_index,
-        });
-      }
-      if (message.title !== this.state.current_procedure) {
-        this.setState({
-          current_procedure: message.title,
-        });
+      console.log(message);
+
+      if (message.id === this.state.idusers) {
+        if (message.current_index !== this.state.current_index) {
+          this.setState({
+            current_index: message.current_index,
+          });
+        }
+        if (message.title !== this.state.current_procedure) {
+          this.setState({
+            current_procedure: message.title,
+          });
+        }
       }
     });
   }
@@ -203,7 +206,8 @@ class User extends Component {
     }
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
-        User.js 장비를 직접 측정하는 사용자의 화면입니다.
+        User.js 장비를 직접 측정하는 사용자의 화면입니다. Id:
+        {this.state.idusers}
         <div className="flex-row">
           <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
             로그아웃

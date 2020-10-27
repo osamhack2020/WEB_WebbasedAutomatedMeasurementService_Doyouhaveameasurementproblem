@@ -40,6 +40,7 @@ io.on('connection', (socket) => {
     io.emit('procedureStatus to user', {
       current_index: item.current_index,
       title: item.title,
+      id: item.id,
     });
   });
   socket.on('disconnect', function () {
