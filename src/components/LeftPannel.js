@@ -12,7 +12,7 @@ class LeftPannel extends Component {
       return (
         <div
           id="LeftPannel"
-          className="d-flex flex-column align-items-stretch border border-dark rounded mb-1 p-5 bg-secondary"
+          className="d-flex flex-column align-items-stretch justify-content-center border border-dark rounded mb-1 p-5 bg-secondary"
         >
           <Display
             unit={this.props.unit}
