@@ -56,17 +56,43 @@ class HistoryTable extends Component {
       });
       //var result = this.props.history.result.split(' ');
       return (
-        <div id="bootstrapTable">
-          <BootstrapTable
-            hover
-            keyField="index"
-            data={historyItems}
-            columns={columns}
-            rowEvents={rowEvents}
-          />
-          {/* <HistoryDetail
-          selectedProcedure
-          result={result} /> */}
+        <div
+          className="modal fade"
+          id="history"
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  히스토리입니다.
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div className="modal-body">
+                <div id="bootstrapTable">
+                  <BootstrapTable
+                    hover
+                    keyField="index"
+                    data={historyItems}
+                    columns={columns}
+                    rowEvents={rowEvents}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {

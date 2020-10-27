@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import { ProgressBar } from 'react-bootstrap';
 import axios from 'axios';
+import { Spinner } from 'react-bootstrap';
 import '../css/User.css';
 import cookie from 'react-cookies';
 import io from 'socket.io-client';
@@ -19,8 +20,11 @@ class User extends Component {
       isAdmin: cookie.load('isAdmin'),
       messageInput: '',
       messageHistory: [],
-      procedures: null,
+      procedures: [],
       history: [],
+      current_index: 0,
+      current_procedure: '',
+      procedure: null,
     };
     this.fetchHistoryHandler = this.fetchHistoryHandler.bind(this);
     socket.on('message to user', (message) => {
@@ -51,9 +55,35 @@ class User extends Component {
       );
       this.setState({ messageHistory: tmp });
     });
+    socket.on('procedureStatus to user', (message) => {
+      //console.log(message);
+      if (message.current_index !== this.state.current_index) {
+        this.setState({
+          current_index: message.current_index,
+        });
+      }
+      if (message.title !== this.state.current_procedure) {
+        this.setState({
+          current_procedure: message.title,
+        });
+      }
+    });
   }
   componentDidMount() {
     this.fetchHistoryHandler();
+    axios({
+      method: 'post',
+      url: 'https://express-server.run.goorm.io/procedure/getProcedures',
+      data: {},
+    })
+      .then((response) => {
+        this.setState({
+          procedures: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   sendMessage = () => {
@@ -123,6 +153,54 @@ class User extends Component {
   }
 
   render() {
+    var procedureStatusList;
+    if (this.state.current_procedure && this.state.procedures) {
+      for (let i = 0; i < this.state.procedures.length; i++) {
+        if (this.state.procedures[i].title === this.state.current_procedure) {
+          this.state.procedure = this.state.procedures[i];
+          break;
+        }
+      }
+    }
+    // 진행상황 표시.
+    if (this.state.procedure !== null) {
+      var tmp = this.state.procedure;
+      var vals = tmp.test_vals.split(' ');
+      var units = tmp.test_units.split(' ');
+      procedureStatusList = vals.map((data, index) => {
+        if (index === this.state.current_index) {
+          return (
+            <li
+              className="list-group-item list-group-item-secondary"
+              key={index}
+            >
+              <Spinner className="" animation="grow" size="sm" />
+              {index + 1 + '.  ' + data + units[index] + ' 측정하기.'}
+            </li>
+          );
+        } else if (index < this.state.current_index) {
+          return (
+            <li className="list-group-item list-group-item-success" key={index}>
+              {index + 1 + '.  ' + data + units[index] + ' 측정하기.'}
+            </li>
+          );
+        } else {
+          return (
+            <li className="list-group-item " key={index}>
+              {index + 1 + '.  ' + data + units[index] + ' 측정하기.'}
+            </li>
+          );
+        }
+      });
+    } else {
+      procedureStatusList = (
+        <li>
+          {' '}
+          <Spinner className="" animation="grow" size="sm" />
+          연결중입니다....
+        </li>
+      );
+    }
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
         User.js 장비를 직접 측정하는 사용자의 화면입니다.
@@ -138,6 +216,14 @@ class User extends Component {
           >
             연결 방법 자세히 보기
           </button>
+          <button
+            className="btn-sm p-2"
+            type="button"
+            data-toggle="modal"
+            data-target="#history"
+          >
+            히스토리 보기
+          </button>
           <div className="d-sm-inline-flex">관리자 접속여부: admin</div>
           <BsCircleFill
             className="d-sm-inline-flex ml-1"
@@ -149,10 +235,12 @@ class User extends Component {
           <div className="leftPannel d-flex flex-column mr-5 mt-1">
             <h1 className="display-4">Progress</h1>
             <ProgressBar animated now={45} />
-
-            <button onClick={this.fetchHistoryHandler} type="button">
-              히스토리 업데이트
-            </button>
+            <ul className="list-group">
+              <li className="list-group-item list-group-item-success">
+                0. 장비 연결 테스트
+              </li>
+              {procedureStatusList}
+            </ul>
             <HistoryTable history={this.state.history} />
             <Manual className="m-4" id="manual" />
           </div>

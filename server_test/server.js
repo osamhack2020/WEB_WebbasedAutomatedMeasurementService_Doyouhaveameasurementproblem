@@ -34,6 +34,14 @@ io.on('connection', (socket) => {
     console.log(msg);
     io.emit('message to admin', { id: item.id, message: item.message });
   });
+  socket.on('send procedureStatus from admin', (item) => {
+    //console.log(item.current_index);
+    //console.log(item.title);
+    io.emit('procedureStatus to user', {
+      current_index: item.current_index,
+      title: item.title,
+    });
+  });
   socket.on('disconnect', function () {
     //console.log('user disconnected: ', socket.id);
   });

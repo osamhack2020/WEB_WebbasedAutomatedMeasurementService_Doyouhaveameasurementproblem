@@ -38,7 +38,12 @@ class RightPannel extends Component {
       this.setState({ messageHistory: tmp });
     });
   }
-
+  sendProcedureStatus = () => {
+    socket.emit('send procedureStatus from admin', {
+      current_index: this.state.current_index,
+      title: this.state.title,
+    });
+  };
   sendMessage = () => {
     //console.log('sendMessage');
     socket.emit('send message from admin', {
@@ -83,7 +88,7 @@ class RightPannel extends Component {
   render() {
     if (this.state.length === this.state.current_index) {
       var tmp = this.state.procedureStatus.slice(0, this.state.length);
-
+      this.sendProcedureStatus();
       return (
         <div className="d-flex align-items-center p-5">
           측정완료
@@ -117,7 +122,7 @@ class RightPannel extends Component {
       this.state.title = this.props.procedureContent.title;
       this.state.vals = this.props.procedureContent.test_vals.split(' ');
       this.state.units = this.props.procedureContent.test_units.split(' ');
-
+      this.sendProcedureStatus();
       // eslint-disable-next-line
       // 성공시 list-group-item-success 실패시 list-group-item-secondary
       if (this.props.procedureContent && this.state.vals) {

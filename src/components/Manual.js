@@ -37,7 +37,7 @@ class Manual extends Component {
                       1. 직류전압 측정 연결 단자 </h5>
                     <img
                       src={process.env.PUBLIC_URL + '/DCV_measure_.jpg'}
-                      class="img-fluid"
+                      className="img-fluid"
                       alt="image1"
                     />
                   </div>
