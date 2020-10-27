@@ -30,7 +30,7 @@ class Manual extends Component {
             
             
             <div className="modal-body">
-              <div id="carousel" class="carousel slide" data-ride="carousel">
+              <div id="carousel" className="carousel slide" data-ride="carousel">
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <h5 className="modal-title" id="exampleModalLabel">
@@ -46,7 +46,7 @@ class Manual extends Component {
                       2. 교류전압 측정 연결 단자 </h5>
                     <img
                       src={process.env.PUBLIC_URL + '/ACV_measure_.jpg'}
-                      class="img-fluid"
+                      className="img-fluid"
                       alt="image2"
                     />
                   </div>
@@ -55,7 +55,7 @@ class Manual extends Component {
                       3. 2W 저항 측정 연결 단자 </h5>
                     <img
                       src={process.env.PUBLIC_URL + '/RES_measure_.jpg'}
-                      class="img-fluid"
+                      className="img-fluid"
                       alt="image3"
                     />
                   </div>
@@ -64,7 +64,7 @@ class Manual extends Component {
                       4. 주파수 측정 연결 단자 </h5>
                     <img
                       src={process.env.PUBLIC_URL + '/FREQ_measure_.jpg'}
-                      class="img-fluid"
+                      className="img-fluid"
                       alt="image4"
                     />
                   </div>
@@ -73,7 +73,7 @@ class Manual extends Component {
                       5. 주기 측정 연결 단자 </h5>
                     <img
                       src={process.env.PUBLIC_URL + '/PER_measure_.jpg'}
-                      class="img-fluid"
+                      className="img-fluid"
                       alt="image5"
                     />
                   </div>
