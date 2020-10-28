@@ -289,27 +289,28 @@ class User extends Component {
 
           {/* <div className="d-sm-inline-flex">관리자 접속여부: admin</div> */}
         </div>
-
-        <button
-          className="btn-sm p-2btn btn-dark"
-          type="button"
-          data-toggle="modal"
-          data-target="#manual"
-        >
-          Connect Method
-        </button>
-        <button
-          className="flex-inline btn-sm p-2 btn btn-dark"
-          type="button"
-          data-toggle="modal"
-          data-target="#history"
-        >
-          History
-        </button>
         <div className="d-flex flex-row">
           {/* LeftPannel */}
           <div className="leftPannel d-flex flex-column mr-5 mt-1">
-            <h1 className="display-4">Progress</h1>
+            <h1 className="display-4">
+              <span className="badge">Progress</span>
+              <button
+                className="flex-inline btn-sm p-2 btn btn-dark mr-2"
+                type="button"
+                data-toggle="modal"
+                data-target="#history"
+              >
+                History
+              </button>
+              <button
+                className="btn-sm p-2 btn btn-dark"
+                type="button"
+                data-toggle="modal"
+                data-target="#manual"
+              >
+                Connect Method
+              </button>
+            </h1>
             <ul className="list-group mt-3">
               <li className="list-group-item list-group-item-success">
                 0. 장비 연결 테스트
