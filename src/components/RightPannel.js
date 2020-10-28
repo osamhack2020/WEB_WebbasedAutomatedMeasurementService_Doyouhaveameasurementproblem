@@ -93,10 +93,10 @@ class RightPannel extends Component {
       this.sendProcedureStatus();
       return (
         <div
-          className="d-flex align-items-center p-5 border border-dark rounded"
+          className="p-5 bg-secondary border mb-1 border-dark rounded"
           id="ResultPannel"
         >
-          <span className="badge badge-secondary">측정완료</span>
+          <div className="p-1 border bg-dark border-light rounded-lg mb-5 mt-5" id="Complete">측정완료</div>
           <ProcedureFinished
             selectedProcedure={this.props.procedure}
             vals={this.state.vals}
@@ -112,7 +112,8 @@ class RightPannel extends Component {
             data-toggle="modal"
             data-target="#procedureFinished"
             type="button"
-            className="btn btn-dark button-big"
+            className="btn btn-dark border-light button-big"
+            id="SaveBtn"
           >
             측정 결과 저장
           </button>

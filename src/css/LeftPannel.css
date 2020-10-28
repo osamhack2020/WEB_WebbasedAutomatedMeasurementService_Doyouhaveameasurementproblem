@@ -2,6 +2,9 @@
   border-radius: 1em;
   height: 100%;
 }
+#LeftPannel .btn {
+  border-color: #f8f9fa;
+}
 #teamLogo {
   max-width: auto;
   height: auto;

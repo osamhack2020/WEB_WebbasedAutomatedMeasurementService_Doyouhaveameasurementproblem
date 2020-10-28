@@ -118,14 +118,14 @@ class ProcedureFinished extends Component {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-warning"
+                className="btn btn-secondary"
                 data-dismiss="modal"
               >
                 취소
               </button>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-dark"
                 data-dismiss="modal"
                 onClick={this.handleClick}
               >
