@@ -65,7 +65,7 @@ class Login extends Component {
             id="inputEmail"
             name="id"
             className="custom form-control"
-            placeholder="id"
+            placeholder="ID"
             required
             autoFocus
             value={this.state.id}
