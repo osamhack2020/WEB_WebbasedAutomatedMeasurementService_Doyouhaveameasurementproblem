@@ -72,6 +72,7 @@ html {
 .card-footer {
   border-radius: 0 0 15px 15px !important;
   border-top: 0 !important;
+  background-color: gray !important;
 }
 .container {
   align-content: center;
