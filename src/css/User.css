@@ -6,6 +6,26 @@ html {
   background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
+
+#userInfo {
+  width: 70%;
+  height: 60%;
+}
+#userInfo .form-control {
+  width: 14%;
+  display: inline-block;
+  text-align: center;
+  font-size: smaller;
+}
+#userInfo .badge {
+  font-size: 100%;
+  line-height: 1.4;
+  position: relative;
+  top:-1px;
+  font-weight: 400;
+}
+
+
 .leftPannel {
   height: 400px;
   width: 400px;

@@ -25,6 +25,10 @@ class User extends Component {
       current_procedure: '',
       procedure: null,
       length: 100,
+      users: null,
+      name: '',
+      rank: '',
+      region: '',
     };
     this.fetchHistoryHandler = this.fetchHistoryHandler.bind(this);
     socket.on('message to user', (message) => {
@@ -71,8 +75,17 @@ class User extends Component {
         }
       }
     });
+    this.fetchUserInfo();
   }
   componentDidMount() {
+    axios
+      .get('https://express-server.run.goorm.io/user/getUsers')
+      .then((res) => res.data)
+      .then((data) => {
+        // data.forEach((data) => console.log(data));
+        console.log(data);
+        this.setState({ users: data });
+      });
     this.fetchHistoryHandler();
     axios({
       method: 'post',
@@ -96,6 +109,32 @@ class User extends Component {
         ),
       });
     }
+  }
+
+  async fetchUserInfo() {
+    return await axios({
+      method: 'post',
+      url: 'https://express-server.run.goorm.io/user/userinfo',
+      data: {
+        idusers: this.state.idusers,
+      },
+    })
+      .then((response) => {
+        if (response.data.success) {
+          //console.log(response.data);
+          const tmp = response.data;
+          this.setState({
+            name: tmp.name,
+            region: tmp.region,
+            rank: tmp.rank,
+          });
+        } else {
+          console.log('사용자 정보 가져오기 실패 in Main.js');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   sendMessage = () => {
@@ -219,33 +258,48 @@ class User extends Component {
     }
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
-        User.js 장비를 직접 측정하는 사용자의 화면입니다.
-        {' Id: ' + this.state.idusers}
+        <div id="userInfo">
+          <span className="badge badge-secondary ml-1">ID</span>
+          <span className="form-control mr-1">{this.state.idusers}</span>
+          <span className="badge badge-secondary">RANK</span>
+          <span className="form-control mr-1">{this.state.rank}</span>
+          <span className="badge badge-secondary">NAME</span>
+          <span className="form-control mr-1" style={{ width: '20%' }}>
+            {this.state.name}
+          </span>
+          <span className="badge badge-secondary">GROUP</span>
+          <span className="form-control">{this.state.region}</span>
+          <button className="btn btn-sm btn-dark p-2 mr-4 ml-3" onClick={this.props.onLogout}>
+            로그아웃
+          </button>
+          <span className="badge badge-secondary">관리자</span>
+          <span className="form-control">admin<BsCircleFill
+            className="d-sm-inline-flex ml-1"
+            style={{ color: 'green' }}
+          /></span>
+        </div>
+
         <div className="flex-row">
           <button
-            className="btn-sm p-2 mr-2"
+            className="btn-sm p-2 mr-2 btn btn-dark"
             type="button"
             data-toggle="modal"
             data-target="#manual"
           >
-            연결 방법 자세히 보기
+            Connect Method
           </button>
           <button
-            className="flex-inline btn-sm p-2 mr-2"
+            className="flex-inline btn-sm p-2 mr-2 btn btn-dark"
             type="button"
             data-toggle="modal"
             data-target="#history"
           >
-            히스토리
+            History
           </button>
-          <button className=" btn-sm p-2 mr-4" onClick={this.props.onLogout}>
-            로그아웃
-          </button>
-          <div className="d-sm-inline-flex">관리자 접속여부: admin</div>
-          <BsCircleFill
-            className="d-sm-inline-flex ml-1"
-            style={{ color: 'green' }}
-          />
+
+          {/* <div className="d-sm-inline-flex">관리자 접속여부: admin</div> */}
+
+          
         </div>
         <div className="d-flex flex-row">
           {/* LeftPannel */}
@@ -257,7 +311,10 @@ class User extends Component {
               </li>
               {procedureStatusList}
             </ul>
-            <HistoryTable idusers={this.state.idusers} history={this.state.history} />
+            <HistoryTable
+              idusers={this.state.idusers}
+              history={this.state.history}
+            />
             <Manual className="m-4" id="manual" />
           </div>
           <div className="d-flex flex-column">
