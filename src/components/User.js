@@ -258,49 +258,54 @@ class User extends Component {
     }
     return (
       <div className="d-flex flex-column align-items-center justify-content-center bg-light">
-        <div id="userInfo">
-          <span className="badge badge-secondary ml-1">ID</span>
-          <span className="form-control mr-1">{this.state.idusers}</span>
-          <span className="badge badge-secondary">RANK</span>
-          <span className="form-control mr-1">{this.state.rank}</span>
-          <span className="badge badge-secondary">NAME</span>
-          <span className="form-control mr-1" style={{ width: '20%' }}>
-            {this.state.name}
-          </span>
-          <span className="badge badge-secondary">GROUP</span>
-          <span className="form-control">{this.state.region}</span>
-          <button className="btn btn-sm btn-dark p-2 mr-4 ml-3" onClick={this.props.onLogout}>
-            로그아웃
-          </button>
-          <span className="badge badge-secondary">관리자</span>
-          <span className="form-control">admin<BsCircleFill
-            className="d-sm-inline-flex ml-1"
-            style={{ color: 'green' }}
-          /></span>
-        </div>
+        {/* <div id="userInfo">
 
-        <div className="flex-row">
+        </div> */}
+
+        <div className="flex-row border border-dark rounded p-1" id="userInfo">
+          <span className="badge badge-secondary">ID</span>
+          <span className="form-control mr-2">{this.state.idusers}</span>
+          <span className="badge badge-secondary">Admin id</span>
+          <span className="form-control mr-2">
+            admin
+            <BsCircleFill
+              className="d-sm-inline-flex ml-1"
+              style={{ color: 'green' }}
+            />
+          </span>
+          <span className="badge badge-secondary">RANK</span>
+          <span className="form-control mr-2">{this.state.rank}</span>
+          <span className="badge badge-secondary">NAME</span>
+          <span className="form-control mr-2">{this.state.name}</span>
+          <span className="badge badge-secondary">GROUP</span>
+          <span className="form-control mr-3">{this.state.region}</span>
+
           <button
-            className="btn-sm p-2 mr-2 btn btn-dark"
-            type="button"
-            data-toggle="modal"
-            data-target="#manual"
+            className="btn btn-sm btn-dark p-2"
+            onClick={this.props.onLogout}
           >
-            Connect Method
-          </button>
-          <button
-            className="flex-inline btn-sm p-2 mr-2 btn btn-dark"
-            type="button"
-            data-toggle="modal"
-            data-target="#history"
-          >
-            History
+            로그아웃
           </button>
 
           {/* <div className="d-sm-inline-flex">관리자 접속여부: admin</div> */}
-
-          
         </div>
+
+        <button
+          className="btn-sm p-2btn btn-dark"
+          type="button"
+          data-toggle="modal"
+          data-target="#manual"
+        >
+          Connect Method
+        </button>
+        <button
+          className="flex-inline btn-sm p-2 btn btn-dark"
+          type="button"
+          data-toggle="modal"
+          data-target="#history"
+        >
+          History
+        </button>
         <div className="d-flex flex-row">
           {/* LeftPannel */}
           <div className="leftPannel d-flex flex-column mr-5 mt-1">

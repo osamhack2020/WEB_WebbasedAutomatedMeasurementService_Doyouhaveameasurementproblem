@@ -10,9 +10,10 @@ html {
 #userInfo {
   width: 70%;
   height: 60%;
+  text-align: center;
 }
 #userInfo .form-control {
-  width: 14%;
+  width: auto;
   display: inline-block;
   text-align: center;
   font-size: smaller;
@@ -21,11 +22,10 @@ html {
   font-size: 100%;
   line-height: 1.4;
   position: relative;
-  top:-1px;
+  top: -1px;
   font-weight: 400;
+  display: inline-block;
 }
-
-
 .leftPannel {
   height: 400px;
   width: 400px;
