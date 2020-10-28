@@ -257,16 +257,19 @@ class User extends Component {
       );
     }
     return (
-      <div className="d-flex flex-column align-items-center justify-content-center bg-light">
+      <div className="d-flex flex-column align-items-center " id="User">
         {/* <div id="userInfo">
 
         </div> */}
 
-        <div className="flex-row border border-dark rounded p-1" id="userInfo">
+        <div
+          className="flex-row border border-dark rounded p-1 bg-light mb-4 mt-4"
+          id="userInfo"
+        >
           <span className="badge badge-secondary">ID</span>
-          <span className="form-control mr-2">{this.state.idusers}</span>
-          <span className="badge badge-secondary">Admin id</span>
-          <span className="form-control mr-2">
+          <span className="form-control mr-3">{this.state.idusers}</span>
+          <span className="badge badge-secondary">Admin ID</span>
+          <span className="form-control mr-3">
             admin
             <BsCircleFill
               className="d-sm-inline-flex ml-1"
@@ -274,11 +277,11 @@ class User extends Component {
             />
           </span>
           <span className="badge badge-secondary">RANK</span>
-          <span className="form-control mr-2">{this.state.rank}</span>
+          <span className="form-control mr-3">{this.state.rank}</span>
           <span className="badge badge-secondary">NAME</span>
-          <span className="form-control mr-2">{this.state.name}</span>
+          <span className="form-control mr-3">{this.state.name}</span>
           <span className="badge badge-secondary">GROUP</span>
-          <span className="form-control mr-3">{this.state.region}</span>
+          <span className="form-control mr-5">{this.state.region}</span>
 
           <button
             className="btn btn-sm btn-dark p-2"
@@ -289,59 +292,64 @@ class User extends Component {
 
           {/* <div className="d-sm-inline-flex">관리자 접속여부: admin</div> */}
         </div>
-        <div className="d-flex flex-row">
-          {/* LeftPannel */}
-          <div className="leftPannel d-flex flex-column mr-5 mt-1">
-            <h1 className="display-4">
-              <span className="badge">Progress</span>
-              <button
-                className="flex-inline btn-sm p-2 btn btn-dark mr-2"
-                type="button"
-                data-toggle="modal"
-                data-target="#history"
-              >
-                History
-              </button>
-              <button
-                className="btn-sm p-2 btn btn-dark"
-                type="button"
-                data-toggle="modal"
-                data-target="#manual"
-              >
-                Connect Method
-              </button>
-            </h1>
-            <ul className="list-group mt-3">
-              <li className="list-group-item list-group-item-success">
-                0. 장비 연결 테스트
-              </li>
-              {procedureStatusList}
-            </ul>
-            <HistoryTable
-              idusers={this.state.idusers}
-              history={this.state.history}
-            />
-            <Manual className="m-4" id="manual" />
-          </div>
-          <div className="d-flex flex-column">
-            <div className="card-body msg_card_body bg-secondary mt-1">
-              {this.state.messageHistory}
+        <div
+          className="border rounded-lg p-5 bg-light border-dark"
+          style={{ width: '1100px' }}
+        >
+          <div className="d-flex flex-row" id="userPannel">
+            {/* LeftPannel */}
+            <div className="d-flex flex-column mr-5" id="leftPannel">
+              <h1 className="display-4">
+                <span className="badge">Progress</span>
+                <button
+                  className="flex-inline btn-sm p-2 btn btn-dark mr-3 ml-3"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#history"
+                >
+                  History
+                </button>
+                <button
+                  className="btn-sm p-2 btn btn-dark"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#manual"
+                >
+                  Connect Method
+                </button>
+              </h1>
+              <ul className="list-group mt-3">
+                <li className="list-group-item list-group-item-success">
+                  0. 장비 연결 테스트
+                </li>
+                {procedureStatusList}
+              </ul>
+              <HistoryTable
+                idusers={this.state.idusers}
+                history={this.state.history}
+              />
+              <Manual className="m-4" id="manual" />
             </div>
-            <div className="card-footer">
-              <div className="input-group">
-                <input
-                  className="form-control type_msg"
-                  placeholder="Type your message..."
-                  value={this.state.messageInput}
-                  onChange={this.onInputChanged}
-                />
-                <div className="input-group-append">
-                  <span
-                    className="input-group-text send_btn "
-                    onClick={this.sendMessage}
-                  >
-                    send
-                  </span>
+            <div className="d-flex flex-column" id="rightPannel">
+              <div className="card-body msg_card_body bg-secondary mt-1">
+                {this.state.messageHistory}
+              </div>
+              <div className="card-footer">
+                <div className="input-group">
+                  <input
+                    className="form-control type_msg"
+                    placeholder="Type your message..."
+                    value={this.state.messageInput}
+                    onChange={this.onInputChanged}
+                  />
+                  <div className="input-group-append">
+                    <span
+                      className="input-group-text send_btn "
+                      onClick={this.sendMessage}
+                    >
+                      send
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

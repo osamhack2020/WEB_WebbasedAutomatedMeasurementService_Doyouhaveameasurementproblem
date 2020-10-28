@@ -7,10 +7,21 @@ html {
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
 
-#userInfo {
-  width: 70%;
-  height: 60%;
+#User {
+  height: 100%;
   text-align: center;
+}
+
+#userPannel {
+  width: 1000px;
+  height: inherit;
+}
+
+#userInfo {
+  width: 1100px;
+  height: auto;
+  text-align: center;
+  display: inline-block;
 }
 #userInfo .form-control {
   width: auto;
@@ -26,9 +37,12 @@ html {
   font-weight: 400;
   display: inline-block;
 }
-.leftPannel {
-  height: 400px;
-  width: 400px;
+#leftPannel {
+  width: 50%;
+}
+#rightPannel {
+  width: 50%;
+  max-height: 600px !important;
 }
 .chat {
   margin-top: auto;
@@ -47,7 +61,8 @@ html {
 /* 크기를 조정하려면 이곳을 수정하세요. */
 .msg_card_body {
   height: 400px;
-  width: 400px;
+  /* width: 400px; */
+  border-radius: 15px 15px 0 0 !important;
   overflow-y: auto;
 }
 .card-header {
