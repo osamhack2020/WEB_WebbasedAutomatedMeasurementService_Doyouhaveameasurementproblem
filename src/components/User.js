@@ -306,6 +306,7 @@ class User extends Component {
                   type="button"
                   data-toggle="modal"
                   data-target="#history"
+                  onClick={this.fetchHistoryHandler}
                 >
                   History
                 </button>

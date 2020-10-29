@@ -53,10 +53,10 @@ class HistoryDetail extends Component {
     return (
       <div
         className="modal fade"
-        id="procedureFinished"
+        id="historyDetail"
         tabIndex="-1"
         role="dialog"
-        aria-labelledby="procedureFinished"
+        aria-labelledby="historyDetail"
         aria-hidden="true"
       >
         <div className="modal-dialog" role="document">
