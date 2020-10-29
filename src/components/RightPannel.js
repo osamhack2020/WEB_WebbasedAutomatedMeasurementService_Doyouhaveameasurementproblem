@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 //import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import ProcedureFinished from '../components/ProcedureFinished';
@@ -92,11 +92,53 @@ class RightPannel extends Component {
       var tmp = this.state.procedureStatus.slice(0, this.state.length);
       this.sendProcedureStatus();
       return (
-        <div
-          className="p-5 bg-secondary border mb-1 border-dark rounded"
-          id="ResultPannel"
-        >
-          <div className="p-1 border bg-dark border-light rounded-lg mb-5 mt-5" id="Complete">측정완료</div>
+        <Fragment>
+          <div id="RightPannel" className="d-flex flex-row align-items-center">
+            <div
+              className="p-4 bg-secondary border mb-1 border-dark rounded mr-1"
+              id="ResultPannel"
+            >
+              <div
+                className="p-1 border bg-dark border-light rounded-lg mb-5"
+                id="Complete"
+              >
+                측정완료
+              </div>
+              <button
+                data-toggle="modal"
+                data-target="#procedureFinished"
+                type="button"
+                className="btn btn-dark border-light button-big"
+                id="SaveBtn"
+              >
+                측정 결과 저장
+              </button>
+            </div>
+            <div
+              id="ChattingPannel"
+              className="d-flex flex-column bg-light overflow-auto border border-dark rounded mb-1"
+            >
+              <div className="msg_history">{this.state.messageHistory}</div>
+              <div className="type_msg">
+                <div className="input_msg_write">
+                  <input
+                    onChange={this.onInputChanged}
+                    value={this.state.messageInput}
+                    type="text"
+                    className="write_msg"
+                    placeholder="Type a message"
+                  />
+                </div>
+              </div>
+              <button
+                className="d-flex-inline align-items-end btn-dark"
+                type="button"
+                onClick={this.sendMessage}
+              >
+                Send
+              </button>
+            </div>
+          </div>
           <ProcedureFinished
             selectedProcedure={this.props.procedure}
             vals={this.state.vals}
@@ -108,16 +150,7 @@ class RightPannel extends Component {
             handleStopMeasuring={this.props.handleStopMeasuring}
             plusOneCurrentIndex={this.plusOneCurrentIndex}
           />
-          <button
-            data-toggle="modal"
-            data-target="#procedureFinished"
-            type="button"
-            className="btn btn-dark border-light button-big"
-            id="SaveBtn"
-          >
-            측정 결과 저장
-          </button>
-        </div>
+        </Fragment>
       );
     } else if (
       this.props.connected &&
