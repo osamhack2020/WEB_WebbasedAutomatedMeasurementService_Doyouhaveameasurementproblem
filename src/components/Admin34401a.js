@@ -5,7 +5,7 @@ import RightPannel from './RightPannel';
 import Plot from 'react-plotly.js';
 import cookie from 'react-cookies';
 import '../css/Admin34401a.css';
-
+// 34401a 장비를 컨트롤 할 수 있는 관리자 컴포넌트
 class Admin34401a extends Component {
   constructor(props) {
     super(props);
@@ -84,6 +84,7 @@ class Admin34401a extends Component {
     this.fetchUserInfo();
   }
   componentDidMount() {
+    // 컴포넌트가 마운트 되었을 때 유저 정보 가져오기.
     axios
       .get('https://express-server.run.goorm.io/user/getUsers')
       .then((res) => res.data)
@@ -91,6 +92,7 @@ class Admin34401a extends Component {
         //data.forEach((data) => console.log(data));
         this.setState({ users: data });
       });
+    // 프로시저 정보 가져오기. (saple1, sample2 ...)
     axios({
       method: 'post',
       url: 'https://express-server.run.goorm.io/procedure/getProcedures',
@@ -106,12 +108,13 @@ class Admin34401a extends Component {
         console.log(error);
       });
   }
-
+  // clear 버튼을 눌렀을 때 측정 히스토리 정보 초기화
   handleClear = () => {
     const data_ = this.state.data.slice(undefined);
     data_[0].y = [];
     this.setState({ data: data_, value: 0, unit: '' });
   };
+  // userInfo를 가져오는 핸들러.
   handleGetUserInfo = () => {
     this.fetchUserInfo();
   };
