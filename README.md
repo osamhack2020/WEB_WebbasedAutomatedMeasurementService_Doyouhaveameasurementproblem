@@ -27,7 +27,7 @@ No|Team|Name|E-mail|Github_ID
 
 # 프로젝트 소개(Project Information)
 
-   ![](https://giphy.com/gifs/LvcfY4VfWEkUVdDKG0/html5)
+   ![](https://media.giphy.com/media/LvcfY4VfWEkUVdDKG0/giphy.gif)
 
    >## 추진배경
 
