@@ -19,6 +19,7 @@ class HistoryTable extends Component {
     };
     const columns = [
       {
+        width: '500px',
         dataField: 'index',
         text: 'index',
       },
@@ -64,7 +65,7 @@ class HistoryTable extends Component {
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div className="modal-dialog" role="document">
+          <div className="modal-dialog modal-xl" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
