@@ -18,6 +18,23 @@
 	</a>
 </p>
 
+<br><br><br>
+<h2 align="center">프로젝트 시연 영상</h2>
+
+<table>
+	<tr>
+		<td>
+			<a href="https://youtu.be/kgryo3qVIrA"></a>
+		</td>
+	</tr>
+</table>
+
+<h4 align="center">클릭 시 youtube 영상으로 이동합니다.</h4>
+<br><br><br>
+
+
+
+
 
 
 <p align="center">
