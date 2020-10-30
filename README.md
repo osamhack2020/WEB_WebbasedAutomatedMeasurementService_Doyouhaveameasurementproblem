@@ -13,7 +13,7 @@
 		<img src="https://user-images.githubusercontent.com/5003195/97741320-dd91ec80-1b25-11eb-8b41-688cf98f0c94.png" width="250px" height="80px" />
 	</a>
 	<a href="https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem/files/5466862/_.pdf">
-		<img src="https://user-images.githubusercontent.com/5003195/97741108-999ee780-1b25-11eb-976b-d5a59dfa4a7f.png" 
+		<img src="https://user-images.githubusercontent.com/5003195/97743201-aa049180-1b28-11eb-9bfa-306bdda08302.png" 
       width="250px" height="80px" />
 	</a>
 </p>
