@@ -20,15 +20,18 @@
 
 <br><br><br>
 <h2 align="center">프로젝트 시연 영상</h2>
-<p align = "center">
+
 <table>
 	<tr>
 		<td>
-			<a href="https://youtu.be/kgryo3qVIrA"><img src="https://user-images.githubusercontent.com/5003195/97744550-c99cb980-1b2a-11eb-996f-ca3c86d4bd4e.png" width="400px" height="300px" /></a>
+			<a href="https://youtu.be/kgryo3qVIrA">
+         <p align = "center">
+         <img src="https://user-images.githubusercontent.com/5003195/97744550-c99cb980-1b2a-11eb-996f-ca3c86d4bd4e.png" width="400px" height="300px" /></a>
+         </p>
 		</td>
 	</tr>
 </table>
-</p>
+
 <h4 align="center">클릭 시 youtube 영상으로 이동합니다.</h4>
 <br><br><br>
 
