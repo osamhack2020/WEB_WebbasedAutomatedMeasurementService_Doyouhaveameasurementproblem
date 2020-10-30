@@ -26,8 +26,8 @@
 
 [너 측정 문제 있어?](https://react-front-server.run.goorm.io/)
 
-- 관리자 ID: admin PW: 1234
-- 유저 ID: test PW: 1234
+- 유저 ID: test PW: 1234 (좌측)
+- 관리자 ID: admin PW: 1234 (우측)
   ![](https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem/blob/master/sample2.gif)
 
 > ## 추진배경
