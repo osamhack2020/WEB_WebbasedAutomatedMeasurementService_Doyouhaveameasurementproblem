@@ -14,6 +14,7 @@ const socket = io.connect('https://express-server.run.goorm.io');
 class User extends Component {
   constructor(props) {
     super(props);
+    this.divRef = React.createRef();
     this.state = {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
@@ -57,7 +58,7 @@ class User extends Component {
           </div>
         </div>,
       );
-      this.setState({ messageHistory: tmp });
+      this.setState({ messageHistory: tmp }, this.scrollToBottom);
     });
     socket.on('procedureStatus to user', (message) => {
       //console.log(message);
@@ -168,7 +169,10 @@ class User extends Component {
     );
 
     //메시지 비우기, history 업데이트
-    this.setState({ messageInput: '', messageHistory: tmp });
+    this.setState(
+      { messageInput: '', messageHistory: tmp },
+      this.scrollToBottom,
+    );
   };
   onInputChanged = (event) => {
     this.setState({ messageInput: event.target.value });
@@ -202,6 +206,10 @@ class User extends Component {
         console.log(error);
       });
   }
+
+  scrollToBottom = () => {
+    this.divRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   render() {
     var procedureStatusList;
@@ -334,6 +342,7 @@ class User extends Component {
             <div className="d-flex flex-column" id="rightPannel">
               <div className="card-body msg_card_body bg-secondary mt-1">
                 {this.state.messageHistory}
+                <div ref={this.divRef} />
               </div>
               <div className="card-footer">
                 <div className="input-group">

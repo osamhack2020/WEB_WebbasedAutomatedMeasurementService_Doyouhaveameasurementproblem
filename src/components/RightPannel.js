@@ -9,6 +9,7 @@ import '../css/RightPannel.css';
 class RightPannel extends Component {
   constructor(props) {
     super(props);
+    this.divRef = React.createRef();
     this.state = {
       id: null,
       length: 1000,
@@ -35,7 +36,7 @@ class RightPannel extends Component {
           </div>
         </div>,
       );
-      this.setState({ messageHistory: tmp });
+      this.setState({ messageHistory: tmp }, this.scrollToBottom);
     });
     this.plusOneCurrentIndex = this.plusOneCurrentIndex.bind(this);
   }
@@ -77,7 +78,10 @@ class RightPannel extends Component {
     );
 
     //메시지 비우기, history 업데이트
-    this.setState({ messageInput: '', messageHistory: tmp });
+    this.setState(
+      { messageInput: '', messageHistory: tmp },
+      this.scrollToBottom,
+    );
   };
   onInputChanged = (event) => {
     this.setState({ messageInput: event.target.value });
@@ -86,6 +90,9 @@ class RightPannel extends Component {
     this.setState({
       current_index: this.state.current_index + 1,
     });
+  };
+  scrollToBottom = () => {
+    this.divRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   render() {
     if (this.state.length === this.state.current_index) {
@@ -118,7 +125,10 @@ class RightPannel extends Component {
               id="ChattingPannel"
               className="d-flex flex-column bg-light overflow-auto border border-dark rounded mb-1"
             >
-              <div className="msg_history">{this.state.messageHistory}</div>
+              <div className="msg_history">
+                {this.state.messageHistory}
+                <div ref={this.divRef} />
+              </div>
               <div className="type_msg">
                 <div className="input_msg_write">
                   <input
@@ -247,7 +257,10 @@ class RightPannel extends Component {
             id="ChattingPannel"
             className="d-flex flex-column bg-light overflow-auto border border-dark rounded mb-1"
           >
-            <div className="msg_history">{this.state.messageHistory}</div>
+            <div className="msg_history">
+              {this.state.messageHistory}
+              <div ref={this.divRef} />
+            </div>
             <div className="type_msg">
               <div className="input_msg_write">
                 <input
