@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-
 import '../css/Buttons.css';
+
+// 34401a 하단에 위치한 버튼 컴포넌트 Parent Component: Display
 class Buttons extends Component {
   constructor(props) {
     super(props);
+    // 사용자 지정 쿼리를 위한 state
     this.state = {
       custom_url: '',
     };
   }
-
+  // 사용자 지정 쿼리 input이 바뀔 때 발생하는 이벤트 핸들러
   handleChange = (e) => {
     this.setState({ custom_url: e.target.value });
   };

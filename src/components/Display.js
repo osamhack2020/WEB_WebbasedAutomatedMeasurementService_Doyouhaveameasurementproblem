@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Buttons from './Buttons';
 import '../css/Display.css';
-
+// 34401a의 화면을 담당하는 컴포넌트 Parent Component: LeftPannel
 class Display extends Component {
   render() {
     return (

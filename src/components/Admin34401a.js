@@ -5,13 +5,15 @@ import RightPannel from './RightPannel';
 import Plot from 'react-plotly.js';
 import cookie from 'react-cookies';
 import '../css/Admin34401a.css';
-// 34401a 장비를 컨트롤 할 수 있는 관리자 컴포넌트
+// 34401a 장비를 컨트롤 할 수 있는 관리자 컴포넌트   ParentComponent: App
 class Admin34401a extends Component {
   constructor(props) {
     super(props);
+    // 함수를 현재 클래스에 바인드
     this.handleClick = this.handleClick.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.handleStopMeasuring = this.handleStopMeasuring.bind(this);
+    // state 초기화
     this.state = {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
@@ -84,7 +86,7 @@ class Admin34401a extends Component {
     this.fetchUserInfo();
   }
   componentDidMount() {
-    // 컴포넌트가 마운트 되었을 때 유저 정보 가져오기.
+    // 컴포넌트가 마운트 되었을 때 유저 정보 가져오는 함수
     axios
       .get('https://express-server.run.goorm.io/user/getUsers')
       .then((res) => res.data)
@@ -108,7 +110,7 @@ class Admin34401a extends Component {
         console.log(error);
       });
   }
-  // clear 버튼을 눌렀을 때 측정 히스토리 정보 초기화
+  // clear 버튼을 눌렀을 때 측정 히스토리 정보 초기화 핸들러
   handleClear = () => {
     const data_ = this.state.data.slice(undefined);
     data_[0].y = [];
@@ -118,12 +120,14 @@ class Admin34401a extends Component {
   handleGetUserInfo = () => {
     this.fetchUserInfo();
   };
+  // 측정 시작 버튼을 눌렀을 때 핸들러
   handleStartMeasuring = () => {
     this.setState({
       connected: this.state.selectedId,
       startProcedure: true,
     });
   };
+  // 측정 종료 버튼을 눌렀을 때 핸들러
   handleStopMeasuring = () => {
     this.setState({
       startProcedure: false,
@@ -132,6 +136,7 @@ class Admin34401a extends Component {
       connected: '',
     });
   };
+  //
   onSelectBoxChanged1 = (event) => {
     this.setState({ selectedId: event.target.value });
   };
@@ -143,6 +148,7 @@ class Admin34401a extends Component {
       }
     });
   };
+  // 사용자 지정 쿼리 + 측정 버튼(ACV, DCV, RES, PER, FREQ) 핸들러
   handleClick = (path) => () => {
     if (path === '') {
       alert('쿼리를 형식에 맞게 입력해주세요');
@@ -172,7 +178,7 @@ class Admin34401a extends Component {
       this.setState({ curr: '' });
     }
   };
-
+  // 유저 정보를 비동기로 가져오는 함수
   async fetchUserInfo() {
     return await axios({
       method: 'post',
@@ -198,6 +204,7 @@ class Admin34401a extends Component {
         console.log(error);
       });
   }
+  // REST API 서버로부터 실제 측정값을 받아오는 함수
   async fetchData(path) {
     const data_ = this.state.data.slice(undefined);
     const new_array = data_[0].y.slice(undefined);
@@ -218,13 +225,14 @@ class Admin34401a extends Component {
   }
   render() {
     var userlist_items;
-
+    // 받아온 유저 정보 중에 admin계정을 제외한 나머지 유저들의 리스트를 생성
     //.filter(img => img.src.slice(-4) != 'json').map(img => img.src);
     if (this.state.users !== null) {
       userlist_items = this.state.users
         .filter((data) => data.isAdmin === 0)
         .map((data) => <option key={data.idusers}>{data.idusers}</option>);
     }
+    // Procedure 리스트 생성
     var procedurelist_items;
     if (this.state.procedures !== null) {
       procedurelist_items = this.state.procedures.map((data) => (
@@ -234,6 +242,7 @@ class Admin34401a extends Component {
     //console.log(procedurelist_items);
     return (
       <div className="d-flex flex-column align-items-center" id="Admin34401a">
+        {/* 상단에 위치한 패널 */}
         <div
           className="flex-column float-right bg-light border border-dark rounded mb-1 mt-1 p-1"
           id="userChoice"
@@ -294,7 +303,6 @@ class Admin34401a extends Component {
             로그아웃
           </button>
         </div>
-
         <div
           className="d-flex flex-row align-items-center justify-content-center"
           id="pannel"

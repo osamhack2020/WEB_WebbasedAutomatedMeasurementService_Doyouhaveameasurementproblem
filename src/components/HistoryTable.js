@@ -2,6 +2,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import React, { Component } from 'react';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import '../css/HistoryTable.css';
+// react-bootstrap-table module을 통해 만들어진 테이블을 반환하는 컴포넌트
 class HistoryTable extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +45,7 @@ class HistoryTable extends Component {
         text: '시간',
       },
     ];
+    // History props에 histoy가 담겨있을 때
     if (this.props.history) {
       historyItems = this.props.history.map((data, index) => {
         return {
