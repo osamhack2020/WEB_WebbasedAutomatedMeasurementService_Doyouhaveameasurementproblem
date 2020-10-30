@@ -24,11 +24,11 @@
 
 # 프로젝트 소개(Project Information)
 
-<p align = "center">
-['너 측정 문제 있어?' Demo](https://react-front-server.run.goorm.io/) </p>
+[너 측정 문제 있어?](https://react-front-server.run.goorm.io/)
+
 - 관리자 ID: admin PW: 1234
-- 유저   ID: test  PW: 1234
-![](https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem/blob/master/sample2.gif)
+- 유저 ID: test PW: 1234
+  ![](https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem/blob/master/sample2.gif)
 
 > ## 추진배경
 
