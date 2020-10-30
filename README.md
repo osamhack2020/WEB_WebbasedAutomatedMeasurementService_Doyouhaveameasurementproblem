@@ -24,7 +24,7 @@
 <table>
 	<tr>
 		<td>
-			<a href="https://youtu.be/kgryo3qVIrA"><img src="https://user-images.githubusercontent.com/5003195/97744550-c99cb980-1b2a-11eb-996f-ca3c86d4bd4e.png" /></a>
+			<a href="https://youtu.be/kgryo3qVIrA"><img src="https://user-images.githubusercontent.com/5003195/97744550-c99cb980-1b2a-11eb-996f-ca3c86d4bd4e.png" width="400px" height="300px" /></a>
 		</td>
 	</tr>
 </table>
