@@ -1,19 +1,19 @@
 # 팀 로고(Team Logo)
 
 <p align = "center">
-<img src="https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg" width="100px" height="50px"></img>
+<img src="https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg" width="600px" height="300px"></img>
 </p>
 
 <p align="center">
 	<a href="https://react-front-server.run.goorm.io/">
-		<img src="https://user-images.githubusercontent.com/5003195/97741057-82f89080-1b25-11eb-8c50-a85d3dc08416.png" width="300px" height="400px" />
+		<img src="https://user-images.githubusercontent.com/5003195/97741057-82f89080-1b25-11eb-8c50-a85d3dc08416.png" width="100px" height="40px" />
 	</a>
 	<a href="https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem/files/5466857/Automated.Measurement.Service_UI_define.file.pdf">
-		<img src="https://user-images.githubusercontent.com/5003195/97741320-dd91ec80-1b25-11eb-8b41-688cf98f0c94.png" width="30px" height="40px" />
+		<img src="https://user-images.githubusercontent.com/5003195/97741320-dd91ec80-1b25-11eb-8b41-688cf98f0c94.png" width="100px" height="40px" />
 	</a>
 	<a href="https://github.com/osamhack2020/WEB_WebbasedAutomatedMeasurementService_Doyouhaveameasurementproblem/files/5466862/_.pdf">
 		<img src="https://user-images.githubusercontent.com/5003195/97741108-999ee780-1b25-11eb-976b-d5a59dfa4a7f.png" 
-      width="30px" height="40px" />
+      width="10px" height="40px" />
 	</a>
 </p>
 
