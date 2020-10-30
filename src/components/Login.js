@@ -50,9 +50,18 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.onClickHandler();
+    }
+  };
+
   render() {
     return (
-      <div className="align-items-center align-content-center" id="loginComponent">
+      <div
+        className="align-items-center align-content-center"
+        id="loginComponent"
+      >
         <form className="form-signin" id="loginForm">
           <h1 className=" h3 mb-4 text-center font-weight-bolder">
             Please sign in
@@ -83,6 +92,7 @@ class Login extends Component {
             required
             value={this.state.password}
             onChange={this.handleChange}
+            onKeyPress={this.onKeyPress}
           />
           <select id="orederProcedure" className="custom form-control">
             <option value="" disabled>

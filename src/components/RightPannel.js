@@ -94,6 +94,11 @@ class RightPannel extends Component {
   scrollToBottom = () => {
     this.divRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.sendMessage();
+    }
+  };
   render() {
     if (this.state.length === this.state.current_index) {
       var tmp = this.state.procedureStatus.slice(0, this.state.length);
@@ -133,6 +138,7 @@ class RightPannel extends Component {
                 <div className="input_msg_write">
                   <input
                     onChange={this.onInputChanged}
+                    onKeyPress={this.onKeyPress}
                     value={this.state.messageInput}
                     type="text"
                     className="write_msg"
@@ -265,6 +271,7 @@ class RightPannel extends Component {
               <div className="input_msg_write">
                 <input
                   onChange={this.onInputChanged}
+                  onKeyPress={this.onKeyPress}
                   value={this.state.messageInput}
                   type="text"
                   className="write_msg"

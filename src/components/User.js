@@ -211,6 +211,12 @@ class User extends Component {
     this.divRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.sendMessage();
+    }
+  };
+
   render() {
     var procedureStatusList;
 
@@ -351,6 +357,7 @@ class User extends Component {
                     placeholder="Type your message..."
                     value={this.state.messageInput}
                     onChange={this.onInputChanged}
+                    onKeyPress={this.onKeyPress}
                   />
                   <div className="input-group-append">
                     <span
