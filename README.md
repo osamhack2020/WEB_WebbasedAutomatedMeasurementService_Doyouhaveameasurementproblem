@@ -1,7 +1,7 @@
 # 팀 로고(Team Logo)
 
 <p align = "center">
-<img src="https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg" width="600px" height="300px"></img>
+<img src="https://user-images.githubusercontent.com/5003195/95662255-8de88280-0b70-11eb-9b0a-c1d85243c82a.jpg" width="100px" height="50px"></img>
 </p>
 
 <p align="center">
