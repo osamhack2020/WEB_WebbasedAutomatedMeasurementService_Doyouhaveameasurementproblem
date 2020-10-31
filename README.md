@@ -133,13 +133,13 @@
 
 > ## 개발현황(OSAM 양식)
 
-| No  | 개발현황 | 진행률      |
-| --- | -------- | ----------- |
-| 1   | 개발소스 | 100 / 100 %  |
-| 2   | 개발문서 | 100 / 100 %  |
-| 3   | 발표자료 | 100 / 100 % |
-| 4   | 시연영상 | 100 / 100 %  |
-| 5   | 라이선스 | 100 / 100 %   |
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/5003195/97773603-a3abff00-1b94-11eb-8a29-76efc75c5d8c.png" width="100px" height="40px"></img>
+	<img src="https://user-images.githubusercontent.com/5003195/97773604-a60e5900-1b94-11eb-91a7-69508faa49b8.png" width="100px" height="40px"></img>
+	<img src="https://user-images.githubusercontent.com/5003195/97773605-a870b300-1b94-11eb-83d5-dac8aaa198db.png" width="100px" height="40px"></img>
+	<img src="https://user-images.githubusercontent.com/5003195/97773607-a9094980-1b94-11eb-93ff-49960d29768f.png" width="100px" height="40px"></img>
+	<img src="https://user-images.githubusercontent.com/5003195/97773608-a9094980-1b94-11eb-8f98-4ad7ead529b1.png" width="100px" height="40px"></img>
+</p>
 
 > ## 개발 진행 상황 👇
 
