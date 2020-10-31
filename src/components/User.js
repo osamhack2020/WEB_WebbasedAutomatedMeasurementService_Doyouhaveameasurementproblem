@@ -8,13 +8,17 @@ import cookie from 'react-cookies';
 import io from 'socket.io-client';
 import HistoryTable from '../components/HistoryTable';
 import Manual from '../components/Manual';
-// import Chatting from '../components/Chatting';
+
+// 채팅서버 연결
 const socket = io.connect('https://express-server.run.goorm.io');
 
+// 측정 과정 및 결과를 확인하는 유저 컴포넌트
 class User extends Component {
   constructor(props) {
     super(props);
+    // 채팅 스크롤 아래로 내리기 위한 Ref
     this.divRef = React.createRef();
+    // state 초기화
     this.state = {
       idusers: this.props.idusers,
       isAdmin: cookie.load('isAdmin'),
@@ -79,6 +83,7 @@ class User extends Component {
     this.fetchUserInfo();
   }
   componentDidMount() {
+    // 컴포넌트가 마운트 되었을 때 유저 정보 가져오는 함수
     axios
       .get('https://express-server.run.goorm.io/user/getUsers')
       .then((res) => res.data)
@@ -88,6 +93,7 @@ class User extends Component {
         this.setState({ users: data });
       });
     this.fetchHistoryHandler();
+    // 프로시저 정보 가져오기. (saple1, sample2 ...)
     axios({
       method: 'post',
       url: 'https://express-server.run.goorm.io/procedure/getProcedures',
@@ -111,7 +117,7 @@ class User extends Component {
       });
     }
   }
-
+  // 유저 정보를 비동기로 가져오는 함수
   async fetchUserInfo() {
     return await axios({
       method: 'post',
@@ -138,6 +144,7 @@ class User extends Component {
       });
   }
 
+  // 메세지를 보내는 함수
   sendMessage = () => {
     console.log('sendMessage');
     socket.emit('send message from user', {
@@ -174,12 +181,15 @@ class User extends Component {
       this.scrollToBottom,
     );
   };
+  // 보낼 메세지 값을 저장하는 함수
   onInputChanged = (event) => {
     this.setState({ messageInput: event.target.value });
   };
+  // 과거 측정기록을 가져오는 함수
   fetchHistoryHandler() {
     this.fetchHistory();
   }
+  // 과거 측정 기록을 가져오는 함수
   async fetchHistory() {
     return await axios({
       method: 'post',
@@ -206,11 +216,11 @@ class User extends Component {
         console.log(error);
       });
   }
-
+  // 채팅 스크롤을 아래로 내리는 함수
   scrollToBottom = () => {
     this.divRef.current.scrollIntoView({ behavior: 'smooth' });
   };
-
+  // 엔터키 입력시 메시지 전송 함수
   onKeyPress = (e) => {
     if (e.key === 'Enter') {
       this.sendMessage();
@@ -219,7 +229,7 @@ class User extends Component {
 
   render() {
     var procedureStatusList;
-
+    // 현재 진행중인 과정 정보 받기
     if (this.state.current_procedure && this.state.procedures) {
       for (let i = 0; i < this.state.procedures.length; i++) {
         if (this.state.procedures[i].title === this.state.current_procedure) {

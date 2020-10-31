@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../css/Login.css';
 import Register from './Register';
+// 로그인 컴포넌트
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -13,10 +14,11 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.login = this.login.bind(this);
   }
-
+  // 클릭시 로그인 함수 실행
   onClickHandler() {
     this.login();
   }
+  // 로그인 하는 함수
   async login() {
     return await axios({
       method: 'post',
@@ -44,12 +46,12 @@ class Login extends Component {
         console.log(' Error 로그인 실패');
       });
   }
-
+  // 입력값 저장 하는 함수
   handleChange = (e) => {
     //console.log(e.target.name);
     this.setState({ [e.target.name]: e.target.value });
   };
-
+  // 엔터키 입력시 로그인 하는 함수
   onKeyPress = (e) => {
     if (e.key === 'Enter') {
       this.onClickHandler();

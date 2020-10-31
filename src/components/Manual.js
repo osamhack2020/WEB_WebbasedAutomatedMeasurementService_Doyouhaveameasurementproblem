@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Manual.css';
-
+// 장비의 연결 방법을 알려주는 Modal Component
 class Manual extends Component {
   render() {
     return (

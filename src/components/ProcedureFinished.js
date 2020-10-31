@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// 측정결과를 확인하고 저장하는 컴포넌트
 class ProcedureFinished extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +31,7 @@ class ProcedureFinished extends Component {
     this.postHistory = this.postHistory.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-
+  // 측정결과 저장 함수
   async postHistory() {
     var result = this.state.result.join(' ');
     //console.log('hi');
@@ -57,6 +58,7 @@ class ProcedureFinished extends Component {
         //this.props.plusOneCurrentIndex();
       });
   }
+  // 저장버튼 클릭시 실행 함수
   handleClick() {
     this.postHistory();
     this.props.plusOneCurrentIndex();

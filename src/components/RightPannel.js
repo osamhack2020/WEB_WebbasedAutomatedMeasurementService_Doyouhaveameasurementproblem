@@ -1,15 +1,17 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-//import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import ProcedureFinished from '../components/ProcedureFinished';
 import io from 'socket.io-client';
 const socket = io.connect('https://express-server.run.goorm.io');
 import '../css/RightPannel.css';
+// Admin34401a의 오른쪽 UI 부분 담당 컴포넌트
 class RightPannel extends Component {
   constructor(props) {
     super(props);
+    // 채팅 스크롤 아래로 내리기 위한 Ref
     this.divRef = React.createRef();
+    // state 초기화
     this.state = {
       id: null,
       length: 1000,
@@ -40,6 +42,7 @@ class RightPannel extends Component {
     });
     this.plusOneCurrentIndex = this.plusOneCurrentIndex.bind(this);
   }
+  // 현재 과정 진행 상황 전송 함수
   sendProcedureStatus = () => {
     socket.emit('send procedureStatus from admin', {
       current_index: this.state.current_index,
@@ -47,6 +50,7 @@ class RightPannel extends Component {
       id: this.state.id,
     });
   };
+  // 메시지 전송 함수
   sendMessage = () => {
     //console.log('sendMessage');
     socket.emit('send message from admin', {
@@ -77,23 +81,27 @@ class RightPannel extends Component {
       </div>,
     );
 
-    //메시지 비우기, history 업데이트
+    //메시지 비우기, history 업데이트, 스크롤 아래로
     this.setState(
       { messageInput: '', messageHistory: tmp },
       this.scrollToBottom,
     );
   };
+  // 보낼 메세지 값을 저장하는 함수
   onInputChanged = (event) => {
     this.setState({ messageInput: event.target.value });
   };
+  // index값 1 증가 함수
   plusOneCurrentIndex = () => {
     this.setState({
       current_index: this.state.current_index + 1,
     });
   };
+  // 채팅 스크롤을 아래로 내리는 함수
   scrollToBottom = () => {
     this.divRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+  // 엔터키 입력시 메시지 전송 함수
   onKeyPress = (e) => {
     if (e.key === 'Enter') {
       this.sendMessage();
@@ -101,6 +109,7 @@ class RightPannel extends Component {
   };
   render() {
     if (this.state.length === this.state.current_index) {
+      // 측정과정이 다 끝났을 때
       var tmp = this.state.procedureStatus.slice(0, this.state.length);
       this.sendProcedureStatus();
       return (
@@ -173,6 +182,7 @@ class RightPannel extends Component {
       this.props.connected === this.props.id &&
       this.props.procedure
     ) {
+      // 측정 과정이 실행중일때
       this.state.id = this.props.id;
       this.state.length = this.props.procedureContent.length;
       this.state.title = this.props.procedureContent.title;
@@ -226,7 +236,7 @@ class RightPannel extends Component {
           }
         });
       }
-      // 측정된 값과 비교하는 코드.
+      // 측정된 값이 허용오차 안인지 확인하는 코드.
       var current_index = this.state.current_index;
 
       if (this.state.beforeValue !== this.props.value) {
@@ -290,6 +300,7 @@ class RightPannel extends Component {
         </div>
       );
     } else {
+      // 측정을 시작하지 않았을 때
       this.state = {
         id: null,
         length: 1000,
