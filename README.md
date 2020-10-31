@@ -20,6 +20,10 @@
 		<img src="https://user-images.githubusercontent.com/5003195/97770989-d5649c00-1b7b-11eb-9506-6bd62411bc82.png" 
       width="250px" height="80px" />
 	</a>
+   <a href=INSTALL.md>
+		<img src="https://user-images.githubusercontent.com/5003195/97771102-098c8c80-1b7d-11eb-93bf-7e0b25c00caa.png" 
+      width="250px" height="80px" />
+	</a>
 </p>
 
 <br><br><br>
