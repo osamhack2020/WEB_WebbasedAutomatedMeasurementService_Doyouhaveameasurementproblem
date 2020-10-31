@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/LeftPannel.css';
 import Display from './Display';
-
+// 34401a로 부터 온 측정 값과 조작 버튼 컴포넌트
 class LeftPannel extends Component {
   render() {
     if (

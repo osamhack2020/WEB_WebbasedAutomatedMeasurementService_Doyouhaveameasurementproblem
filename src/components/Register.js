@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+// 회원가입 입력하는 modal 컴포넌트
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +17,7 @@ class Register extends Component {
       rankIsvalid: false,
     };
   }
+  // 입력된 이름이 가능한지 불가능한지 확인 함수
   handleChange = (e) => {
     console.log(e.target.name);
     if (e.target.value.length > 1) {
@@ -26,10 +27,12 @@ class Register extends Component {
     }
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  // 입력된 회원정보를 등록하는 함수
   handleClick = () => {
     this.register();
   };
-
+  // 가능 불가능 확인 함수
   inputClassNameHelper = (boolean) => {
     switch (boolean) {
       case true:
@@ -40,6 +43,7 @@ class Register extends Component {
         return '';
     }
   };
+  // 입력된 회원정보를 등록하는 함수
   async register() {
     return await axios({
       method: 'post',
